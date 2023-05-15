@@ -1,0 +1,2 @@
+- make eslint-no-undef understand auto imports
+- nav-link component to wrap localePath

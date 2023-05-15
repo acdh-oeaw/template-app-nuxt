@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# logs
+*.log
+
+# non-public environment variables
+.env
+.env.local
+.env.*.local
+
+# caches
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# vercel
+.vercel
+
+# misc
+.DS_Store
+.idea/
+
+# nuxt.js
+dist
+.nuxt/
+.nitro/
+.output/

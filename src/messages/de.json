@@ -1,0 +1,53 @@
+{
+	"AppFooter": {
+		"links": {
+			"imprint": "Impressum"
+		},
+		"navigation-secondary": "Sekundärnavigation"
+	},
+	"AppHeader": {
+		"links": {
+			"home": "Startseite"
+		},
+		"navigation-main": "Hauptnavigation"
+	},
+	"DefaultLayout": {
+		"meta": {
+			"title": "App",
+			"description": ""
+		},
+		"skip-to-main-content": "Zum Hauptinhalt springen"
+	},
+	"ErrorPage": {
+		"meta": {
+			"title": "Fehler"
+		},
+		"title": "Etwas ist schief gelaufen!",
+		"try-again": "Erneut versuchen"
+	},
+	"ImprintPage": {
+		"meta": {
+			"title": "Impressum"
+		},
+		"title": "Impressum"
+	},
+	"IndexPage": {
+		"meta": {
+			"title": "Startseite"
+		},
+		"title": "Startseite"
+	},
+	"LocaleSwitcher": {
+		"languages": {
+			"english": "Englisch",
+			"german": "Deutsch"
+		},
+		"switch-locale": "Zu {language} wechseln"
+	},
+	"NotFoundPage": {
+		"meta": {
+			"title": "Seite nicht gefunden"
+		},
+		"title": "Seite nicht gefunden"
+	}
+}

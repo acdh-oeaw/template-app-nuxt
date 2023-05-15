@@ -1,0 +1,36 @@
+{
+	"css.validate": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.inlayHints.enabled": "offUnlessPressed",
+	"editor.linkedEditing": true,
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"editor.rulers": [100],
+	"eslint.enable": true,
+	"eslint.validate": ["javascript", "typescript", "vue"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"files.eol": "\n",
+	"html.autoCreateQuotes": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"stylelint.enable": true,
+	"stylelint.snippet": ["css", "postcss", "tailwindcss", "vue"],
+	"stylelint.validate": ["css", "postcss", "tailwindcss", "vue"],
+	"tailwindCSS.validate": true,
+	"terminal.integrated.enablePersistentSessions": false,
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"workbench.editor.labelFormat": "medium",
+	"[markdown]": {
+		"editor.wordWrap": "on"
+	}
+}
