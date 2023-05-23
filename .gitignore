@@ -6,9 +6,7 @@ node_modules/
 *.log
 
 # non-public environment variables
-.env
-.env.local
-.env.*.local
+.env*
 
 # caches
 .eslintcache
@@ -27,3 +25,7 @@ dist
 .nuxt/
 .nitro/
 .output/
+
+# allowed
+!*example*
+!*template*
