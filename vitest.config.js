@@ -1,10 +1,11 @@
-import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
+import { defineVitestConfig } from "nuxt-vitest/config";
 
-export default defineConfig({
-	plugins: [vue()],
+export default defineVitestConfig({
+	// any custom vitest config you require
 	test: {
+		environment: "nuxt",
 		globals: true,
-		environment: "jsdom",
+		include: ["./tests/*.spec.ts"],
+		setupFiles: ["../tests/setupFiles/createI18n.ts"],
 	},
 });

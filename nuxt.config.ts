@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 		locales: Object.values(locales),
 		strategy: "prefix",
 	},
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/i18n"],
+	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/i18n", "nuxt-vitest"],
 	nitro: {
 		compressPublicAssets: true,
 	},
