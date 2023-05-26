@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 
-import AppFooter from "../src/components/app-footer.vue";
+import AppFooter from "@/components/app-footer.vue";
 
 describe("AppFooter", () => {
 	it("is a Vue instance", () => {
