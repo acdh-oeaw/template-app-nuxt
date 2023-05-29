@@ -33,7 +33,6 @@
 		"@nuxt/image": "npm:@nuxt/image-edge",
 		"@nuxtjs/i18n": "^8.0.0-beta.12",
 		"@stefanprobst/assert": "^1.0.3",
-		"@stefanprobst/css-reset": "^0.1.1",
 		"@stefanprobst/log": "^1.0.3",
 		"@stefanprobst/request": "^0.2.1",
 		"@t3-oss/env-nuxt": "^0.3.1",
@@ -46,11 +45,10 @@
 		"@acdh-oeaw/eslint-config-nuxt": "^1.0.0",
 		"@acdh-oeaw/eslint-config-vue": "^1.0.0",
 		"@acdh-oeaw/prettier-config": "^1.0.0",
+		"@acdh-oeaw/stylelint-config": "^1.0.1",
 		"@acdh-oeaw/tsconfig": "^1.0.0",
 		"@commitlint/cli": "^17.6.3",
 		"@nuxt/devtools": "^0.5.0",
-		"@stefanprobst/commitlint-config": "^1.0.3",
-		"@stefanprobst/stylelint-config": "^3.0.2",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/node": "^18.16.13",
 		"autoprefixer": "^10.4.14",
@@ -71,7 +69,6 @@
 		"typescript": "^5.0.4",
 		"vue-tsc": "^1.6.5",
 		"nuxt-vitest": "^0.7.1"
-
 	},
 	"browserslist": {
 		"development": [
@@ -91,14 +88,7 @@
 			"@acdh-oeaw/eslint-config-vue",
 			"@acdh-oeaw/eslint-config-nuxt",
 			"plugin:eslint-plugin-tailwindcss/recommended"
-		],
-		"settings": {
-			"tailwindcss": {
-				"callees": [
-					"cn"
-				]
-			}
-		}
+		]
 	},
 	"lint-staged": {
 		"*.@(vue)": [
@@ -129,9 +119,6 @@
 		"pre-push": "pnpm run validate"
 	},
 	"stylelint": {
-		"extends": [
-			"@stefanprobst/stylelint-config",
-			"stylelint-config-html/vue"
-		]
+		"extends": "@acdh-oeaw/stylelint-config"
 	}
 }

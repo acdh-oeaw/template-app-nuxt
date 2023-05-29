@@ -13,12 +13,7 @@ export default defineNuxtConfig({
 		locales: Object.keys(locales),
 		markdown: {},
 	},
-	css: [
-		"@fontsource-variable/inter/slnt.css",
-		"tailwindcss/tailwind.css",
-		"@stefanprobst/css-reset/reset.css",
-		"@/styles/index.css",
-	],
+	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
 	devtools: {
 		enabled: true,
 	},
