@@ -1,18 +1,16 @@
-/** @typedef {import('tailwindcss').Config} TailwindConfig */
-
 import typographyPlugin from "@tailwindcss/typography";
-import colors from "tailwindcss/colors";
+import { type Config } from "tailwindcss";
+import colors from "tailwindcss/colors.js";
 import animatePlugin from "tailwindcss-animate";
 
 const neutral = colors.slate;
 const negative = colors.red;
 const primary = colors.slate;
 
-/** @type {TailwindConfig} */
-const config = {
+const config: Config = {
 	content: [
-		"./content/**/*.md",
 		"./src/components**/*.@(css|ts|vue)",
+		"./src/content/**/*.md",
 		"./src/layouts/**/*.@(css|ts|vue)",
 		"./src/pages/**/*.@(css|ts|vue)",
 	],
@@ -26,7 +24,7 @@ const config = {
 				primary,
 			},
 			fontFamily: {
-				sans: ["Inter Variable", "ui-sans-serif", "system-ui", "sans-serif"],
+				body: ["Inter Variable", "ui-sans-serif", "system-ui", "sans-serif"],
 			},
 			typography: {
 				DEFAULT: {
