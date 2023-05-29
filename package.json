@@ -109,8 +109,7 @@
 	},
 	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
-		"pre-commit": "pnpm exec lint-staged",
-		"pre-push": "pnpm run validate"
+		"pre-commit": "pnpm exec lint-staged"
 	},
 	"stylelint": {
 		"extends": "@acdh-oeaw/stylelint-config"
