@@ -1,4 +1,4 @@
-import type { RouteLocationNormalized } from "vue-router";
+import { type RouteLocationNormalized } from "vue-router";
 
 function track(url: string, referrer: string, title: string) {
 	window._paq?.push(["setReferrerUrl", referrer]);

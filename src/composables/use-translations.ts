@@ -2,7 +2,7 @@ import { type ResourcePath } from "@intlify/core-base";
 
 import { type Locale, type Messages, type Schema } from "~/config/i18n.config";
 
-// @ts-expect-error
+// @ts-expect-error Type instantiation is excessively deep and possibly infinite.
 export function useTranslations(): (
 	key: ResourcePath<Messages>,
 	values?: Record<string, unknown>,

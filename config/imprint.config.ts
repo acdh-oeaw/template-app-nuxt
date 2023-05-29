@@ -1,4 +1,4 @@
-import { createUrl } from "@stefanprobst/request";
+import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
 import { env } from "~/config/env.config";
 import { type Locale } from "~/config/i18n.config";
@@ -11,9 +11,9 @@ export function createImprintUrl(locale: Locale): URL {
 	return createUrl({
 		baseUrl,
 		pathname,
-		searchParams: {
+		searchParams: createUrlSearchParams({
 			outputLang: locale,
 			serviceID: redmineId,
-		},
+		}),
 	});
 }

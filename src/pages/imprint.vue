@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { request } from "@stefanprobst/request";
-
 import { createImprintUrl } from "~/config/imprint.config";
 
 definePageMeta({
@@ -10,11 +8,7 @@ definePageMeta({
 const locale = useLocale();
 const t = useTranslations("ImprintPage");
 
-const imprint = await useAsyncData("ImprintPage", () => {
-	const url = createImprintUrl(locale.value);
-
-	return request(url, { responseType: "text" });
-});
+const imprint = await useFetch(String(createImprintUrl(locale.value)), { responseType: "text" });
 </script>
 
 <template>
