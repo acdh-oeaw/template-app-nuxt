@@ -1,6 +1,5 @@
 import { fileURLToPath } from "node:url";
 
-import { env } from "./config/env.config";
 import { defaultLocale, locales } from "./config/i18n.config";
 
 export default defineNuxtConfig({
@@ -21,7 +20,7 @@ export default defineNuxtConfig({
 		public: "../public",
 	},
 	i18n: {
-		baseUrl: env.NUXT_PUBLIC_APP_BASE_URL,
+		baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 		defaultLocale,
 		detectBrowserLanguage: {
 			redirectOn: "root",
@@ -46,6 +45,17 @@ export default defineNuxtConfig({
 		"/": { static: true },
 		"/imprint": { static: true },
 	},
+	runtimeConfig: {
+		BOTS: process.env.BOTS,
+		ENV_VALIDATION: process.env.ENV_VALIDATION,
+		NODE_ENV: process.env.NODE_ENV,
+		public: {
+			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
+			NUXT_PUBLIC_MATOMO_BASE_URL: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
+			NUXT_PUBLIC_MATOMO_ID: process.env.NUXT_PUBLIC_MATOMO_ID,
+			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,
+		},
+	},
 	srcDir: "./src/",
 	typescript: {
 		shim: false,
@@ -57,13 +67,6 @@ export default defineNuxtConfig({
 					"@/*": ["./src/*"],
 					"~/*": ["./*"],
 				},
-			},
-		},
-	},
-	vite: {
-		esbuild: {
-			define: {
-				"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
 			},
 		},
 	},

@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import { isNonEmptyString } from "@acdh-oeaw/lib";
 import { type WebSite, type WithContext } from "schema-dts";
 
 import { createAnalyticsScript } from "@/utils/analytics";
-import { env } from "~/config/env.config";
+
+const env = useRuntimeConfig();
 
 const locale = useLocale();
 const t = useTranslations("DefaultLayout");
@@ -59,12 +61,15 @@ useHead({
 			{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd, safeJsonLdReplacer) },
 		];
 
-		if (env.NUXT_PUBLIC_MATOMO_BASE_URL != null && env.NUXT_PUBLIC_MATOMO_ID != null) {
+		if (
+			isNonEmptyString(env.public.NUXT_PUBLIC_MATOMO_BASE_URL) &&
+			isNonEmptyString(env.public.NUXT_PUBLIC_MATOMO_ID)
+		) {
 			scripts.push({
 				type: "",
 				innerHTML: createAnalyticsScript(
-					env.NUXT_PUBLIC_MATOMO_BASE_URL,
-					env.NUXT_PUBLIC_MATOMO_ID,
+					env.public.NUXT_PUBLIC_MATOMO_BASE_URL,
+					env.public.NUXT_PUBLIC_MATOMO_ID,
 				),
 			});
 		}
