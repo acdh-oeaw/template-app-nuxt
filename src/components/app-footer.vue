@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-import { type NuxtLinkProps } from "#app";
+import { type NavLinkProps } from "@/components/nav-link.vue";
 
 const t = useTranslations("AppFooter");
-const localePath = useLocalePath();
-
-type Href = Exclude<NuxtLinkProps["href"], string>;
 
 const links = {
-	imprint: { href: { path: localePath("/imprint") }, label: t("links.imprint") },
-} satisfies Record<string, { href: Href; label: string }>;
+	imprint: { href: { path: "/imprint" }, label: t("links.imprint") },
+} satisfies Record<string, { href: NavLinkProps["href"]; label: string }>;
 </script>
 
 <template>
@@ -16,9 +13,9 @@ const links = {
 		<nav :aria-label="t('navigation-secondary')">
 			<ul role="list">
 				<li v-for="(link, key) of links" :key="key">
-					<NuxtLink :href="link.href">
+					<NavLink :href="link.href">
 						{{ link.label }}
-					</NuxtLink>
+					</NavLink>
 				</li>
 			</ul>
 		</nav>
