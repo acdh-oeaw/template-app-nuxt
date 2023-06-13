@@ -2,13 +2,10 @@ import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
 import { type Locale } from "~/config/i18n.config";
 
-const env = useRuntimeConfig();
-
 const baseUrl = "https://shared.acdh.oeaw.ac.at";
 const pathname = "/acdh-common-assets/api/imprint.php";
-const redmineId = env.public.NUXT_PUBLIC_REDMINE_ID;
 
-export function createImprintUrl(locale: Locale): URL {
+export function createImprintUrl(locale: Locale, redmineId: string): URL {
 	return createUrl({
 		baseUrl,
 		pathname,
