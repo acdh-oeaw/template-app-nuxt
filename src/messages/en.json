@@ -42,6 +42,7 @@
 			"english": "English",
 			"german": "German"
 		},
+		"current-locale": "Current language: {language}",
 		"switch-locale": "Switch to {language}"
 	},
 	"NotFoundPage": {

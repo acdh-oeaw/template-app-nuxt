@@ -42,6 +42,7 @@
 			"english": "Englisch",
 			"german": "Deutsch"
 		},
+		"current-locale": "Aktuelle Sprache: {language}",
 		"switch-locale": "Zu {language} wechseln"
 	},
 	"NotFoundPage": {
