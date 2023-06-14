@@ -1,7 +1,12 @@
 <script lang="ts" setup>
-definePageMeta({
-	title: "ErrorPage.meta.title",
-});
+/**
+ * `error.vue` sits outside the routing structure, so we cannot define page metadata.
+ *
+ * @see https://github.com/nuxt/nuxt/issues/19344#issuecomment-1449685103
+ */
+// definePageMeta({
+// 	title: "ErrorPage.meta.title",
+// });
 
 defineProps<{
 	error: Error;
