@@ -5,10 +5,12 @@ definePageMeta({
 	title: "ImprintPage.meta.title",
 });
 
+const env = useRuntimeConfig();
+
 const locale = useLocale();
 const t = useTranslations("ImprintPage");
 
-const redmineId = useRuntimeConfig().public.NUXT_PUBLIC_REDMINE_ID;
+const redmineId = env.public.NUXT_PUBLIC_REDMINE_ID;
 
 const imprint = await useFetch(String(createImprintUrl(locale.value, redmineId)), {
 	responseType: "text",

@@ -39,8 +39,8 @@
 	},
 	"LocaleSwitcher": {
 		"languages": {
-			"english": "English",
-			"german": "German"
+			"en": "English",
+			"de": "German"
 		},
 		"current-locale": "Current language: {language}",
 		"switch-locale": "Switch to {language}"

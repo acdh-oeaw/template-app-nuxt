@@ -1,25 +1,22 @@
 <script lang="ts" setup>
-const locale = useLocale();
+import { locales } from "~/config/i18n.config";
+
+const currentLocale = useLocale();
 const t = useTranslations("LocaleSwitcher");
 const switchLocalePath = useSwitchLocalePath();
 </script>
 
 <template>
 	<div class="flex items-center gap-2">
-		<NuxtLink v-if="locale !== 'en'" :href="{ path: switchLocalePath('en') }">
-			{{ t("switch-locale", { language: t("languages.english") }) }}
-		</NuxtLink>
-		<span v-else>
-			{{ t("current-locale", { language: t("languages.english") }) }}
-		</span>
+		<template v-for="(_, locale, index) of locales" :key="locale">
+			<span v-if="index !== 0">|</span>
 
-		<span>|</span>
-
-		<NuxtLink v-if="locale !== 'de'" :href="{ path: switchLocalePath('de') }">
-			{{ t("switch-locale", { language: t("languages.german") }) }}
-		</NuxtLink>
-		<span v-else>
-			{{ t("current-locale", { language: t("languages.english") }) }}
-		</span>
+			<NuxtLink v-if="locale !== currentLocale" :href="{ path: switchLocalePath(locale) }">
+				{{ t("switch-locale", { language: t(`languages.${locale}`) }) }}
+			</NuxtLink>
+			<span v-else>
+				{{ t("current-locale", { language: t(`languages.${locale}`) }) }}
+			</span>
+		</template>
 	</div>
 </template>

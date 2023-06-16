@@ -2,8 +2,6 @@
 import { isNonEmptyString } from "@acdh-oeaw/lib";
 import { type WebSite, type WithContext } from "schema-dts";
 
-import { createAnalyticsScript } from "@/utils/analytics";
-
 const env = useRuntimeConfig();
 
 const locale = useLocale();
