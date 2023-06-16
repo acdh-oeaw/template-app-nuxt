@@ -45,6 +45,7 @@
 		"@acdh-oeaw/prettier-config": "^1.0.0",
 		"@acdh-oeaw/stylelint-config": "^1.0.1",
 		"@acdh-oeaw/tsconfig": "^1.0.1",
+		"@axe-core/playwright": "^4.7.3",
 		"@fontsource-variable/inter": "^5.0.3",
 		"@nuxt/devtools": "^0.6.1",
 		"@playwright/test": "^1.35.1",
