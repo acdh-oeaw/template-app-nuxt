@@ -24,8 +24,12 @@
 		"setup": "simple-git-hooks || exit 0",
 		"start": "nuxt preview",
 		"test": "vitest run",
+		"test:e2e": "playwright test",
+		"test:e2e:codegen": "playwright codegen",
+		"test:e2e:debug": "playwright test --debug",
+		"test:e2e:ui": "playwright test --ui",
 		"types:check": "vue-tsc --noEmit",
-		"validate": "run-p format:check lint:check types:check test"
+		"validate": "run-p format:check lint:check types:check test test:e2e"
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.2",
@@ -43,6 +47,7 @@
 		"@acdh-oeaw/tsconfig": "^1.0.1",
 		"@fontsource-variable/inter": "^5.0.3",
 		"@nuxt/devtools": "^0.6.1",
+		"@playwright/test": "^1.35.1",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/node": "^18.16.18",
 		"autoprefixer": "^10.4.14",

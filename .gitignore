@@ -27,3 +27,8 @@ dist
 .nuxt/
 .nitro/
 .output/
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
