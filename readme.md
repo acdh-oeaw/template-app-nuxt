@@ -15,6 +15,8 @@ set required environment variables in `.env`:
 cp .env.example .env
 ```
 
+adjust environment variables in `.github/workflows/validate.yml`.
+
 install dependencies:
 
 ```bash

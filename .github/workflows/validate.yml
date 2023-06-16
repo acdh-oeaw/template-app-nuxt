@@ -57,6 +57,9 @@ jobs:
 
       - name: Build app
         run: pnpm run build
+        env:
+          NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
+          NUXT_PUBLIC_REDMINE_ID: "13777"
 
       - name: Run e2e tests
         run: pnpm run test:e2e
