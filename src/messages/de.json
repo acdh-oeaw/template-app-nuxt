@@ -38,12 +38,12 @@
 		"title": "Startseite"
 	},
 	"LocaleSwitcher": {
-		"languages": {
+		"locales": {
 			"en": "Englisch",
 			"de": "Deutsch"
 		},
-		"current-locale": "Aktuelle Sprache: {language}",
-		"switch-locale": "Zu {language} wechseln"
+		"current-locale": "Aktuelle Sprache: {locale}",
+		"switch-locale": "Zu {locale} wechseln"
 	},
 	"NotFoundPage": {
 		"meta": {

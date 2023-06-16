@@ -38,12 +38,12 @@
 		"title": "Home"
 	},
 	"LocaleSwitcher": {
-		"languages": {
+		"locales": {
 			"en": "English",
 			"de": "German"
 		},
-		"current-locale": "Current language: {language}",
-		"switch-locale": "Switch to {language}"
+		"current-locale": "Current language: {locale}",
+		"switch-locale": "Switch to {locale}"
 	},
 	"NotFoundPage": {
 		"meta": {
