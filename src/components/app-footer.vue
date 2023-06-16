@@ -9,15 +9,17 @@ const links = {
 </script>
 
 <template>
-	<footer>
-		<nav :aria-label="t('navigation-secondary')">
-			<ul role="list">
-				<li v-for="(link, key) of links" :key="key">
-					<NavLink :href="link.href">
-						{{ link.label }}
-					</NavLink>
-				</li>
-			</ul>
-		</nav>
+	<footer class="border-t border-neutral-200">
+		<div class="container flex items-center justify-between gap-4 py-8">
+			<nav :aria-label="t('navigation-secondary')">
+				<ul class="flex items-center gap-4" role="list">
+					<li v-for="(link, key) of links" :key="key">
+						<NavLink :href="link.href">
+							{{ link.label }}
+						</NavLink>
+					</li>
+				</ul>
+			</nav>
+		</div>
 	</footer>
 </template>

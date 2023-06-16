@@ -14,7 +14,7 @@ useSeoMeta({
 </script>
 
 <template>
-	<MainContent>
+	<MainContent class="container py-8">
 		<h1>{{ t("title") }}</h1>
 	</MainContent>
 </template>

@@ -9,17 +9,19 @@ const links = {
 </script>
 
 <template>
-	<header>
-		<nav :aria-label="t('navigation-main')">
-			<ul role="list">
-				<li v-for="(link, key) of links" :key="key">
-					<NavLink :href="link.href">
-						{{ link.label }}
-					</NavLink>
-				</li>
-			</ul>
-		</nav>
+	<header class="border-b border-neutral-200">
+		<div class="container flex items-center justify-between gap-4 py-8">
+			<nav :aria-label="t('navigation-main')">
+				<ul class="flex items-center gap-4" role="list">
+					<li v-for="(link, key) of links" :key="key">
+						<NavLink :href="link.href">
+							{{ link.label }}
+						</NavLink>
+					</li>
+				</ul>
+			</nav>
 
-		<LocaleSwitcher />
+			<LocaleSwitcher />
+		</div>
 	</header>
 </template>

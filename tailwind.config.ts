@@ -23,6 +23,13 @@ const config: Config = {
 				negative,
 				primary,
 			},
+			container: {
+				center: true,
+				padding: "1rem",
+				screens: {
+					"2xl": "1536px",
+				},
+			},
 			fontFamily: {
 				body: ["Inter Variable", "ui-sans-serif", "system-ui", "sans-serif"],
 			},
