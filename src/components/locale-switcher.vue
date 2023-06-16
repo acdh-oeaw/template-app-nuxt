@@ -12,10 +12,16 @@ const switchLocalePath = useSwitchLocalePath();
 			<span v-if="index !== 0">|</span>
 
 			<NuxtLink v-if="locale !== currentLocale" :href="{ path: switchLocalePath(locale) }">
-				{{ t("switch-locale", { language: t(`languages.${locale}`) }) }}
+				<span class="sr-only">
+					{{ t("switch-locale", { language: t(`languages.${locale}`) }) }}
+					{{ locale.toUpperCase() }}
+				</span>
 			</NuxtLink>
 			<span v-else>
-				{{ t("current-locale", { language: t(`languages.${locale}`) }) }}
+				<span class="sr-only">
+					{{ t("current-locale", { language: t(`languages.${locale}`) }) }}
+				</span>
+				{{ locale.toUpperCase() }}
 			</span>
 		</template>
 	</div>
