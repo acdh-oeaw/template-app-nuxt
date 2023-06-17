@@ -19,7 +19,7 @@ dependencies:
     version: 8.0.0-beta.12(vue-router@4.2.2)(vue@3.3.4)
   nuxt:
     specifier: ^3.5.3
-    version: 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vue-tsc@1.6.5)
+    version: 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vue-tsc@1.6.5)
 
 devDependencies:
   "@acdh-oeaw/eslint-config":
@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^1.0.0
     version: 1.0.0(prettier@2.8.8)
   "@acdh-oeaw/stylelint-config":
-    specifier: ^1.0.1
-    version: 1.0.1(postcss-html@1.5.0)(stylelint-order@6.0.3)(stylelint@15.7.0)
+    specifier: ^1.0.2
+    version: 1.0.2(postcss-html@1.5.0)(stylelint-order@6.0.3)(stylelint@15.8.0)
   "@acdh-oeaw/tsconfig":
     specifier: ^1.0.1
     version: 1.0.1(typescript@5.1.3)
@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^2.8.1
     version: 2.8.1
   stylelint:
-    specifier: ^15.7.0
-    version: 15.7.0
+    specifier: ^15.8.0
+    version: 15.8.0
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -177,18 +177,18 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@acdh-oeaw/stylelint-config@1.0.1(postcss-html@1.5.0)(stylelint-order@6.0.3)(stylelint@15.7.0):
+  /@acdh-oeaw/stylelint-config@1.0.2(postcss-html@1.5.0)(stylelint-order@6.0.3)(stylelint@15.8.0):
     resolution:
       {
-        integrity: sha512-EsRDSS27TlngtXNVpPcl81y+8wNbegfveOkC15Udl5/mZWwEvJtM8GfrfJ2PXDqySvBiekdcNI9bSfa/H7tMdg==,
+        integrity: sha512-dr8zDS6k3gHnfVKce5BpZZlFsT6/Uuyqy4O7kzc9G7BLrkcZnLoICR3QKzoFmwBEp0dM21cxWDoR3GCQ9Do5qQ==,
       }
     peerDependencies:
-      stylelint: ">=15"
+      stylelint: ">=15.8"
     dependencies:
-      stylelint: 15.7.0
-      stylelint-config-html: 1.1.0(postcss-html@1.5.0)(stylelint@15.7.0)
-      stylelint-config-hudochenkov: 9.0.0(stylelint-order@6.0.3)(stylelint@15.7.0)
-      stylelint-config-standard: 33.0.0(stylelint@15.7.0)
+      stylelint: 15.8.0
+      stylelint-config-html: 1.1.0(postcss-html@1.5.0)(stylelint@15.8.0)
+      stylelint-config-hudochenkov: 9.0.0(stylelint-order@6.0.3)(stylelint@15.8.0)
+      stylelint-config-standard: 33.0.0(stylelint@15.8.0)
     transitivePeerDependencies:
       - postcss-html
       - stylelint-order
@@ -1496,7 +1496,7 @@ packages:
       "@nuxt/kit": 3.5.3
       "@nuxt/schema": 3.5.3
       execa: 7.1.1
-      nuxt: 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vue-tsc@1.6.5)
+      nuxt: 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vue-tsc@1.6.5)
       vite: 4.3.9(@types/node@18.16.18)
     transitivePeerDependencies:
       - rollup
@@ -1551,7 +1551,7 @@ packages:
       launch-editor: 2.6.0
       local-pkg: 0.4.3
       magicast: 0.2.9
-      nuxt: 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vue-tsc@1.6.5)
+      nuxt: 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vue-tsc@1.6.5)
       nypm: 0.2.1
       pacote: 15.2.0
       pathe: 1.1.1
@@ -1686,7 +1686,7 @@ packages:
         integrity: sha512-PjVETP7+iZXAs5Q8O4ivl4t6qjWZMZqwiTVogUXHoHGZZcw7GZW3u3tzfYfE1HbzyYJfr236IXqQ02MeR8Fz2w==,
       }
 
-  /@nuxt/vite-builder@3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vue-tsc@1.6.5)(vue@3.3.4):
+  /@nuxt/vite-builder@3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vue-tsc@1.6.5)(vue@3.3.4):
     resolution:
       {
         integrity: sha512-7zEKpGh3iWGRDwbWUa8eRxdLMxZtPzetelmdmXPjtYKGwUebZOcBhpeJ+VgJKOIf4OEj9E7BZS+it/Ji9UG9qw==,
@@ -1728,7 +1728,7 @@ packages:
       unplugin: 1.3.1
       vite: 4.3.9(@types/node@18.16.18)
       vite-node: 0.31.4(@types/node@18.16.18)
-      vite-plugin-checker: 0.6.0(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vite@4.3.9)(vue-tsc@1.6.5)
+      vite-plugin-checker: 0.6.0(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vite@4.3.9)(vue-tsc@1.6.5)
       vue: 3.3.4
       vue-bundle-renderer: 1.0.3
     transitivePeerDependencies:
@@ -9332,7 +9332,7 @@ packages:
       - vue-router
     dev: true
 
-  /nuxt@3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vue-tsc@1.6.5):
+  /nuxt@3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vue-tsc@1.6.5):
     resolution:
       {
         integrity: sha512-fG39BZ5N5ATtmx2vuxN8APQPSlSsCDpfkJ0k581gMc7eFztqrBzPncZX5w3RQLW7AiGBE2yYEfqiwC6AVODBBg==,
@@ -9351,7 +9351,7 @@ packages:
       "@nuxt/schema": 3.5.3
       "@nuxt/telemetry": 2.2.0
       "@nuxt/ui-templates": 1.1.1
-      "@nuxt/vite-builder": 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vue-tsc@1.6.5)(vue@3.3.4)
+      "@nuxt/vite-builder": 3.5.3(@types/node@18.16.18)(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vue-tsc@1.6.5)(vue@3.3.4)
       "@types/node": 18.16.18
       "@unhead/ssr": 1.1.27
       "@unhead/vue": 1.1.27(vue@3.3.4)
@@ -11994,7 +11994,7 @@ packages:
       postcss: 8.4.24
       postcss-selector-parser: 6.0.13
 
-  /stylelint-config-html@1.1.0(postcss-html@1.5.0)(stylelint@15.7.0):
+  /stylelint-config-html@1.1.0(postcss-html@1.5.0)(stylelint@15.8.0):
     resolution:
       {
         integrity: sha512-IZv4IVESjKLumUGi+HWeb7skgO6/g4VMuAYrJdlqQFndgbj6WJAXPhaysvBiXefX79upBdQVumgYcdd17gCpjQ==,
@@ -12005,10 +12005,10 @@ packages:
       stylelint: ">=14.0.0"
     dependencies:
       postcss-html: 1.5.0
-      stylelint: 15.7.0
+      stylelint: 15.8.0
     dev: true
 
-  /stylelint-config-hudochenkov@9.0.0(stylelint-order@6.0.3)(stylelint@15.7.0):
+  /stylelint-config-hudochenkov@9.0.0(stylelint-order@6.0.3)(stylelint@15.8.0):
     resolution:
       {
         integrity: sha512-IOiSA2URkeIxEbn/Vl7OnkovjFci2o5n4qdC8gMuVkygeqCt7y3JJvagbRGgBoIvr3ldus/WBIEHRr+y8ZLXMw==,
@@ -12017,11 +12017,11 @@ packages:
       stylelint: ^15.0.0
       stylelint-order: ^6.0.2
     dependencies:
-      stylelint: 15.7.0
-      stylelint-order: 6.0.3(stylelint@15.7.0)
+      stylelint: 15.8.0
+      stylelint-order: 6.0.3(stylelint@15.8.0)
     dev: true
 
-  /stylelint-config-recommended@12.0.0(stylelint@15.7.0):
+  /stylelint-config-recommended@12.0.0(stylelint@15.8.0):
     resolution:
       {
         integrity: sha512-x6x8QNARrGO2sG6iURkzqL+Dp+4bJorPMMRNPScdvaUK8PsynriOcMW7AFDKqkWAS5wbue/u8fUT/4ynzcmqdQ==,
@@ -12029,10 +12029,10 @@ packages:
     peerDependencies:
       stylelint: ^15.5.0
     dependencies:
-      stylelint: 15.7.0
+      stylelint: 15.8.0
     dev: true
 
-  /stylelint-config-standard@33.0.0(stylelint@15.7.0):
+  /stylelint-config-standard@33.0.0(stylelint@15.8.0):
     resolution:
       {
         integrity: sha512-eyxnLWoXImUn77+ODIuW9qXBDNM+ALN68L3wT1lN2oNspZ7D9NVGlNHb2QCUn4xDug6VZLsh0tF8NyoYzkgTzg==,
@@ -12040,11 +12040,11 @@ packages:
     peerDependencies:
       stylelint: ^15.5.0
     dependencies:
-      stylelint: 15.7.0
-      stylelint-config-recommended: 12.0.0(stylelint@15.7.0)
+      stylelint: 15.8.0
+      stylelint-config-recommended: 12.0.0(stylelint@15.8.0)
     dev: true
 
-  /stylelint-order@6.0.3(stylelint@15.7.0):
+  /stylelint-order@6.0.3(stylelint@15.8.0):
     resolution:
       {
         integrity: sha512-1j1lOb4EU/6w49qZeT2SQVJXm0Ht+Qnq9GMfUa3pMwoyojIWfuA+JUDmoR97Bht1RLn4ei0xtLGy87M7d29B1w==,
@@ -12054,13 +12054,13 @@ packages:
     dependencies:
       postcss: 8.4.24
       postcss-sorting: 8.0.2(postcss@8.4.24)
-      stylelint: 15.7.0
+      stylelint: 15.8.0
     dev: true
 
-  /stylelint@15.7.0:
+  /stylelint@15.8.0:
     resolution:
       {
-        integrity: sha512-fQRwHwWuZsDn4ENyE9AsKkOkV9WlD2CmYiVDbdZPdS3iZh0ceypOn1EuwTNuZ8xTrHF+jVeIEzLtFFSlD/nJHg==,
+        integrity: sha512-x9qBk84F3MEjMEUNCE7MtWmfj9G9y5XzJ0cpQeJdy2l/IoqjC8Ih0N0ytmOTnXE4Yv0J7I1cmVRQUVNSPCxTsA==,
       }
     engines: { node: ^14.13.1 || >=16.0.0 }
     hasBin: true
@@ -12105,7 +12105,6 @@ packages:
       supports-hyperlinks: 3.0.0
       svg-tags: 1.0.0
       table: 6.8.1
-      v8-compile-cache: 2.3.0
       write-file-atomic: 5.0.1
     transitivePeerDependencies:
       - supports-color
@@ -13031,12 +13030,6 @@ packages:
       sade: 1.8.1
     dev: false
 
-  /v8-compile-cache@2.3.0:
-    resolution:
-      {
-        integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==,
-      }
-
   /validate-npm-package-license@3.0.4:
     resolution:
       {
@@ -13135,7 +13128,7 @@ packages:
       - supports-color
       - terser
 
-  /vite-plugin-checker@0.6.0(eslint@8.42.0)(stylelint@15.7.0)(typescript@5.1.3)(vite@4.3.9)(vue-tsc@1.6.5):
+  /vite-plugin-checker@0.6.0(eslint@8.42.0)(stylelint@15.8.0)(typescript@5.1.3)(vite@4.3.9)(vue-tsc@1.6.5):
     resolution:
       {
         integrity: sha512-DWZ9Hv2TkpjviPxAelNUt4Q3IhSGrx7xrwdM64NI+Q4dt8PaMWJJh4qGNtSrfEuiuIzWWo00Ksvh5It4Y3L9xQ==,
@@ -13182,7 +13175,7 @@ packages:
       npm-run-path: 4.0.1
       semver: 7.5.1
       strip-ansi: 6.0.1
-      stylelint: 15.7.0
+      stylelint: 15.8.0
       tiny-invariant: 1.3.1
       typescript: 5.1.3
       vite: 4.3.9(@types/node@18.16.18)
