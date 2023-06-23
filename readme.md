@@ -9,10 +9,10 @@ prerequisites:
 - [Node.js v18](https://nodejs.org/en/download)
 - [pnpm](https://pnpm.io/installation)
 
-set required environment variables in `.env`:
+set required environment variables in `.env.local`:
 
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
 
 adjust environment variables in `.github/workflows/validate.yml`.
