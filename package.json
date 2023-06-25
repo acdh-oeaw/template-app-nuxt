@@ -9,6 +9,7 @@
 	},
 	"packageManager": "pnpm@8.6.3",
 	"scripts": {
+		"analyze": "nuxt analyze",
 		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"format:check": "prettier . --cache --check --ignore-path ./.gitignore",
