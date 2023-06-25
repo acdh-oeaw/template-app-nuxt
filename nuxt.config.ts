@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 		"@": fileURLToPath(new URL("./src", import.meta.url)),
 		"~": fileURLToPath(new URL("./", import.meta.url)),
 	},
+	components: [{ path: "@/components", pathPrefix: false }],
 	content: {
 		defaultLocale,
 		locales: Object.keys(locales),
