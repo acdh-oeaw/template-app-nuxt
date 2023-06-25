@@ -42,3 +42,6 @@ dist
 
 # vscode settings
 .vscode/
+
+# environment variables
+.env.*
