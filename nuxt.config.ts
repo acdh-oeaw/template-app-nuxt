@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 		"@": fileURLToPath(new URL("./src", import.meta.url)),
 		"~": fileURLToPath(new URL("./", import.meta.url)),
 	},
+	components: [{ path: "@/components", pathPrefix: false }],
 	content: {
 		defaultLocale,
 		locales: Object.keys(locales),
@@ -18,6 +19,12 @@ export default defineNuxtConfig({
 	},
 	dir: {
 		public: "../public",
+	},
+	/**
+	 * @see https://github.com/nuxt-modules/i18n/issues/2177
+	 */
+	experimental: {
+		inlineSSRStyles: false,
 	},
 	i18n: {
 		baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,

@@ -1,11 +1,15 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
+
 	"extends": ["./.nuxt/tsconfig.json", "@acdh-oeaw/tsconfig"],
 	"compilerOptions": {
-		/** `.nuxt/i18n.options.mjs` currently does not play nice with strict mode. */
+		/**
+		 *`.nuxt/i18n.options.mjs` currently does not play nice with strict mode.
+		 */
 		"checkJs": false,
-		/** `vue-tsc` does not currently work with `incremental` */
-		// @see https://github.com/vuejs/language-tools/issues/2622
+		/**
+		 * @see https://github.com/microsoft/TypeScript/issues/54057
+		 */
 		"incremental": false
 	}
 }
