@@ -20,10 +20,12 @@ export default defineNuxtConfig({
 	dir: {
 		public: "../public",
 	},
-	/**
-	 * @see https://github.com/nuxt-modules/i18n/issues/2177
-	 */
 	experimental: {
+		componentIslands: true,
+		/**
+		 * @see https://github.com/nuxt/nuxt/issues/21840
+		 * @see https://github.com/nuxt-modules/i18n/issues/2177
+		 */
 		inlineSSRStyles: false,
 	},
 	i18n: {
