@@ -22,11 +22,6 @@ export default defineNuxtConfig({
 	},
 	experimental: {
 		componentIslands: true,
-		/**
-		 * @see https://github.com/nuxt/nuxt/issues/21840
-		 * @see https://github.com/nuxt-modules/i18n/issues/2177
-		 */
-		inlineSSRStyles: false,
 	},
 	i18n: {
 		baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
