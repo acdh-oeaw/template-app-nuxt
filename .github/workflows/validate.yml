@@ -2,6 +2,7 @@ name: Validate
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   pull_request:
@@ -47,3 +48,8 @@ jobs:
 
       - name: Test
         run: pnpm run test
+
+  build-deploy:
+    if: ${{ github.event_name == 'push' }}
+    needs: [validate]
+    uses: ./.github/workflows/build-deploy.yml

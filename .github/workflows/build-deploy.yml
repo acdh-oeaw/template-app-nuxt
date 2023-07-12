@@ -1,0 +1,91 @@
+name: Build and deploy
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Derive environment from git ref
+        id: environment
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "environment=production" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.ref }}" = "refs/heads/development" ]; then
+            echo "environment=development" >> "$GITHUB_OUTPUT"
+          else
+            echo "environment=review/${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+          fi
+    outputs:
+      environment: ${{ steps.environment.outputs.environment }}
+      registry: ghcr.io
+      image: ${{ github.repository }}/${{ github.ref_name }}
+
+  build:
+    needs: [env]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ needs.env.outputs.registry }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ needs.env.outputs.registry }}/${{ needs.env.outputs.image }}
+          tags: |
+            type=raw,value={{sha}}
+            type=ref,event=branch
+          #   type=ref,event=pr
+          #   type=semver,pattern={{version}}
+          #   type=semver,pattern={{major}}.{{minor}}
+          #   type=raw,value=latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            NUXT_PUBLIC_APP_BASE_URL="${{ vars.NUXT_PUBLIC_APP_BASE_URL }}"
+            NUXT_PUBLIC_REDMINE_ID="${{ vars.NUXT_PUBLIC_REDMINE_ID }}"
+            NUXT_PUBLIC_MATOMO_BASE_URL="${{ vars.NUXT_PUBLIC_MATOMO_BASE_URL }}"
+            NUXT_PUBLIC_MATOMO_ID="${{ vars.NUXT_PUBLIC_MATOMO_ID }}"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: [env, build]
+    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy-cluster-2.yml@main
+    secrets: inherit
+    with:
+      DOCKER_TAG: ${{ needs.env.outputs.registry }}/${{ needs.env.outputs.image }}
+      APP_NAME: "frontend"
+      APP_ROOT: "/"
+      SERVICE_ID: "${{ vars.NUXT_PUBLIC_REDMINE_ID }}"
+      PUBLIC_URL: "${{ vars.NUXT_PUBLIC_APP_BASE_URL }}"
+      POSTGRES_ENABLED: false
+      environment: ${{ needs.env.outputs.environment }}
+      default_port: "3000"
