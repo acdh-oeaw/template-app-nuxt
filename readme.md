@@ -15,7 +15,10 @@ set required environment variables in `.env.local`:
 cp .env.example .env.local
 ```
 
-adjust environment variables in `.github/workflows/validate.yml`.
+also, set environment variables required by github actions. use
+["variables"](https://github.com/acdh-oeaw/template-app-nuxt/settings/variables/actions) for every
+environment variable prefixed with `NUXT_PUBLIC_`, and
+["secrets"](https://github.com/acdh-oeaw/template-app-nuxt/settings/secrets/actions) for all others.
 
 install dependencies:
 

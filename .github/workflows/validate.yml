@@ -2,6 +2,7 @@ name: Validate
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 on:
   pull_request:
@@ -59,7 +60,7 @@ jobs:
         run: pnpm run build
         env:
           NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
-          NUXT_PUBLIC_REDMINE_ID: "13777"
+          NUXT_PUBLIC_REDMINE_ID: "${{ vars.NUXT_PUBLIC_REDMINE_ID }}"
 
       - name: Run e2e tests
         run: pnpm run test:e2e
@@ -70,3 +71,8 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  build-deploy:
+    if: ${{ github.event_name == 'push' }}
+    needs: [validate]
+    uses: ./.github/workflows/build-deploy.yml
