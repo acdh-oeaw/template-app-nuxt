@@ -57,7 +57,11 @@ export default defineNuxtConfig({
 			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			NUXT_PUBLIC_MATOMO_BASE_URL: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			NUXT_PUBLIC_MATOMO_ID: process.env.NUXT_PUBLIC_MATOMO_ID,
-			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,
+			/**
+			 * FIXME: server components don't seem to be able to access values from env vars, so we
+			 * provide a fallback value for now.
+			 */
+			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID ?? "13777",
 		},
 	},
 	srcDir: "./src/",
