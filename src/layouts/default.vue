@@ -30,7 +30,7 @@ useHead({
 	link: computed(() => {
 		return [
 			{ href: "/favicon.ico", rel: "icon", sizes: "any" },
-			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml" },
+			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
 			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
 			...(i18nHead.value.link ?? []),
 		];

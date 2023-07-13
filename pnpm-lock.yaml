@@ -40,12 +40,18 @@ devDependencies:
   '@acdh-oeaw/tsconfig':
     specifier: ^1.0.1
     version: 1.0.1(typescript@5.1.6)
+  '@axe-core/playwright':
+    specifier: ^4.7.3
+    version: 4.7.3(playwright-core@1.36.0)
   '@fontsource-variable/inter':
     specifier: ^5.0.5
     version: 5.0.5
   '@nuxt/devtools':
     specifier: ^0.6.7
     version: 0.6.7(nuxt@3.6.2)(vite@4.3.9)
+  '@playwright/test':
+    specifier: ^1.36.0
+    version: 1.36.0
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.2)
@@ -206,6 +212,15 @@ packages:
 
   /@antfu/utils@0.7.5:
     resolution: {integrity: sha512-dlR6LdS+0SzOAPx/TPRhnoi7hE251OVeT2Snw0RguNbBSbjUHdWr0l3vcUUDg26rEysT89kCbtw1lVorBXLLCg==}
+    dev: true
+
+  /@axe-core/playwright@4.7.3(playwright-core@1.36.0):
+    resolution: {integrity: sha512-v2PRgAyGvop7bamrTpNJtc5b1R7giAPnMzZXrS/VDZBCY5+uwVYtCNgDvBsqp5P1QMZxUMoBN+CERJUTMjFN0A==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
+    dependencies:
+      axe-core: 4.7.2
+      playwright-core: 1.36.0
     dev: true
 
   /@babel/code-frame@7.22.5:
@@ -1636,6 +1651,17 @@ packages:
       tslib: 2.6.0
     dev: true
 
+  /@playwright/test@1.36.0:
+    resolution: {integrity: sha512-yN+fvMYtiyLFDCQos+lWzoX4XW3DNuaxjBu68G0lkgLgC6BP+m/iTxJQoSicz/x2G5EsrqlZTqTIP9sTgLQerg==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.16.19
+      playwright-core: 1.36.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /@polka/url@1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
@@ -2626,6 +2652,11 @@ packages:
   /available-typed-arrays@1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /axe-core@4.7.2:
+    resolution: {integrity: sha512-zIURGIS1E1Q4pcrMjp+nnEh+16G56eG/MUllJH8yEvw7asDo7Ac9uhC9KIH5jzpITueEZolfYglnCGIuSBz39g==}
+    engines: {node: '>=4'}
     dev: true
 
   /axios@0.27.2:
@@ -7075,6 +7106,12 @@ packages:
       jsonc-parser: 3.2.0
       mlly: 1.4.0
       pathe: 1.1.1
+
+  /playwright-core@1.36.0:
+    resolution: {integrity: sha512-7RTr8P6YJPAqB+8j5ATGHqD6LvLLM39sYVNsslh78g8QeLcBs5750c6+msjrHUwwGt+kEbczBj1XB22WMwn+WA==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
 
   /postcss-calc@9.0.1(postcss@8.4.25):
     resolution: {integrity: sha512-TipgjGyzP5QzEhsOZUaIkeO5mKeMFpebWzRogWG/ysonUlnHcq5aJe0jOjpfzUU8PeSaBQnrE8ehR0QA5vs8PQ==}

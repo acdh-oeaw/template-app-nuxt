@@ -7,7 +7,7 @@
 		"node": "18.x",
 		"pnpm": "8.x"
 	},
-	"packageManager": "pnpm@8.6.6",
+	"packageManager": "pnpm@8.6.7",
 	"scripts": {
 		"analyze": "nuxt analyze",
 		"build": "nuxt build",
@@ -25,8 +25,12 @@
 		"setup": "simple-git-hooks || exit 0",
 		"start": "nuxt preview",
 		"test": "vitest run",
+		"test:e2e": "playwright test",
+		"test:e2e:codegen": "playwright codegen",
+		"test:e2e:debug": "playwright test --debug",
+		"test:e2e:ui": "playwright test --ui",
 		"types:check": "vue-tsc --noEmit",
-		"validate": "run-p format:check lint:check types:check test"
+		"validate": "run-p format:check lint:check types:check test test:e2e"
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.4",
@@ -42,8 +46,10 @@
 		"@acdh-oeaw/prettier-config": "^1.0.1",
 		"@acdh-oeaw/stylelint-config": "^1.0.5",
 		"@acdh-oeaw/tsconfig": "^1.0.1",
+		"@axe-core/playwright": "^4.7.3",
 		"@fontsource-variable/inter": "^5.0.5",
 		"@nuxt/devtools": "^0.6.7",
+		"@playwright/test": "^1.36.0",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/node": "^18.16.19",
 		"autoprefixer": "^10.4.14",

@@ -8,11 +8,15 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
 
 jobs:
   validate:
     name: Validate
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
 
     strategy:
       fail-fast: true
@@ -48,6 +52,25 @@ jobs:
 
       - name: Test
         run: pnpm run test
+
+      - name: Install playwright browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Build app
+        run: pnpm run build
+        env:
+          NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
+          NUXT_PUBLIC_REDMINE_ID: "${{ vars.NUXT_PUBLIC_REDMINE_ID }}"
+
+      - name: Run e2e tests
+        run: pnpm run test:e2e
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
   build-deploy:
     if: ${{ github.event_name == 'push' }}
