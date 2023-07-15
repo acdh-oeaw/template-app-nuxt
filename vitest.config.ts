@@ -5,7 +5,7 @@ export default defineVitestConfig({
 		environment: "nuxt",
 		environmentOptions: {
 			nuxt: {
-				domEnvironment: "jsdom",
+				// domEnvironment: "jsdom",
 			},
 		},
 		include: ["./tests/*.spec.ts"],

@@ -4,7 +4,7 @@ import type messages from "@/messages/de.json";
 
 export const locales = {
 	de: { code: "de", iso: "de-AT", file: "de.json" },
-	en: { code: "en", iso: "en-US", file: "en.json" },
+	en: { code: "en", iso: "en-GB", file: "en.json" },
 } satisfies Record<string, LocaleObject>;
 
 export type Locale = keyof typeof locales;

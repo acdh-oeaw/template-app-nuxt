@@ -5,7 +5,7 @@ const router = useRouter();
 
 const message = ref("");
 
-function onChangeMessaqge(to: RouteLocationNormalized) {
+function onChangeMessaqe(to: RouteLocationNormalized) {
 	if (typeof to.meta.title === "string") {
 		message.value = to.meta.title;
 	} else {
@@ -33,7 +33,7 @@ function onChangeMessaqge(to: RouteLocationNormalized) {
 
 router.afterEach((to, from) => {
 	if (to.path !== from.path) {
-		onChangeMessaqge(to);
+		onChangeMessaqe(to);
 	}
 
 	trackPageView(to, from);

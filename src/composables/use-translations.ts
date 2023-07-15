@@ -2,6 +2,7 @@ import { type ResourcePath } from "@intlify/core-base";
 
 import { type Locale, type Messages, type Schema } from "@/config/i18n.config";
 
+/** @see https://github.com/intlify/vue-i18n-next/issues/1119 */
 // @ts-expect-error Type instantiation is excessively deep and possibly infinite.
 export function useTranslations(): (
 	key: ResourcePath<Messages>,

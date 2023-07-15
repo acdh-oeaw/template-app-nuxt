@@ -28,7 +28,7 @@ function onReset() {
 </script>
 
 <template>
-	<MainContent>
+	<MainContent class="grid min-h-full place-items-center">
 		<h1>{{ t("title") }}</h1>
 		<button @click="onReset">{{ t("try-again") }}</button>
 	</MainContent>
