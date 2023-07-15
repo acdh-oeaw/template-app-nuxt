@@ -32,7 +32,7 @@ export default defineNuxtConfig({
 		langDir: "./messages",
 		lazy: true,
 		locales: Object.values(locales),
-		strategy: "prefix",
+		strategy: "prefix_except_default",
 	},
 	modules: ["@nuxt/content", "@nuxt/devtools", "@nuxtjs/i18n", "@nuxt/image", "nuxt-vitest"],
 	nitro: {
@@ -57,11 +57,7 @@ export default defineNuxtConfig({
 			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			NUXT_PUBLIC_MATOMO_BASE_URL: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			NUXT_PUBLIC_MATOMO_ID: process.env.NUXT_PUBLIC_MATOMO_ID,
-			/**
-			 * FIXME: server components don't seem to be able to access values from env vars, so we
-			 * provide a fallback value for now.
-			 */
-			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID ?? "13777",
+			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,
 		},
 	},
 	srcDir: "./src/",
