@@ -34,6 +34,9 @@ devDependencies:
   '@acdh-oeaw/stylelint-config':
     specifier: ^1.0.5
     version: 1.0.5(postcss-html@1.5.0)(stylelint-order@6.0.3)(stylelint@15.10.2)
+  '@acdh-oeaw/tailwindcss-preset':
+    specifier: ^0.0.10
+    version: 0.0.10(tailwindcss@3.3.3)
   '@acdh-oeaw/tsconfig':
     specifier: ^1.0.1
     version: 1.0.1(typescript@5.1.6)
@@ -195,6 +198,16 @@ packages:
     transitivePeerDependencies:
       - postcss-html
       - stylelint-order
+    dev: true
+
+  /@acdh-oeaw/tailwindcss-preset@0.0.10(tailwindcss@3.3.3):
+    resolution: {integrity: sha512-YTy3LYKsi8ag7sufrDZyYfzorHFl9O71qBNW5nXPALE4BeMKOp5YkNUJebCJO0CpRHaMpR4K7GWA/KNd6itgLA==}
+    peerDependencies:
+      tailwindcss: 3.x
+    dependencies:
+      '@tailwindcss/typography': 0.5.9(tailwindcss@3.3.3)
+      tailwindcss: 3.3.3
+      tailwindcss-animate: 1.0.6(tailwindcss@3.3.3)
     dev: true
 
   /@acdh-oeaw/tsconfig@1.0.1(typescript@5.1.6):

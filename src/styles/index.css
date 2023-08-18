@@ -1,65 +1,7 @@
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
 :root {
-	overflow: hidden;
-	overflow-wrap: break-word;
-	tab-size: 4;
-	block-size: 100%;
-	font-synthesis: none;
-	text-size-adjust: none;
-	text-rendering: optimizeLegibility;
-	-webkit-tap-highlight-color: transparent;
-}
-
-body {
-	overflow-y: auto;
-	block-size: 100%;
+	--font-sans: "Inter Variable";
 }
 
 #__nuxt {
 	block-size: 100%;
-}
-
-:focus {
-	outline: none;
-}
-
-:focus-visible {
-	outline: 2px solid theme(colors.primary.900);
-	outline-offset: 0;
-}
-
-blockquote,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	text-wrap: balance;
-}
-
-iframe {
-	border: 0;
-}
-
-[id] {
-	scroll-margin-block-start: 2ex;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		transition-duration: 0.01ms !important;
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		scroll-behavior: auto !important;
-	}
 }
