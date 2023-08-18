@@ -1,17 +1,19 @@
 <script lang="ts" setup>
+import { type Locale } from "config/i18n.config";
+
 import { type NuxtLinkProps } from "#app";
 
 export interface NavLinkProps
 	extends Omit<NuxtLinkProps, "href" | "to">,
-		Required<Pick<NuxtLinkProps, "href">> {}
+		Required<Pick<NuxtLinkProps, "href">> {
+	locale?: Locale;
+}
 
 const props = defineProps<NavLinkProps>();
-
-const localePath = useLocalePath();
 </script>
 
 <template>
-	<NuxtLink :href="localePath(props.href as any /** Type mismatch. */)">
+	<NuxtLinkLocale v-bind="props">
 		<slot />
-	</NuxtLink>
+	</NuxtLinkLocale>
 </template>
