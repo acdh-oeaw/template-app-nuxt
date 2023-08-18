@@ -3,9 +3,11 @@ import { type NavLinkProps } from "@/components/nav-link.vue";
 
 const t = useTranslations();
 
-const links = {
-	home: { href: { path: "/" }, label: t("AppHeader.links.home") },
-} satisfies Record<string, { href: NavLinkProps["href"]; label: string }>;
+const links = computed(() => {
+	return {
+		home: { href: { path: "/" }, label: t("AppHeader.links.home") },
+	} satisfies Record<string, { href: NavLinkProps["href"]; label: string }>;
+});
 </script>
 
 <template>
