@@ -5,10 +5,10 @@ export default defineVitestConfig({
 		environment: "nuxt",
 		environmentOptions: {
 			nuxt: {
-				// domEnvironment: "jsdom",
+				domEnvironment: "jsdom",
 			},
 		},
-		include: ["./tests/*.spec.ts"],
-		setupFiles: ["../tests/setup-files/create-i18n.ts"],
+		include: ["./test/*.@(spec|test).ts"],
+		setupFiles: ["../test/setup-files/create-i18n.ts"],
 	},
 });

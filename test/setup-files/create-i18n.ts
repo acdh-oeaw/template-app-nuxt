@@ -6,8 +6,8 @@ import * as en from "@/messages/en.json";
 
 config.global.plugins.push(
 	createI18n({
-		locale: "en",
 		legacy: false,
+		locale: "en",
 		messages: {
 			de,
 			en,
