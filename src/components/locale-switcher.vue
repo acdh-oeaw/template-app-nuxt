@@ -2,7 +2,7 @@
 import { locales } from "@/config/i18n.config";
 
 const currentLocale = useLocale();
-const t = useTranslations("LocaleSwitcher");
+const t = useTranslations();
 const switchLocalePath = useSwitchLocalePath();
 </script>
 
@@ -13,13 +13,15 @@ const switchLocalePath = useSwitchLocalePath();
 
 			<NuxtLink v-if="locale !== currentLocale" :href="{ path: switchLocalePath(locale) }">
 				<span class="sr-only">
-					{{ t("switch-locale", { locale: t(`locales.${locale}`) }) }}
+					{{ t("LocaleSwitcher.switch-locale", { locale: t(`LocaleSwitcher.locales.${locale}`) }) }}
 				</span>
 				<span aria-hidden="true">{{ locale.toUpperCase() }}</span>
 			</NuxtLink>
 			<span v-else>
 				<span class="sr-only">
-					{{ t("current-locale", { locale: t(`locales.${locale}`) }) }}
+					{{
+						t("LocaleSwitcher.current-locale", { locale: t(`LocaleSwitcher.locales.${locale}`) })
+					}}
 				</span>
 				<span aria-hidden="true">{{ locale.toUpperCase() }}</span>
 			</span>

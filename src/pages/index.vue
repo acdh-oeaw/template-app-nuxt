@@ -3,11 +3,11 @@ definePageMeta({
 	title: "IndexPage.meta.title",
 });
 
-const t = useTranslations("IndexPage");
+const t = useTranslations();
 </script>
 
 <template>
 	<MainContent class="container py-8">
-		<h1>{{ t("title") }}</h1>
+		<h1>{{ t("IndexPage.title") }}</h1>
 	</MainContent>
 </template>

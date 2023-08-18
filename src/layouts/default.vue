@@ -5,8 +5,7 @@ import { type WebSite, type WithContext } from "schema-dts";
 const env = useRuntimeConfig();
 
 const locale = useLocale();
-const t = useTranslations("DefaultLayout");
-const translate = useTranslations();
+const t = useTranslations();
 const route = useRoute();
 
 const i18nHead = useLocaleHead({
@@ -22,10 +21,10 @@ useHead({
 		}),
 	},
 	titleTemplate: computed(() => {
-		return ["%s", t("meta.title")].join(" | ");
+		return ["%s", t("DefaultLayout.meta.title")].join(" | ");
 	}),
 	title: computed(() => {
-		return translate(route.meta.title);
+		return t(route.meta.title);
 	}),
 	link: computed(() => {
 		return [
@@ -37,11 +36,11 @@ useHead({
 	}),
 	meta: computed(() => {
 		return [
-			{ name: "description", content: t("meta.description") },
+			{ name: "description", content: t("DefaultLayout.meta.description") },
 			{ property: "og:type", content: "website" },
-			{ property: "og:title", content: translate(route.meta.title) },
-			{ property: "og:site_name", content: t("meta.title") },
-			{ property: "og:description", content: t("meta.description") },
+			{ property: "og:title", content: t(route.meta.title) },
+			{ property: "og:site_name", content: t("DefaultLayout.meta.title") },
+			{ property: "og:description", content: t("DefaultLayout.meta.description") },
 			{ property: "og:image", content: "/opengraph-image.png" },
 			{ property: "og:locale", content: locale.value },
 			...(i18nHead.value.meta ?? []),
@@ -51,8 +50,8 @@ useHead({
 		const jsonLd: WithContext<WebSite> = {
 			"@context": "https://schema.org",
 			"@type": "WebSite",
-			name: t("meta.title"),
-			description: t("meta.description"),
+			name: t("DefaultLayout.meta.title"),
+			description: t("DefaultLayout.meta.description"),
 		};
 
 		const scripts = [
@@ -79,7 +78,7 @@ useHead({
 
 <template>
 	<div class="grid min-h-full grid-rows-[auto_1fr_auto] bg-neutral-50 font-body text-neutral-900">
-		<SkipLink target-id="main-content">{{ t("skip-to-main-content") }}</SkipLink>
+		<SkipLink target-id="main-content">{{ t("DefaultLayout.skip-to-main-content") }}</SkipLink>
 
 		<AppHeader />
 		<slot />

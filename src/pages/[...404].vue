@@ -3,7 +3,7 @@ definePageMeta({
 	title: "NotFoundPage.meta.title",
 });
 
-const t = useTranslations("NotFoundPage");
+const t = useTranslations();
 
 useSeoMeta({
 	robots: {
@@ -15,6 +15,6 @@ useSeoMeta({
 
 <template>
 	<MainContent class="container py-8">
-		<h1>{{ t("title") }}</h1>
+		<h1>{{ t("NotFoundPage.title") }}</h1>
 	</MainContent>
 </template>

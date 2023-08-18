@@ -12,7 +12,7 @@ defineProps<{
 	error: Error;
 }>();
 
-const t = useTranslations("ErrorPage");
+const t = useTranslations();
 const localePath = useLocalePath();
 
 useSeoMeta({
@@ -23,13 +23,13 @@ useSeoMeta({
 });
 
 function onReset() {
-	clearError({ redirect: localePath("/") });
+	void clearError({ redirect: localePath("/") });
 }
 </script>
 
 <template>
 	<MainContent class="grid min-h-full place-items-center">
-		<h1>{{ t("title") }}</h1>
-		<button @click="onReset">{{ t("try-again") }}</button>
+		<h1>{{ t("ErrorPage.title") }}</h1>
+		<button @click="onReset">{{ t("ErrorPage.try-again") }}</button>
 	</MainContent>
 </template>

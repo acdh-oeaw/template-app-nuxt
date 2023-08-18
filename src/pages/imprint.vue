@@ -3,12 +3,12 @@ definePageMeta({
 	title: "ImprintPage.meta.title",
 });
 
-const t = useTranslations("ImprintPage");
+const t = useTranslations();
 </script>
 
 <template>
 	<MainContent class="container py-8">
-		<h1>{{ t("title") }}</h1>
+		<h1>{{ t("ImprintPage.title") }}</h1>
 		<Imprint />
 	</MainContent>
 </template>
