@@ -1,16 +1,17 @@
 // import "dotenv/config";
 
 import { defineConfig, devices } from "@playwright/test";
+import { isCI } from "ci-info";
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 const baseUrl = `http://localhost:${port}`;
 
 export default defineConfig({
 	testDir: "./e2e",
 	fullyParallel: true,
-	forbidOnly: Boolean(process.env.CI),
-	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 1 : undefined,
+	forbidOnly: isCI,
+	retries: isCI ? 2 : 0,
+	workers: isCI ? 1 : undefined,
 	reporter: "html",
 	use: {
 		baseURL: baseUrl,
@@ -49,6 +50,6 @@ export default defineConfig({
 	webServer: {
 		command: "pnpm run start",
 		url: baseUrl,
-		reuseExistingServer: !process.env.CI,
+		reuseExistingServer: !isCI,
 	},
 });
