@@ -12,8 +12,8 @@ export function trackPageView(to: RouteLocationNormalized, from: RouteLocationNo
 	const url = to.fullPath;
 	const referrer = from.fullPath;
 
-	if (typeof to.meta["title"] === "string") {
-		track(url, referrer, to.meta["title"]);
+	if (typeof to.meta.title === "string") {
+		track(url, referrer, to.meta.title);
 	} else {
 		/** Wait for `document.title` to be updated. */
 		setTimeout(() => {
