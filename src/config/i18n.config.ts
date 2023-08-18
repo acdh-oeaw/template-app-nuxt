@@ -1,6 +1,6 @@
 import { type LocaleObject } from "vue-i18n-routing";
 
-import type messages from "@/messages/de.json";
+import type messages from "@/messages/en.json";
 
 export const locales = {
 	de: { code: "de", iso: "de-AT", file: "de.json" },
