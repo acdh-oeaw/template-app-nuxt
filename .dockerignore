@@ -50,3 +50,7 @@ dist
 # environment variables
 .env
 .env.*
+
+# tests
+/e2e/
+/test/
