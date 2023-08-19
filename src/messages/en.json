@@ -11,10 +11,18 @@
 		},
 		"navigation-main": "Main"
 	},
+	"ColorSchemeToggle": {
+		"change-color-scheme": "Change color scheme",
+		"color-schemes": {
+			"system": "System",
+			"light": "Light",
+			"dark": "Dark"
+		}
+	},
 	"DefaultLayout": {
 		"meta": {
-			"title": "ACDH-CH App",
-			"description": "ACDH-CH App"
+			"description": "ACDH-CH App",
+			"title": "ACDH-CH App"
 		},
 		"skip-to-main-content": "Skip to main content"
 	},
@@ -38,11 +46,11 @@
 		"title": "Home"
 	},
 	"LocaleSwitcher": {
-		"locales": {
-			"en": "English",
-			"de": "German"
-		},
 		"current-locale": "Current language: {locale}",
+		"locales": {
+			"de": "German",
+			"en": "English"
+		},
 		"switch-locale": "Switch to {locale}"
 	},
 	"NotFoundPage": {

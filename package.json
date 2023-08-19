@@ -37,6 +37,7 @@
 		"@acdh-oeaw/lib": "^0.1.6",
 		"@nuxt/content": "^2.7.2",
 		"@nuxt/image": "rc",
+		"@nuxtjs/color-mode": "^3.3.0",
 		"@nuxtjs/i18n": "next"
 	},
 	"devDependencies": {
@@ -45,7 +46,7 @@
 		"@acdh-oeaw/eslint-config-vue": "^1.0.2",
 		"@acdh-oeaw/prettier-config": "^1.0.1",
 		"@acdh-oeaw/stylelint-config": "^1.0.5",
-		"@acdh-oeaw/tailwindcss-preset": "^0.0.10",
+		"@acdh-oeaw/tailwindcss-preset": "^0.0.11",
 		"@acdh-oeaw/tsconfig": "^1.0.1",
 		"@axe-core/playwright": "^4.7.3",
 		"@fontsource-variable/inter": "^5.0.8",
@@ -68,7 +69,7 @@
 		"prettier": "^3.0.2",
 		"schema-dts": "^1.1.2",
 		"simple-git-hooks": "^2.9.0",
-		"stylelint": "^15.10.2",
+		"stylelint": "^15.10.3",
 		"tailwindcss": "^3.3.3",
 		"tailwindcss-animate": "^1.0.6",
 		"typescript": "^5.1.6",

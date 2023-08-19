@@ -7,6 +7,10 @@ export default defineNuxtConfig({
 		"@": fileURLToPath(new URL("./src", import.meta.url)),
 		"~": fileURLToPath(new URL("./", import.meta.url)),
 	},
+	colorMode: {
+		classSuffix: "",
+		dataValue: "color-scheme",
+	},
 	components: [{ path: "@/components", pathPrefix: false }],
 	content: {
 		defaultLocale,
@@ -34,7 +38,14 @@ export default defineNuxtConfig({
 		locales: Object.values(locales),
 		strategy: "prefix_except_default",
 	},
-	modules: ["@nuxt/content", "@nuxt/devtools", "@nuxtjs/i18n", "@nuxt/image", "nuxt-vitest"],
+	modules: [
+		"@nuxt/content",
+		"@nuxt/devtools",
+		"@nuxtjs/color-mode",
+		"@nuxtjs/i18n",
+		"@nuxt/image",
+		"nuxt-vitest",
+	],
 	nitro: {
 		compressPublicAssets: true,
 	},
