@@ -14,10 +14,7 @@ COPY --chown=node:node .npmrc package.json pnpm-lock.yaml ./
 
 RUN pnpm fetch
 
-COPY --chown=node:node nuxt.config.ts tailwind.config.js tsconfig.json ./
-COPY --chown=node:node config ./config
-COPY --chown=node:node public ./public
-COPY --chown=node:node src ./src
+COPY --chown=node:node ./ ./
 
 ARG NUXT_PUBLIC_APP_BASE_URL
 ARG NUXT_PUBLIC_REDMINE_ID

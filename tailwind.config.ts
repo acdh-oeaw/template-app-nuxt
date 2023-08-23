@@ -3,10 +3,10 @@ import { type Config } from "tailwindcss";
 
 const config = {
 	content: [
-		"./src/components/**/*.@(css|ts|vue)",
-		"./src/content/**/*.md",
-		"./src/layouts/**/*.@(css|ts|vue)",
-		"./src/pages/**/*.@(css|ts|vue)",
+		"./components/**/*.@(css|ts|vue)",
+		"./content/**/*.md",
+		"./layouts/**/*.@(css|ts|vue)",
+		"./pages/**/*.@(css|ts|vue)",
 	],
 	presets: [preset],
 } satisfies Config;

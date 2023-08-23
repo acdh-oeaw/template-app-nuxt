@@ -1,11 +1,10 @@
 import { fileURLToPath } from "node:url";
 
-import { defaultLocale, locales } from "./src/config/i18n.config";
+import { defaultLocale, locales } from "./config/i18n.config";
 
 export default defineNuxtConfig({
 	alias: {
-		"@": fileURLToPath(new URL("./src", import.meta.url)),
-		"~": fileURLToPath(new URL("./", import.meta.url)),
+		"@": fileURLToPath(new URL("./", import.meta.url)),
 	},
 	colorMode: {
 		classSuffix: "",
@@ -20,9 +19,6 @@ export default defineNuxtConfig({
 	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
 	devtools: {
 		enabled: true,
-	},
-	dir: {
-		public: "../public",
 	},
 	experimental: {
 		componentIslands: true,
@@ -64,7 +60,6 @@ export default defineNuxtConfig({
 			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,
 		},
 	},
-	srcDir: "./src/",
 	typescript: {
 		shim: false,
 		strict: true,
@@ -72,8 +67,7 @@ export default defineNuxtConfig({
 		tsConfig: {
 			compilerOptions: {
 				paths: {
-					"@/*": ["./src/*"],
-					"~/*": ["./*"],
+					"@/*": ["./*"],
 				},
 			},
 		},
