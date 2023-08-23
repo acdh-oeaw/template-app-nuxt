@@ -11,6 +11,7 @@
 		"strings": true
 	},
 	"editor.rulers": [100],
+	"editor.stickyScroll.enabled": true,
 	"eslint.enable": true,
 	"eslint.validate": ["javascript", "typescript", "vue"],
 	"files.associations": {

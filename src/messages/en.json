@@ -14,9 +14,9 @@
 	"ColorSchemeToggle": {
 		"change-color-scheme": "Change color scheme",
 		"color-schemes": {
-			"system": "System",
+			"dark": "Dark",
 			"light": "Light",
-			"dark": "Dark"
+			"system": "System"
 		}
 	},
 	"DefaultLayout": {

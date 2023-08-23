@@ -24,8 +24,8 @@ const links = computed(() => {
 			</nav>
 
 			<div class="flex items-center gap-4">
-				<LocaleSwitcher />
 				<ColorSchemeToggle />
+				<LocaleSwitcher />
 			</div>
 		</div>
 	</header>

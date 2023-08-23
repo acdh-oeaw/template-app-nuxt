@@ -1,7 +1,7 @@
 import { preset } from "@acdh-oeaw/tailwindcss-preset";
 import { type Config } from "tailwindcss";
 
-const config: Config = {
+const config = {
 	content: [
 		"./src/components/**/*.@(css|ts|vue)",
 		"./src/content/**/*.md",
@@ -9,6 +9,6 @@ const config: Config = {
 		"./src/pages/**/*.@(css|ts|vue)",
 	],
 	presets: [preset],
-};
+} satisfies Config;
 
 export default config;
