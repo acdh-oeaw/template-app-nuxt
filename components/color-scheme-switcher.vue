@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+// import { MoonIcon, SunIcon } from "lucide-vue-next";
+
 const t = useTranslations();
 
 const colorMode = useColorMode();
