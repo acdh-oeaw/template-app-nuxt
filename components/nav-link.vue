@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type NuxtLinkProps } from "#app";
+import type { NuxtLinkProps } from "#app";
 
 export interface NavLinkProps
 	extends Omit<NuxtLinkProps, "href" | "to">,
@@ -11,7 +11,7 @@ const localePath = useLocalePath();
 </script>
 
 <template>
-	<NuxtLink :href="localePath(props.href as any /** Type mismatch. */)">
+	<NuxtLink :href="localePath(props.href)">
 		<slot />
 	</NuxtLink>
 </template>

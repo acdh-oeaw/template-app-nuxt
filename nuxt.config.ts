@@ -6,11 +6,15 @@ export default defineNuxtConfig({
 	alias: {
 		"@": fileURLToPath(new URL("./", import.meta.url)),
 	},
+	app: {
+		layoutTransition: false,
+		pageTransition: false,
+	},
 	colorMode: {
 		classSuffix: "",
-		dataValue: "color-scheme",
+		dataValue: "ui-color-scheme",
 	},
-	components: [{ path: "@/components", pathPrefix: false }],
+	components: [{ path: "@/components", extensions: [".vue"], pathPrefix: false }],
 	content: {
 		defaultLocale,
 		locales: Object.keys(locales),
@@ -18,7 +22,7 @@ export default defineNuxtConfig({
 	},
 	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
 	devtools: {
-		enabled: true,
+		enabled: import.meta.env.DEV,
 	},
 	experimental: {
 		componentIslands: true,
@@ -32,7 +36,8 @@ export default defineNuxtConfig({
 		langDir: "./messages",
 		lazy: true,
 		locales: Object.values(locales),
-		strategy: "prefix_except_default",
+		strategy: "prefix",
+		vueI18n: "./i18n.config.ts",
 	},
 	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "nuxt-vitest"],
 	nitro: {
@@ -40,9 +45,7 @@ export default defineNuxtConfig({
 	},
 	postcss: {
 		plugins: {
-			"tailwindcss/nesting": "postcss-nesting",
 			tailwindcss: {},
-			autoprefixer: {},
 		},
 	},
 	routeRules: {

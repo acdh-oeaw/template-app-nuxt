@@ -1,9 +1,9 @@
-import AxeBuilder from "@axe-core/playwright";
+import { AxeBuilder } from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("home page", () => {
 	test("should have document title", async ({ page }) => {
-		await page.goto("/");
+		await page.goto("/en");
 		await expect(page).toHaveTitle("Home | ACDH-CH App");
 
 		await page.goto("/de");
@@ -11,7 +11,7 @@ test.describe("home page", () => {
 	});
 
 	test("should not have any automatically detectable accessibility issues", async ({ page }) => {
-		await page.goto("/");
+		await page.goto("/en");
 		expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
 
 		await page.goto("/de");

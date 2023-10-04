@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { isNonEmptyString } from "@acdh-oeaw/lib";
-import { type WebSite, type WithContext } from "schema-dts";
+import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
 

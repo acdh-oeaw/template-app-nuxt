@@ -21,17 +21,15 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
         os: [ubuntu-latest]
 
     steps:
-      - name: Checkout respository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # necessary because `actions/setup-node` does not yet support `corepack`.
-      # @see https://github.com/actions/setup-node/issues/531
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - name: Enable corepack
+        run: corepack enable
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -41,6 +39,22 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Commit message
+        if: github.event_name == 'push'
+        run: |
+          pnpm exec commitlint \
+            --from ${{ github.event.before }} \
+            --to ${{ github.event.after }} \
+            --verbose
+
+      - name: Commit messages
+        if: github.event_name == 'pull_request'
+        run: |
+          pnpm exec commitlint \
+            --from ${{ github.event.pull_request.base.sha }} \
+            --to ${{ github.event.pull_request.head.sha }} \
+            --verbose
 
       - name: Format
         run: pnpm run format:check
@@ -54,14 +68,34 @@ jobs:
       - name: Test
         run: pnpm run test
 
+      - name: Get playwright version
+        run: |
+          PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test --json | jq --raw-output '.[0].devDependencies["@playwright/test"].version')
+          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
+
+      - name: Cache playwright browsers
+        uses: actions/cache@v3
+        id: cache-playwright-browsers
+        with:
+          path: "~/.cache/ms-playwright"
+          key: ${{ matrix.os }}-playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
+
+      # TODO: might need https://github.com/microsoft/playwright/issues/7249#issuecomment-1597663397
       - name: Install playwright browsers
+        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: pnpm exec playwright install --with-deps
+
+      - name: Cache Next.js build output
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ matrix.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Build app
         run: pnpm run build
         env:
           NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
-          NUXT_PUBLIC_REDMINE_ID: "${{ vars.NUXT_PUBLIC_REDMINE_ID }}"
+          NUXT_PUBLIC_REDMINE_ID: "${{ vars.SERVICE_ID }}"
 
       - name: Run e2e tests
         run: pnpm run test:e2e

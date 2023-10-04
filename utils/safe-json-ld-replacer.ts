@@ -20,7 +20,7 @@ function replacer(t: string): string {
  * @see https://www.w3.org/TR/json-ld11/#restrictions-for-contents-of-json-ld-script-elements
  * @see https://github.com/google/react-schemaorg/blob/main/src/json-ld.tsx
  */
-export function safeJsonLdReplacer(key: string, value: JsonValue): JsonValue | undefined {
+export function safeJsonLdReplacer(_key: string, value: JsonValue): JsonValue | undefined {
 	switch (typeof value) {
 		case "object": {
 			if (value === null) return undefined;

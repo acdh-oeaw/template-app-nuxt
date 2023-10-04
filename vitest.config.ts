@@ -8,7 +8,9 @@ export default defineVitestConfig({
 				domEnvironment: "jsdom",
 			},
 		},
+		/** Required by `@testing-library/vue`. */
+		globals: true,
 		include: ["./test/*.@(spec|test).ts"],
-		setupFiles: ["../test/setup-files/create-i18n.ts"],
+		setupFiles: ["./test/setup-files/create-i18n.ts"],
 	},
 });

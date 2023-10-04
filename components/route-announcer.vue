@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type RouteLocationNormalized } from "vue-router";
+import type { RouteLocationNormalized } from "vue-router";
 
 const router = useRouter();
 

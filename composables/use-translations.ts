@@ -1,4 +1,4 @@
-import { type Locale, type Schema } from "@/config/i18n.config";
+import type { Locale, Schema } from "@/config/i18n.config";
 
 export function useTranslations() {
 	const { t } = useI18n<Schema, Locale>();

@@ -3,10 +3,6 @@
 	"extends": ["./.nuxt/tsconfig.json", "@acdh-oeaw/tsconfig"],
 	"compilerOptions": {
 		/**
-		 *`.nuxt/i18n.options.mjs` currently does not play nice with strict mode.
-		 */
-		"checkJs": false,
-		/**
 		 * @see https://github.com/microsoft/TypeScript/issues/54057
 		 */
 		"incremental": false

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { type NavLinkProps } from "@/components/nav-link.vue";
+import type { NavLinkProps } from "@/components/nav-link.vue";
 
 const t = useTranslations();
 
