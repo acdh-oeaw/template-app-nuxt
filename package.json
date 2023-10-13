@@ -47,8 +47,8 @@
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "^1.0.4",
-		"@acdh-oeaw/eslint-config-nuxt": "^1.0.9",
-		"@acdh-oeaw/eslint-config-vue": "^1.0.8",
+		"@acdh-oeaw/eslint-config-nuxt": "^1.0.10",
+		"@acdh-oeaw/eslint-config-vue": "^1.0.9",
 		"@acdh-oeaw/prettier-config": "^1.0.1",
 		"@acdh-oeaw/stylelint-config": "^1.0.6",
 		"@acdh-oeaw/tailwindcss-preset": "^0.0.17",

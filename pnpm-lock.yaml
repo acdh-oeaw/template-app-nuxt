@@ -41,11 +41,11 @@ devDependencies:
     specifier: ^1.0.4
     version: 1.0.4(eslint@8.51.0)(typescript@5.2.2)
   '@acdh-oeaw/eslint-config-nuxt':
-    specifier: ^1.0.9
-    version: 1.0.9(@acdh-oeaw/eslint-config-vue@1.0.8)(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0)
+    specifier: ^1.0.10
+    version: 1.0.10(@acdh-oeaw/eslint-config-vue@1.0.9)(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0)
   '@acdh-oeaw/eslint-config-vue':
-    specifier: ^1.0.8
-    version: 1.0.8(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0)
+    specifier: ^1.0.9
+    version: 1.0.9(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0)
   '@acdh-oeaw/prettier-config':
     specifier: ^1.0.1
     version: 1.0.1(prettier@3.0.3)
@@ -119,22 +119,22 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  /@acdh-oeaw/eslint-config-nuxt@1.0.9(@acdh-oeaw/eslint-config-vue@1.0.8)(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0):
-    resolution: {integrity: sha512-MNjTG/nAWjU6QVNfWn8JxsrQART+O35cyQtowrj8baJZp80uwh/pVsSfQGCVACp6oPk3/rgfjJOjbhxyQ5vRHQ==}
+  /@acdh-oeaw/eslint-config-nuxt@1.0.10(@acdh-oeaw/eslint-config-vue@1.0.9)(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0):
+    resolution: {integrity: sha512-UM58MA0vj/GiZ/z6S+xFZKZGknh9xajaDdGFsj22EABYzCinRYo1T3zndOiAKU4+ahCfYU7OHNKvd7YqgCxxPA==}
     peerDependencies:
       '@acdh-oeaw/eslint-config': 1.0.4
-      '@acdh-oeaw/eslint-config-vue': 1.0.8
+      '@acdh-oeaw/eslint-config-vue': 1.0.9
     dependencies:
       '@acdh-oeaw/eslint-config': 1.0.4(eslint@8.51.0)(typescript@5.2.2)
-      '@acdh-oeaw/eslint-config-vue': 1.0.8(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0)
+      '@acdh-oeaw/eslint-config-vue': 1.0.9(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0)
       eslint-plugin-nuxt: 4.0.0(eslint@8.51.0)
     transitivePeerDependencies:
       - eslint
       - supports-color
     dev: true
 
-  /@acdh-oeaw/eslint-config-vue@1.0.8(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0):
-    resolution: {integrity: sha512-XexMQabWxg9wJ2hrWXKKFOZGizXWi5UCsQj8QLGGXF07TTVORQaB3ZCk5kAiN28ImlQODMfaX0ErCnFMuFmYcw==}
+  /@acdh-oeaw/eslint-config-vue@1.0.9(@acdh-oeaw/eslint-config@1.0.4)(eslint@8.51.0):
+    resolution: {integrity: sha512-94qLIdVi7DS89JvnE+lQpTqMN35283IFprJQE+ENDM1HH2EZmRJvfvMcjZ4H3ABrVnu+iCxa4ntgXs2hdLhCTA==}
     peerDependencies:
       '@acdh-oeaw/eslint-config': 1.0.4
     dependencies:
