@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 		strategy: "prefix",
 		vueI18n: "./i18n.config.ts",
 	},
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "nuxt-vitest"],
+	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n"],
 	nitro: {
 		compressPublicAssets: true,
 	},
