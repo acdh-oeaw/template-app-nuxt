@@ -7,6 +7,7 @@
 		"lokalise.i18n-ally",
 		"mikestead.dotenv",
 		"ms-playwright.playwright",
+		"nuxt.mdc",
 		"stylelint.vscode-stylelint",
 		"vue.volar",
 		"vue.vscode-typescript-vue-plugin",
