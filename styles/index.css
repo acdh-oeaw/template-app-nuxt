@@ -2,7 +2,9 @@
 	--font-sans: "Inter Variable";
 }
 
-#__nuxt {
+#__nuxt,
+/** @see https://github.com/danielroe/nuxt-vitest/discussions/258 */
+#nuxt-test {
 	block-size: 100%;
 	isolation: isolate;
 }
