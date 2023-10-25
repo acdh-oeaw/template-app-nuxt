@@ -26,6 +26,9 @@
 		},
 		"skip-to-main-content": "Skip to main content"
 	},
+	"ErrorBoundary": {
+		"error": "Error"
+	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"

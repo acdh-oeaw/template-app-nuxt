@@ -81,7 +81,9 @@ useHead({
 		<SkipLink target-id="main-content">{{ t("DefaultLayout.skip-to-main-content") }}</SkipLink>
 
 		<AppHeader />
-		<slot />
+		<ErrorBoundary>
+			<slot />
+		</ErrorBoundary>
 		<AppFooter />
 
 		<RouteAnnouncer />
