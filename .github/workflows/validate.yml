@@ -111,3 +111,4 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     needs: [validate]
     uses: ./.github/workflows/build-deploy.yml
+    secrets: inherit
