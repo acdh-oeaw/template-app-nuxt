@@ -50,10 +50,6 @@
 	},
 	"LocaleSwitcher": {
 		"current-locale": "Current language: {locale}",
-		"locales": {
-			"de": "German",
-			"en": "English"
-		},
 		"switch-locale": "Switch to {locale}"
 	},
 	"NotFoundPage": {
