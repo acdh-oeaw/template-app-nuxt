@@ -47,7 +47,10 @@ export default defineNuxtConfig({
 		strategy: "prefix",
 		vueI18n: "./i18n.config.ts",
 	},
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n"],
+	imports: {
+		dirs: ["./config/"],
+	},
+	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
 	nitro: {
 		compressPublicAssets: true,
 	},
