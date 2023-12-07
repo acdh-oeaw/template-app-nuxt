@@ -28,8 +28,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Enable corepack
-        run: corepack enable
+      # Necessary because `actions/setup-node` does not yet support `corepack`.
+      # @see https://github.com/actions/setup-node/issues/531
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -96,3 +98,7 @@ jobs:
     needs: [validate]
     uses: ./.github/workflows/build-deploy.yml
     secrets: inherit
+    # https://docs.github.com/en/actions/using-workflows/reusing-workflows#access-and-permissions
+    permissions:
+      contents: read
+      packages: write
