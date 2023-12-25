@@ -30,9 +30,10 @@ dist
 .output/
 
 # playwright
-/test-results/
-/playwright-report/
+/blob-report/
 /playwright/.cache/
+/playwright-report/
+/test-results/
 
 
 ## .dockerignore ##
