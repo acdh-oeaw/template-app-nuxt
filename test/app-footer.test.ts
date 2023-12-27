@@ -1,5 +1,5 @@
+import { renderSuspended } from "@nuxt/test-utils/runtime";
 import { screen } from "@testing-library/vue";
-import { renderSuspended } from "nuxt-vitest/utils";
 import { describe, expect, it } from "vitest";
 
 import AppFooter from "@/components/app-footer.vue";

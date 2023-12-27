@@ -55,10 +55,12 @@
 		"@acdh-oeaw/tsconfig": "^1.0.1",
 		"@axe-core/playwright": "^4.8.0",
 		"@nuxt/devtools": "^0.8.5",
+		"@nuxt/test-utils": "^3.9.0",
 		"@playwright/test": "^1.39.0",
 		"@testing-library/user-event": "^14.5.1",
 		"@testing-library/vue": "^7.0.0",
 		"@types/node": "^20.8.5",
+		"@vue/test-utils": "^2.4.3",
 		"ci-info": "^3.9.0",
 		"eslint": "^8.51.0",
 		"eslint-plugin-tailwindcss": "^3.13.0",
@@ -68,7 +70,6 @@
 		"jsdom": "^22.1.0",
 		"lint-staged": "^14.0.1",
 		"npm-run-all2": "^6.1.1",
-		"nuxt-vitest": "^0.11.0",
 		"postcss": "^8.4.31",
 		"prettier": "^3.0.3",
 		"schema-dts": "^1.1.2",
@@ -76,6 +77,7 @@
 		"stylelint": "^15.10.3",
 		"tailwindcss": "^3.3.3",
 		"typescript": "^5.2.2",
+		"vitest": "^1.1.0",
 		"vue-tsc": "^1.8.19"
 	},
 	"browserslist": {

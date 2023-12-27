@@ -1,4 +1,8 @@
-import { defineVitestConfig } from "nuxt-vitest/config";
+import { defineVitestConfig } from "@nuxt/test-utils/config";
+import { configDefaults } from "vitest/config";
+
+// FIXME: currently, i18n only works with `$t` global, but not with the `useI18n` composable
+// @see https://github.com/nuxt-modules/i18n/issues/2637
 
 export default defineVitestConfig({
 	test: {
@@ -11,6 +15,6 @@ export default defineVitestConfig({
 		/** Required by `@testing-library/vue`. */
 		globals: true,
 		include: ["./**/*.@(spec|test).ts"],
-		setupFiles: ["./test/setup-files/create-i18n.ts"],
+		exclude: [...configDefaults.exclude, "e2e"],
 	},
 });
