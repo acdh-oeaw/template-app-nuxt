@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { isNonEmptyString } from "@acdh-oeaw/lib";
+import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
@@ -41,7 +41,15 @@ useHead({
 			{ property: "og:title", content: t(route.meta.title) },
 			{ property: "og:site_name", content: t("DefaultLayout.meta.title") },
 			{ property: "og:description", content: t("DefaultLayout.meta.description") },
-			{ property: "og:image", content: "/opengraph-image.png" },
+			{
+				property: "og:image",
+				content: String(
+					createUrl({
+						baseUrl: env.public.NUXT_PUBLIC_APP_BASE_URL,
+						pathname: "/opengraph-image.png",
+					}),
+				),
+			},
 			{ property: "og:locale", content: locale.value },
 			...(i18nHead.value.meta ?? []),
 		];
