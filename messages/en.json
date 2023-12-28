@@ -26,6 +26,9 @@
 		},
 		"skip-to-main-content": "Skip to main content"
 	},
+	"ErrorBoundary": {
+		"error": "Error"
+	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"
@@ -47,10 +50,6 @@
 	},
 	"LocaleSwitcher": {
 		"current-locale": "Current language: {locale}",
-		"locales": {
-			"de": "German",
-			"en": "English"
-		},
 		"switch-locale": "Switch to {locale}"
 	},
 	"NotFoundPage": {

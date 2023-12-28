@@ -22,10 +22,18 @@ export default defineNuxtConfig({
 	},
 	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
 	devtools: {
-		enabled: import.meta.env.DEV,
+		enabled: process.env.NODE_ENV === "development",
 	},
 	experimental: {
 		componentIslands: true,
+		defaults: {
+			useAsyncData: {
+				deep: false,
+			},
+			useFetch: {
+				timeout: 250,
+			},
+		},
 	},
 	i18n: {
 		baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
@@ -39,12 +47,16 @@ export default defineNuxtConfig({
 		strategy: "prefix",
 		vueI18n: "./i18n.config.ts",
 	},
+	imports: {
+		dirs: ["./config/"],
+	},
 	modules: [
 		"@nuxt/content",
 		"@nuxt/image",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
 		"@nuxt/test-utils/module",
+		"@vueuse/nuxt",
 	],
 	nitro: {
 		compressPublicAssets: true,
@@ -55,11 +67,11 @@ export default defineNuxtConfig({
 		},
 	},
 	routeRules: {
-		"**/*": {
+		"/**": {
 			headers: process.env.BOTS !== "enabled" ? { "X-Robots-Tag": "noindex, nofollow" } : {},
 		},
-		"/": { static: true },
-		"/imprint": { static: true },
+		"/": { prerender: true },
+		"/imprint": { prerender: true },
 	},
 	runtimeConfig: {
 		BOTS: process.env.BOTS,
