@@ -53,9 +53,9 @@ export default defineNuxtConfig({
 	modules: [
 		"@nuxt/content",
 		"@nuxt/image",
+		"@nuxt/test-utils/module",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
-		"@nuxt/test-utils/module",
 		"@vueuse/nuxt",
 	],
 	nitro: {
