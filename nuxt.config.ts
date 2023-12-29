@@ -25,7 +25,9 @@ export default defineNuxtConfig({
 		enabled: process.env.NODE_ENV === "development",
 	},
 	experimental: {
-		componentIslands: true,
+		componentIslands: {
+			selectiveClient: true,
+		},
 		defaults: {
 			useAsyncData: {
 				deep: false,
