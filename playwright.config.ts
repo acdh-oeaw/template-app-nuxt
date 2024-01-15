@@ -1,7 +1,13 @@
-// import "dotenv/config";
+import { join } from "node:path";
 
 import { defineConfig, devices } from "@playwright/test";
 import { isCI } from "ci-info";
+import { config as dotenv } from "dotenv";
+import { expand } from "dotenv-expand";
+
+for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]) {
+	expand(dotenv({ path: join(process.cwd(), envFilePath) }));
+}
 
 const port = 3000;
 const baseUrl = `http://localhost:${port}`;
@@ -12,7 +18,7 @@ export default defineConfig({
 	forbidOnly: isCI,
 	retries: isCI ? 2 : 0,
 	workers: isCI ? 1 : undefined,
-	reporter: "html",
+	reporter: isCI ? "github" : "html",
 	use: {
 		baseURL: baseUrl,
 		trace: "on-first-retry",
