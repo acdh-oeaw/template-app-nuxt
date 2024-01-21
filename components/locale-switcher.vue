@@ -12,7 +12,7 @@ const labels = computed(() => {
 
 <template>
 	<div class="flex items-center gap-2">
-		<template v-for="(_, locale, index) of locales" :key="locale">
+		<template v-for="(locale, index) of locales" :key="locale">
 			<span v-if="index !== 0">|</span>
 
 			<!--

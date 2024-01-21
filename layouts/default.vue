@@ -50,7 +50,9 @@ useHead({
 					}),
 				),
 			},
-			{ property: "og:locale", content: locale.value },
+			{ name: "twitter:card", content: "summary_large_image" },
+			{ name: "twitter:creator", content: "@acdh_oeaw" },
+			{ name: "twitter:site", content: "@acdh_oeaw" },
 			...(i18nHead.value.meta ?? []),
 		];
 	}),

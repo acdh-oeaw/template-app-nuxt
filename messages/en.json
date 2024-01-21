@@ -52,6 +52,11 @@
 		"current-locale": "Current language: {locale}",
 		"switch-locale": "Switch to {locale}"
 	},
+	"Manifest": {
+		"name": "ACDH-CH App",
+		"short-name": "ACDH-CH App",
+		"description": "ACDH-CH App"
+	},
 	"NotFoundPage": {
 		"meta": {
 			"title": "Page not found"

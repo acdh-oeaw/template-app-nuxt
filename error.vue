@@ -8,7 +8,7 @@
 // 	title: "ErrorPage.meta.title",
 // });
 
-defineProps<{
+const props = defineProps<{
 	error:
 		| Error
 		| {
@@ -20,19 +20,26 @@ defineProps<{
 		  };
 }>();
 
+// const locale = useLocale();
 const t = useTranslations();
 const localePath = useLocalePath();
 
+const isNotFoundPage = computed(() => {
+	return "statusCode" in props.error && props.error.statusCode === 404;
+});
+
 /** `error.vue` is *not* wrapped in default layout out of the box. */
 useHead({
+	titleTemplate: computed(() => {
+		return ["%s", t("DefaultLayout.meta.title")].join(" | ");
+	}),
 	title: computed(() => {
-		return t("ErrorPage.meta.title");
+		return isNotFoundPage.value ? t("NotFoundPage.meta.title") : t("ErrorPage.meta.title");
 	}),
 });
 
 useSeoMeta({
 	robots: {
-		nofollow: true,
 		noindex: true,
 	},
 });
@@ -43,14 +50,20 @@ function onReset() {
 </script>
 
 <template>
-	<MainContent class="grid min-h-full place-content-center">
-		<h1>{{ t("ErrorPage.title") }}</h1>
-		<div class="flex items-center gap-4">
-			<span>{{ "statusCode" in error ? error.statusCode : 500 }}</span>
-			<span>{{ error.message }}</span>
-		</div>
-		<div>
-			<button @click="onReset">{{ t("ErrorPage.try-again") }}</button>
-		</div>
+	<MainContent class="grid min-h-full place-content-center place-items-center">
+		<template v-if="isNotFoundPage">
+			<h1>{{ t("NotFoundPage.title") }}</h1>
+		</template>
+
+		<template v-else>
+			<h1>{{ t("ErrorPage.title") }}</h1>
+			<div class="flex items-center gap-4">
+				<span>{{ "statusCode" in props.error ? props.error.statusCode : 500 }}</span>
+				<span>{{ props.error.message }}</span>
+			</div>
+			<div>
+				<button @click="onReset">{{ t("ErrorPage.try-again") }}</button>
+			</div>
+		</template>
 	</MainContent>
 </template>
