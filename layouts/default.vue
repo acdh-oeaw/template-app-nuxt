@@ -31,6 +31,7 @@ useHead({
 			{ href: "/favicon.ico", rel: "icon", sizes: "any" },
 			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
 			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
+			{ href: "/manifest.webmanifest", rel: "manifest" },
 			...(i18nHead.value.link ?? []),
 		];
 	}),
