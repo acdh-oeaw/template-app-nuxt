@@ -7,7 +7,7 @@ import { expect, test } from "@/e2e/lib/test";
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 test.describe("i18n", () => {
-	test.describe("redirects root route to preferred locale", () => {
+	test.describe("should redirect root route to preferred locale", () => {
 		test.use({ locale: "en" });
 
 		test("with default locale", async ({ page }) => {
@@ -16,7 +16,7 @@ test.describe("i18n", () => {
 		});
 	});
 
-	test.describe("redirects root route to preferred locale", () => {
+	test.describe("should redirect root route to preferred locale", () => {
 		test.use({ locale: "de" });
 
 		/**
@@ -29,7 +29,7 @@ test.describe("i18n", () => {
 		});
 	});
 
-	test.describe("redirects root route to preferred locale", () => {
+	test.describe("should redirect root route to preferred locale", () => {
 		test.use({ locale: "fr" });
 
 		test("with unsupported locale", async ({ page }) => {
@@ -38,19 +38,19 @@ test.describe("i18n", () => {
 		});
 	});
 
-	test("displays not-found page for unknown locale", async ({ page }) => {
+	test("should display not-found page for unknown locale", async ({ page }) => {
 		const response = await page.goto("/unknown");
 		expect(response?.status()).toBe(404);
 		await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
 	});
 
-	test("displays localised not-found page for unknown pathname", async ({ page }) => {
+	test("should display localised not-found page for unknown pathname", async ({ page }) => {
 		const response = await page.goto("/de/unknown");
 		expect(response?.status()).toBe(404);
 		await expect(page.getByRole("heading", { name: "Seite nicht gefunden" })).toBeVisible();
 	});
 
-	test("supports switching locale", async ({ page }) => {
+	test("should support switching locale", async ({ page }) => {
 		await page.goto("/de/imprint");
 		await expect(page).toHaveURL("/de/imprint");
 		await expect(page.getByRole("heading", { name: "Impressum" })).toBeVisible();
@@ -63,14 +63,14 @@ test.describe("i18n", () => {
 		await expect(page).toHaveTitle("Imprint | ACDH-CH App");
 	});
 
-	test("sets `lang` attribute on `html` element", async ({ page }) => {
+	test("should set `lang` attribute on `html` element", async ({ page }) => {
 		for (const locale of locales) {
 			await page.goto(`/${locale}`);
 			await expect(page.locator("html")).toHaveAttribute("lang", locale);
 		}
 	});
 
-	test("sets alternate links in link tags", async ({ page }) => {
+	test("should set alternate links in link tags", async ({ page }) => {
 		function createAbsoluteUrl(pathname: string) {
 			return String(createUrl({ baseUrl, pathname }));
 		}

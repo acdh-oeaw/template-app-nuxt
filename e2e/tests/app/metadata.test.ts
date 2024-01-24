@@ -6,7 +6,7 @@ import { expect, test } from "@/e2e/lib/test";
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
-test("sets a canonical url", async ({ page }) => {
+test("should set a canonical url", async ({ page }) => {
 	for (const locale of locales) {
 		await page.goto(`/${locale}`);
 
@@ -18,7 +18,7 @@ test("sets a canonical url", async ({ page }) => {
 	}
 });
 
-test("sets document title on not-found page", async ({ page }) => {
+test("should set document title on not-found page", async ({ page }) => {
 	await page.goto("/unknown");
 	await expect(page).toHaveTitle("Page not found | ACDH-CH App");
 
@@ -26,7 +26,7 @@ test("sets document title on not-found page", async ({ page }) => {
 	await expect(page).toHaveTitle("Seite nicht gefunden | ACDH-CH App");
 });
 
-test("disallows indexing of not-found page", async ({ page }) => {
+test("should disallow indexing of not-found page", async ({ page }) => {
 	for (const pathname of ["/unknown", "/de/unknown"]) {
 		await page.goto(pathname);
 
@@ -35,7 +35,7 @@ test("disallows indexing of not-found page", async ({ page }) => {
 	}
 });
 
-test.describe("sets page metadata", () => {
+test.describe("should set page metadata", () => {
 	test("static", async ({ page }) => {
 		await page.goto("/en");
 
@@ -98,7 +98,7 @@ test.describe("sets page metadata", () => {
 	});
 });
 
-test.describe("adds json+ld metadata", () => {
+test.describe("should add json+ld metadata", () => {
 	test("with en locale", async ({ page }) => {
 		await page.goto("/en");
 
@@ -128,7 +128,7 @@ test.describe("adds json+ld metadata", () => {
 	});
 });
 
-test("serves an open-graph image", async ({ request }) => {
+test("should serve an open-graph image", async ({ request }) => {
 	for (const _locale of locales) {
 		// FIXME: serve og image per locale
 		// const response = await request.get(`/${locale}/opengraph-image.png`);

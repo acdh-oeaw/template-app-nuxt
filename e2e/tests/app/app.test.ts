@@ -8,7 +8,7 @@ const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 test.describe("app", () => {
 	if (process.env.BOTS !== "enabled") {
-		test("serves a robots.txt which disallows search engine bots", async ({ request }) => {
+		test("should serve a robots.txt which disallows search engine bots", async ({ request }) => {
 			const response = await request.get("/robots.txt");
 			const body = await response.body();
 
@@ -17,7 +17,7 @@ test.describe("app", () => {
 			);
 		});
 	} else {
-		test("serves a robots.txt", async ({ request }) => {
+		test("should serve a robots.txt", async ({ request }) => {
 			const response = await request.get("/robots.txt");
 			const body = await response.body();
 
@@ -32,7 +32,7 @@ test.describe("app", () => {
 		});
 	}
 
-	test("serves a sitemap.xml", async ({ request }) => {
+	test("should serve a sitemap.xml", async ({ request }) => {
 		const response = await request.get("/sitemap.xml");
 		const body = await response.body();
 
@@ -58,7 +58,7 @@ test.describe("app", () => {
 		}
 	});
 
-	test("serves a webmanifest", async ({ request }) => {
+	test("should serve a webmanifest", async ({ request }) => {
 		const response = await request.get("/manifest.webmanifest");
 		const body = await response.body();
 
@@ -82,28 +82,28 @@ test.describe("app", () => {
 		);
 	});
 
-	test("serves a favicon.ico", async ({ request }) => {
+	test("should serve a favicon.ico", async ({ request }) => {
 		const response = await request.get("/favicon.ico");
 		const status = response.status();
 
 		expect(status).toEqual(200);
 	});
 
-	test("serves an svg favicon", async ({ request }) => {
+	test("should serve an svg favicon", async ({ request }) => {
 		const response = await request.get("/icon.svg");
 		const status = response.status();
 
 		expect(status).toEqual(200);
 	});
 
-	test("serves an apple favicon", async ({ request }) => {
+	test("should serve an apple favicon", async ({ request }) => {
 		const response = await request.get("/apple-icon.png");
 		const status = response.status();
 
 		expect(status).toEqual(200);
 	});
 
-	test.describe("sets color mode according to system preference", () => {
+	test.describe("should set color mode according to system preference", () => {
 		test.use({ colorScheme: "no-preference" });
 
 		test("with no preference", async ({ page }) => {
@@ -112,7 +112,7 @@ test.describe("app", () => {
 		});
 	});
 
-	test.describe("sets color mode according to system preference", () => {
+	test.describe("should set color mode according to system preference", () => {
 		test.use({ colorScheme: "light" });
 
 		test("in light mode", async ({ page }) => {
@@ -121,12 +121,25 @@ test.describe("app", () => {
 		});
 	});
 
-	test.describe("sets color mode according to system preference", () => {
+	test.describe("should set color mode according to system preference", () => {
 		test.use({ colorScheme: "dark" });
 
 		test("in dark mode", async ({ page }) => {
 			await page.goto("/en");
 			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "dark");
 		});
+	});
+
+	test("should skip to main content with skip-link", async ({ createIndexPage }) => {
+		const locale = "en";
+
+		const { indexPage } = await createIndexPage(locale);
+		await indexPage.goto();
+
+		await indexPage.page.keyboard.press("Tab");
+		await expect(indexPage.skipLink).toBeFocused();
+
+		await indexPage.skipLink.click();
+		await expect(indexPage.mainContent).toBeFocused();
 	});
 });
