@@ -14,6 +14,7 @@ const baseUrl = `http://localhost:${port}`;
 
 export default defineConfig({
 	testDir: "./e2e",
+	snapshotDir: "./e2e/snapshots",
 	fullyParallel: true,
 	forbidOnly: isCI,
 	retries: isCI ? 2 : 0,
