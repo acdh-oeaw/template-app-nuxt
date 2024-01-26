@@ -7,7 +7,7 @@ import { expect, test } from "@/e2e/lib/test";
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 test.describe("app", () => {
-	if (process.env.BOTS !== "enabled") {
+	if (process.env.NUXT_PUBLIC_BOTS !== "enabled") {
 		test("should serve a robots.txt which disallows search engine bots", async ({ request }) => {
 			const response = await request.get("/robots.txt");
 			const body = await response.body();

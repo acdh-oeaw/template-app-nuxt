@@ -72,11 +72,11 @@ export default defineNuxtConfig({
 		"/imprint": { prerender: true },
 	},
 	runtimeConfig: {
-		BOTS: process.env.BOTS,
 		ENV_VALIDATION: process.env.ENV_VALIDATION,
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
 			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
+			NUXT_PUBLIC_BOTS: process.env.NUXT_PUBLIC_BOTS,
 			NUXT_PUBLIC_MATOMO_BASE_URL: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			NUXT_PUBLIC_MATOMO_ID: process.env.NUXT_PUBLIC_MATOMO_ID,
 			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,

@@ -2,7 +2,7 @@ import { createUrl } from "@acdh-oeaw/lib";
 import { z } from "zod";
 
 const baseUrl = z.string().url().parse(process.env.NUXT_PUBLIC_APP_BASE_URL);
-const bots = z.enum(["disabled", "enabled"]).optional().parse(process.env.BOTS);
+const bots = z.enum(["disabled", "enabled"]).optional().parse(process.env.NUXT_PUBLIC_BOTS);
 const isIndexable = bots === "enabled";
 
 const config = isIndexable
