@@ -1,10 +1,10 @@
 import { createI18n } from "vue-i18n";
 
-import messages from "@/messages/en.json";
+import en from "@/messages/en.json";
 
 const locale = "en";
 
-const { t } = createI18n({ legacy: false, locale, messages: { en: messages } }).global;
+const { t } = createI18n({ legacy: false, locale, messages: { en } }).global;
 
 const manifest = {
 	name: t("Manifest.name"),
@@ -16,7 +16,7 @@ const manifest = {
 	theme_color: "#fff",
 	icons: [
 		{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
-		// { src: "/icon-maskable.svg", sizes: "any", type: "image/svg+xml", purpose: "maskable" },
+		{ src: "/icon-maskable.svg", sizes: "any", type: "image/svg+xml", purpose: "maskable" },
 		{ src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
 		{ src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
 	],
