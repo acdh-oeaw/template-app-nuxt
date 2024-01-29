@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+defineRouteRules({
+	prerender: true,
+});
+
 definePageMeta({
 	title: "IndexPage.meta.title",
 });

@@ -39,6 +39,7 @@ export default defineNuxtConfig({
 				timeout: 250,
 			},
 		},
+		inlineRouteRules: true,
 	},
 	i18n: {
 		baseUrl,
@@ -67,12 +68,7 @@ export default defineNuxtConfig({
 			tailwindcss: {},
 		},
 	},
-	routeRules: {
-		"/": { prerender: true },
-		"/imprint": { prerender: true },
-	},
 	runtimeConfig: {
-		ENV_VALIDATION: process.env.ENV_VALIDATION,
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
 			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
