@@ -41,6 +41,10 @@ export default defineNuxtConfig({
 		},
 		inlineRouteRules: true,
 	},
+	features: {
+		/** @see https://github.com/nuxt/nuxt/issues/21821 */
+		inlineStyles: false,
+	},
 	i18n: {
 		baseUrl,
 		defaultLocale,
