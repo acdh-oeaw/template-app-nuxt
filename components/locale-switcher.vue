@@ -5,6 +5,7 @@ const currentLocale = useLocale();
 const t = useTranslations();
 const switchLocalePath = useSwitchLocalePath();
 const { setLocale } = useI18n();
+const route = useRoute();
 const labels = computed(() => {
 	return new Intl.DisplayNames([currentLocale.value], { type: "language" });
 });
@@ -12,7 +13,7 @@ const labels = computed(() => {
 
 <template>
 	<div class="flex items-center gap-2">
-		<template v-for="(_, locale, index) of locales" :key="locale">
+		<template v-for="(locale, index) of locales" :key="locale">
 			<span v-if="index !== 0">|</span>
 
 			<!--
@@ -23,7 +24,7 @@ const labels = computed(() => {
 			 -->
 			<NuxtLink
 				v-if="locale !== currentLocale"
-				:href="{ path: switchLocalePath(locale) }"
+				:href="{ path: switchLocalePath(locale), query: route.query }"
 				@click.prevent.stop="setLocale(locale)"
 			>
 				<span class="sr-only">

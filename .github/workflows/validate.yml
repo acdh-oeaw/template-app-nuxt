@@ -31,7 +31,7 @@ jobs:
       # Necessary because `actions/setup-node` does not yet support `corepack`.
       # @see https://github.com/actions/setup-node/issues/531
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -70,12 +70,6 @@ jobs:
       - name: Install playwright browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: pnpm exec playwright install --with-deps
-
-      - name: Cache Next.js build output
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/.next/cache
-          key: ${{ matrix.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Build app
         run: pnpm run build

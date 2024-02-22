@@ -13,6 +13,9 @@
 	"editor.rulers": [100],
 	"editor.stickyScroll.enabled": true,
 	"eslint.enable": true,
+	"eslint.options": {
+		"ignorePath": ".gitignore"
+	},
 	"eslint.validate": ["javascript", "typescript", "vue"],
 	"files.associations": {
 		"*.css": "tailwindcss"
@@ -37,8 +40,10 @@
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"typescript.inlayHints.parameterNames.enabled": "all",
 	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.labelFormat": "medium",
+	"workbench.tree.enableStickyScroll": true,
 	"[markdown][mdc]": {
 		"editor.wordWrap": "on"
 	}

@@ -1,6 +1,9 @@
 import { fileURLToPath } from "node:url";
 
-import { defaultLocale, locales } from "./config/i18n.config";
+import { defaultLocale, localesMap } from "./config/i18n.config";
+
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({
 	alias: {
@@ -17,7 +20,7 @@ export default defineNuxtConfig({
 	components: [{ path: "@/components", extensions: [".vue"], pathPrefix: false }],
 	content: {
 		defaultLocale,
-		locales: Object.keys(locales),
+		locales: Object.keys(localesMap),
 		markdown: {},
 	},
 	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
@@ -36,16 +39,17 @@ export default defineNuxtConfig({
 				timeout: 250,
 			},
 		},
+		inlineRouteRules: true,
 	},
 	i18n: {
-		baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
+		baseUrl,
 		defaultLocale,
 		detectBrowserLanguage: {
 			redirectOn: "root",
 		},
 		langDir: "./messages",
 		lazy: true,
-		locales: Object.values(locales),
+		locales: Object.values(localesMap),
 		strategy: "prefix",
 		vueI18n: "./i18n.config.ts",
 	},
@@ -62,25 +66,20 @@ export default defineNuxtConfig({
 	],
 	nitro: {
 		compressPublicAssets: true,
+		prerender: {
+			routes: ["/manifest.webmanifest", "/robots.txt", "/sitemap.xml"],
+		},
 	},
 	postcss: {
 		plugins: {
 			tailwindcss: {},
 		},
 	},
-	routeRules: {
-		"/**": {
-			headers: process.env.BOTS !== "enabled" ? { "X-Robots-Tag": "noindex, nofollow" } : {},
-		},
-		"/": { prerender: true },
-		"/imprint": { prerender: true },
-	},
 	runtimeConfig: {
-		BOTS: process.env.BOTS,
-		ENV_VALIDATION: process.env.ENV_VALIDATION,
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
 			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
+			NUXT_PUBLIC_BOTS: process.env.NUXT_PUBLIC_BOTS,
 			NUXT_PUBLIC_MATOMO_BASE_URL: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			NUXT_PUBLIC_MATOMO_ID: process.env.NUXT_PUBLIC_MATOMO_ID,
 			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,

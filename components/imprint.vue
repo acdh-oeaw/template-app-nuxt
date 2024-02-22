@@ -12,6 +12,7 @@ const imprint = await useFetch(String(createImprintUrl(locale.value, redmineId))
 	onResponseError(error) {
 		throw createError({ fatal: true, statusCode: error.response.status });
 	},
+	watch: [locale],
 });
 </script>
 

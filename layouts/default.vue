@@ -31,6 +31,7 @@ useHead({
 			{ href: "/favicon.ico", rel: "icon", sizes: "any" },
 			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
 			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
+			{ href: "/manifest.webmanifest", rel: "manifest" },
 			...(i18nHead.value.link ?? []),
 		];
 	}),
@@ -50,7 +51,9 @@ useHead({
 					}),
 				),
 			},
-			{ property: "og:locale", content: locale.value },
+			{ name: "twitter:card", content: "summary_large_image" },
+			{ name: "twitter:creator", content: "@acdh_oeaw" },
+			{ name: "twitter:site", content: "@acdh_oeaw" },
 			...(i18nHead.value.meta ?? []),
 		];
 	}),

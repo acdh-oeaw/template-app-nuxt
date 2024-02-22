@@ -7,7 +7,11 @@ const t = useTranslations();
 		<slot />
 
 		<template #error="{ error }">
-			<p>{{ t("ErrorBoundary.error") }}: {{ error }}</p>
+			<div class="relative">
+				<Centered>
+					<p>{{ t("ErrorBoundary.error") }}: {{ error }}</p>
+				</Centered>
+			</div>
 		</template>
 	</NuxtErrorBoundary>
 </template>

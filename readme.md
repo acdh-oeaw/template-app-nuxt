@@ -12,7 +12,7 @@ prerequisites:
 set required environment variables in `.env.local`:
 
 ```bash
-cp .env.example .env.local
+cp .env.local.example .env.local
 ```
 
 also, set environment variables required by github actions. use
