@@ -9,6 +9,7 @@
 		"ms-playwright.playwright",
 		"nuxt.mdc",
 		"stylelint.vscode-stylelint",
+		"vitest.explorer",
 		"vue.volar",
 		"vue.vscode-typescript-vue-plugin"
 	]

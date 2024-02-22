@@ -25,10 +25,10 @@
 		"prepare": "run-s setup",
 		"setup": "is-ci || simple-git-hooks",
 		"start": "nuxt preview --dotenv ./.env.local",
-		"test": "exit 0",
-		"test:e2e": "playwright test",
-		"test:e2e:codegen": "playwright codegen",
-		"test:e2e:ui": "playwright test --ui",
+		"test": "vitest run",
+		"test:e2e": "dotenv -c -- playwright test",
+		"test:e2e:codegen": "dotenv -c -- playwright codegen",
+		"test:e2e:ui": "dotenv -c -- playwright test --ui",
 		"types:check": "nuxt typecheck",
 		"validate": "run-p format:check lint:check types:check test test:e2e"
 	},
@@ -58,9 +58,14 @@
 		"@acdh-oeaw/stylelint-config": "^2.0.1",
 		"@acdh-oeaw/tailwindcss-preset": "^0.0.22",
 		"@acdh-oeaw/tsconfig": "^1.0.2",
+		"@axe-core/playwright": "^4.8.2",
 		"@nuxt/devtools": "^1.0.8",
+		"@nuxt/test-utils": "^3.9.0",
 		"@playwright/test": "^1.41.2",
+		"@testing-library/user-event": "^14.5.1",
+		"@testing-library/vue": "^7.0.0",
 		"@types/node": "^20.11.19",
+		"@vue/test-utils": "^2.4.3",
 		"axe-core": "^4.8.4",
 		"axe-playwright": "^2.0.1",
 		"ci-info": "^4.0.0",
@@ -68,7 +73,10 @@
 		"dotenv-expand": "^11.0.6",
 		"eslint": "^8.56.0",
 		"eslint-plugin-tailwindcss": "^3.14.3",
+		"eslint-plugin-testing-library": "^6.1.0",
+		"eslint-plugin-vitest": "^0.3.2",
 		"is-ci": "^3.0.1",
+		"jsdom": "^22.1.0",
 		"lint-staged": "^15.2.2",
 		"npm-run-all2": "^6.1.2",
 		"nuxt": "^3.10.2",
@@ -79,6 +87,7 @@
 		"stylelint": "^16.2.1",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5.3.3",
+		"vitest": "^1.1.0",
 		"vue-tsc": "^1.8.27"
 	},
 	"browserslist": {
@@ -100,6 +109,17 @@
 			"@acdh-oeaw/eslint-config-vue",
 			"@acdh-oeaw/eslint-config-nuxt",
 			"plugin:eslint-plugin-tailwindcss/recommended"
+		],
+		"overrides": [
+			{
+				"files": [
+					"./test/**/*.@(spec|test).ts"
+				],
+				"extends": [
+					"plugin:eslint-plugin-testing-library/vue",
+					"plugin:eslint-plugin-vitest/recommended"
+				]
+			}
 		]
 	},
 	"lint-staged": {
