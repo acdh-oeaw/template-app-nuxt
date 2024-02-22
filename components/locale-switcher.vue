@@ -5,6 +5,7 @@ const currentLocale = useLocale();
 const t = useTranslations();
 const switchLocalePath = useSwitchLocalePath();
 const { setLocale } = useI18n();
+const route = useRoute();
 const labels = computed(() => {
 	return new Intl.DisplayNames([currentLocale.value], { type: "language" });
 });
@@ -23,7 +24,7 @@ const labels = computed(() => {
 			 -->
 			<NuxtLink
 				v-if="locale !== currentLocale"
-				:href="{ path: switchLocalePath(locale) }"
+				:href="{ path: switchLocalePath(locale), query: route.query }"
 				@click.prevent.stop="setLocale(locale)"
 			>
 				<span class="sr-only">
