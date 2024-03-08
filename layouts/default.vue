@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
+import { assert, createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
@@ -7,6 +7,7 @@ const env = useRuntimeConfig();
 const locale = useLocale();
 const t = useTranslations();
 const route = useRoute();
+assert(route.meta.title, "Missing `title` in `definePageMeta`.");
 
 const i18nHead = useLocaleHead({
 	addDirAttribute: true,
