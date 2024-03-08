@@ -1,0 +1,25 @@
+{
+	"Nuxt static page component": {
+		"scope": "vue",
+		"prefix": "nuxt-page-static",
+		"body": [
+			"<script lang=\"ts\" setup>",
+			"defineRouteRules({",
+			"\tprerender: true,",
+			"});",
+			"",
+			"definePageMeta({",
+			"\ttitle: \"${1:Name}Page.meta.title\",",
+			"});",
+			"",
+			"const t = useTranslations();",
+			"</script>",
+			"",
+			"<template>",
+			"\t<MainContent class=\"container py-8\">",
+			"\t\t<h1>{{ t(\"${1:Name}Page.title\") }}</h1>",
+			"\t</MainContent>",
+			"</template>",
+		],
+	},
+}
