@@ -66,10 +66,12 @@ jobs:
           path: "~/.cache/ms-playwright"
           key: ${{ matrix.os }}-playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
 
-      # TODO: might need https://github.com/microsoft/playwright/issues/7249#issuecomment-1597663397
       - name: Install playwright browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: pnpm exec playwright install --with-deps
+      - name: Install playwright browsers (os dependencies)
+        if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
+        run: pnpm exec playwright install-deps
 
       - name: Build app
         run: pnpm run build
