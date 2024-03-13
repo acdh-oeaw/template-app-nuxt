@@ -11,8 +11,8 @@ const t = useTranslations();
 </script>
 
 <template>
-	<MainContent class="container py-8">
-		<h1>{{ t("ImprintPage.title") }}</h1>
+	<MainContent class="container grid content-start gap-y-8 py-8">
+		<PageTitle>{{ t("ImprintPage.title") }}</PageTitle>
 		<Imprint />
 	</MainContent>
 </template>

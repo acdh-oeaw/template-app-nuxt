@@ -52,11 +52,11 @@ function onReset() {
 <template>
 	<MainContent class="grid min-h-full place-content-center place-items-center">
 		<template v-if="isNotFoundPage">
-			<h1>{{ t("NotFoundPage.title") }}</h1>
+			<PageTitle>{{ t("NotFoundPage.title") }}</PageTitle>
 		</template>
 
 		<template v-else>
-			<h1>{{ t("ErrorPage.title") }}</h1>
+			<PageTitle>{{ t("ErrorPage.title") }}</PageTitle>
 			<div class="flex items-center gap-4">
 				<span>{{ "statusCode" in props.error ? props.error.statusCode : 500 }}</span>
 				<span>{{ props.error.message }}</span>
