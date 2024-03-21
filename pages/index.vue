@@ -3,11 +3,11 @@ defineRouteRules({
 	prerender: true,
 });
 
-definePageMeta({
-	title: "IndexPage.meta.title",
-});
-
 const t = useTranslations();
+
+usePageMetadata({
+	title: t("IndexPage.meta.title"),
+});
 </script>
 
 <template>

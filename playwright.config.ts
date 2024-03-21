@@ -10,7 +10,7 @@ for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]
 }
 
 const port = 3000;
-const baseUrl = `http://localhost:${port}`;
+const baseUrl = `http://localhost:${String(port)}`;
 
 export default defineConfig({
 	testDir: "./e2e",

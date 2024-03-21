@@ -3,11 +3,11 @@ defineRouteRules({
 	prerender: true,
 });
 
-definePageMeta({
-	title: "ImprintPage.meta.title",
-});
-
 const t = useTranslations();
+
+usePageMetadata({
+	title: t("ImprintPage.meta.title"),
+});
 </script>
 
 <template>
