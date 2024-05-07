@@ -6,8 +6,8 @@ template repository for nuxt 3 apps.
 
 prerequisites:
 
-- [Node.js v20](https://nodejs.org/en/download)
-- [pnpm](https://pnpm.io/installation)
+- [node.js 20.x](https://nodejs.org/en/download)
+- [pnpm 9.x](https://pnpm.io/installation)
 
 set required environment variables in `.env.local`:
 
@@ -36,8 +36,9 @@ pnpm run dev
 
 - ask a sysadmin to create a new acdh-ch kubernetes project.
 - create a new namespace in that project via [rancher](https://rancher.acdh-dev.oeaw.ac.at), and set
-  the `KUBE_NAMESPACE` github variable as well as the
-  [`app_name`](./.github/workflows/build-deploy.yml#L36) to that namespace.
+  the `KUBE_NAMESPACE` github variable to that namespace.
+- adjust the [`app_name`](./.github/workflows/build-deploy.yml#L36), which will be the name of the
+  deployment in the above namespace.
 - set the `PUBLIC_URL` github variable to the application's public url (e.g.
   "https://my-app.acdh-ch-dev.oeaw.ac.at"), and set the `KUBE_INGRESS_BASE_DOMAIN` to the public
   url's base domain (e.g. "acdh-ch-dev.oeaw.ac.at").
