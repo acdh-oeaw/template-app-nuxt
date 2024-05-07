@@ -130,13 +130,23 @@ test.describe("should add json+ld metadata", () => {
 	});
 });
 
-test("should serve an open-graph image", async ({ request }) => {
-	for (const _locale of locales) {
+test("should serve an open-graph image", async ({ page, request }) => {
+	for (const locale of locales) {
 		// FIXME: serve og image per locale
-		// const response = await request.get(`/${locale}/opengraph-image.png`);
-		const response = await request.get("opengraph-image.png");
-		const status = response.status();
+		// const imagePath = `/${locale}/opengraph-image.png`;
+		const imagePath = "/opengraph-image.png";
 
-		expect(status).toEqual(200);
+		await page.goto(`/${locale}`);
+		await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+			"content",
+			expect.stringContaining(String(createUrl({ baseUrl, pathname: imagePath }))),
+		);
+
+		const response = await request.get(imagePath);
+		const status = response.status();
+		const contentType = response.headers()["content-type"];
+
+		expect(status).toBe(200);
+		expect(contentType).toBe("image/png");
 	}
 });
