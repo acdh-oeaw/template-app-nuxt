@@ -10,6 +10,7 @@ on:
 
 jobs:
   env:
+    name: Generate environment variables
     runs-on: ubuntu-latest
     steps:
       - name: Derive environment from git ref
@@ -37,6 +38,7 @@ jobs:
       image: ${{ github.repository }}
 
   vars:
+    name: Generate public url
     needs: [env]
     runs-on: ubuntu-latest
     environment:
@@ -56,6 +58,7 @@ jobs:
       public_url: ${{ steps.public_url.outputs.PUBLIC_URL }}
 
   build:
+    name: Build and push docker image
     needs: [env, vars]
     runs-on: ubuntu-latest
     permissions:
@@ -105,8 +108,9 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
+    name: Deploy docker image
     needs: [env, vars, build]
-    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy-cluster-2.yml@main
+    uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy.yml@main
     secrets: inherit
     with:
       environment: ${{ needs.env.outputs.environment }}
