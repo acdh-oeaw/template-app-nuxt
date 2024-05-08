@@ -60,7 +60,14 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["./config/"],
 	},
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
+	modules: [
+		"@nuxt/content",
+		"@nuxt/image",
+		"nuxt-svgo",
+		"@nuxtjs/color-mode",
+		"@nuxtjs/i18n",
+		"@vueuse/nuxt",
+	],
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {
