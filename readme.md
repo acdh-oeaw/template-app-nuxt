@@ -58,10 +58,10 @@ pnpm run dev
   the
   [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables).
 
-  > [!IMPORTANT]
-  >
-  > this is a feature exclusive to nuxt 3. for most deployment scenarios it is not needed, but it
-  > can be useful for deploying multiple instances from a single build.
+> [!IMPORTANT]
+>
+> this is a feature exclusive to nuxt 3. for most deployment scenarios it is not needed, but it can
+> be useful for deploying multiple instances from a single build.
 
 - ensure both the github repository, and the
   [package registry](https://github.com/orgs/acdh-oeaw/packages/container/my-app/settings) is set to
