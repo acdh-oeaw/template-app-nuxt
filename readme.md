@@ -53,9 +53,14 @@ pnpm run dev
   [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as github secrets. github
   secrets need to be prefixed with `K8S_SECRET_` to be automatically copied to the runtime
   environment. in case you need secrets in the docker build context, you can
-  [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/). To enable
-  override of build values through runtime env vars note the
+  [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/).
+- To enable runtime override of public `runtimeConfig` build values through runtime env vars note the
   [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables)
+> [!IMPORTANT]
+> This is a feature exclusive to nuxt 3. For most deployment scenarios it is not needed, but it can
+> be useful for deploying multiple instances from a single build.
+
+
 - ensure both the github repository, and the
   [package registry](https://github.com/orgs/acdh-oeaw/packages/container/my-app/settings) is set to
   public.
