@@ -46,15 +46,16 @@ pnpm run dev
   and set the `SERVICE_ID` github variable to the issue number. this should match the
   `NUXT_PUBLIC_REDMINE_ID` variable in your `.env.local` file.
 - ensure required build args (prefixed with `NUXT_PUBLIC_`) are referenced in both the
-  [`Dockerfle`](./Dockerfile), as well as the [validation](./.github/workflows/validate.yml) as
+  [`Dockerfile`](./Dockerfile), as well as the [validation](./.github/workflows/validate.yml) as
   [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as github variables.
 - ensure required runtime environment variables are referenced in the
   [validation](./.github/workflows/validate.yml) and
   [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as github secrets. github
   secrets need to be prefixed with `K8S_SECRET_` to be automatically copied to the runtime
   environment. in case you need secrets in the docker build context, you can
-  [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/).
-- ensure both the github repository, as well as the
+  [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/). To enable override of build values through runtime
+  env vars note	the [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables)
+- ensure both the github repository, and the
   [package registry](https://github.com/orgs/acdh-oeaw/packages/container/my-app/settings) is set to
   public.
 
