@@ -5,7 +5,7 @@ const env = useRuntimeConfig();
 
 const locale = useLocale();
 
-const redmineId = env.public.NUXT_PUBLIC_REDMINE_ID;
+const redmineId = env.public.redmineId;
 
 const imprint = await useFetch(String(createImprintUrl(locale.value, redmineId)), {
 	responseType: "text",
