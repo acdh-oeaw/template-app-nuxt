@@ -75,11 +75,11 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
-			NUXT_PUBLIC_APP_BASE_URL: process.env.NUXT_PUBLIC_APP_BASE_URL,
-			NUXT_PUBLIC_BOTS: process.env.NUXT_PUBLIC_BOTS,
-			NUXT_PUBLIC_MATOMO_BASE_URL: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
-			NUXT_PUBLIC_MATOMO_ID: process.env.NUXT_PUBLIC_MATOMO_ID,
-			NUXT_PUBLIC_REDMINE_ID: process.env.NUXT_PUBLIC_REDMINE_ID,
+			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
+			bots: process.env.NUXT_PUBLIC_BOTS,
+			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
+			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
+			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,
 		},
 	},
 	typescript: {
