@@ -77,6 +77,7 @@ export default defineNuxtConfig({
 		public: {
 			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			bots: process.env.NUXT_PUBLIC_BOTS,
+			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
 			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
 			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,

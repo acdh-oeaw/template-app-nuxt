@@ -37,7 +37,7 @@ useHead({
 		];
 	}),
 	meta: computed(() => {
-		return [
+		const meta = [
 			{ name: "description", content: t("DefaultLayout.meta.description") },
 			{ property: "og:type", content: "website" },
 			{ property: "og:title", content: t("DefaultLayout.meta.title") },
@@ -57,6 +57,12 @@ useHead({
 			{ name: "twitter:site", content: t("DefaultLayout.meta.twitter") },
 			...(i18nHead.value.meta ?? []),
 		];
+
+		if (isNonEmptyString(env.public.googleSiteVerification)) {
+			meta.push({ name: "google-site-verification", content: env.public.googleSiteVerification });
+		}
+
+		return meta;
 	}),
 	script: computed(() => {
 		const jsonLd: WithContext<WebSite> = {
