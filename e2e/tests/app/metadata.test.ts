@@ -2,6 +2,7 @@ import { createUrl } from "@acdh-oeaw/lib";
 
 import { locales } from "@/config/i18n.config";
 import { expect, test } from "@/e2e/lib/test";
+import { escape } from "@/utils/safe-json-ld-replacer";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
@@ -18,12 +19,18 @@ test("should set a canonical url", async ({ page }) => {
 	}
 });
 
-test("should set document title on not-found page", async ({ page }) => {
+test("should set document title on not-found page", async ({ createI18n, page }) => {
+	const i18nEn = await createI18n("en");
 	await page.goto("/unknown");
-	await expect(page).toHaveTitle("Page not found | ACDH-CH App");
+	await expect(page).toHaveTitle(
+		[i18nEn.t("NotFoundPage.meta.title"), i18nEn.t("DefaultLayout.meta.title")].join(" | "),
+	);
 
+	const i18nDe = await createI18n("de");
 	await page.goto("/de/unknown");
-	await expect(page).toHaveTitle("Seite nicht gefunden | ACDH-CH App");
+	await expect(page).toHaveTitle(
+		[i18nDe.t("NotFoundPage.meta.title"), i18nDe.t("DefaultLayout.meta.title")].join(" | "),
+	);
 });
 
 test("should disallow indexing of not-found page", async ({ page }) => {
@@ -35,9 +42,14 @@ test("should disallow indexing of not-found page", async ({ page }) => {
 	}
 });
 
-test.describe("should set page metadata", () => {
-	test("static", async ({ page }) => {
-		await page.goto("/en");
+test("should set page metadata", async ({ createIndexPage }) => {
+	for (const locale of locales) {
+		const { indexPage, i18n } = await createIndexPage(locale);
+		await indexPage.goto();
+		const { page } = indexPage;
+
+		expect(i18n.t("DefaultLayout.meta.title")).toBeTruthy();
+		expect(i18n.t("DefaultLayout.meta.description")).toBeTruthy();
 
 		const ogType = page.locator('meta[property="og:type"]');
 		await expect(ogType).toHaveAttribute("content", "website");
@@ -53,91 +65,68 @@ test.describe("should set page metadata", () => {
 
 		// const googleSiteVerification = page.locator('meta[name="google-site-verification"]');
 		// await expect(googleSiteVerification).toHaveAttribute("content", "");
-	});
 
-	test("with en locale", async ({ page }) => {
-		await page.goto("/en");
-
-		await expect(page).toHaveTitle("Home | ACDH-CH App");
+		await expect(page).toHaveTitle(
+			[i18n.t("IndexPage.meta.title"), i18n.t("DefaultLayout.meta.title")].join(" | "),
+		);
 
 		const metaDescription = page.locator('meta[name="description"]');
-		await expect(metaDescription).toHaveAttribute("content", "ACDH-CH App");
+		await expect(metaDescription).toHaveAttribute(
+			"content",
+			i18n.t("DefaultLayout.meta.description"),
+		);
 
 		const ogTitle = page.locator('meta[property="og:title"]');
-		await expect(ogTitle).toHaveAttribute("content", "Home");
+		await expect(ogTitle).toHaveAttribute("content", i18n.t("IndexPage.meta.title"));
 
 		const ogDescription = page.locator('meta[property="og:description"]');
-		await expect(ogDescription).toHaveAttribute("content", "ACDH-CH App");
+		await expect(ogDescription).toHaveAttribute(
+			"content",
+			i18n.t("DefaultLayout.meta.description"),
+		);
 
 		const ogUrl = page.locator('meta[property="og:url"]');
-		await expect(ogUrl).toHaveAttribute("content", String(createUrl({ baseUrl, pathname: "/en" })));
+		await expect(ogUrl).toHaveAttribute(
+			"content",
+			String(createUrl({ baseUrl, pathname: `/${locale}` })),
+		);
 
 		const ogLocale = page.locator('meta[property="og:locale"]');
-		await expect(ogLocale).toHaveAttribute("content", "en");
-	});
-
-	test("with de locale", async ({ page }) => {
-		await page.goto("/de");
-
-		await expect(page).toHaveTitle("Startseite | ACDH-CH App");
-
-		const metaDescription = page.locator('meta[name="description"]');
-		await expect(metaDescription).toHaveAttribute("content", "ACDH-CH App");
-
-		const ogTitle = page.locator('meta[property="og:title"]');
-		await expect(ogTitle).toHaveAttribute("content", "Startseite");
-
-		const ogDescription = page.locator('meta[property="og:description"]');
-		await expect(ogDescription).toHaveAttribute("content", "ACDH-CH App");
-
-		const ogUrl = page.locator('meta[property="og:url"]');
-		await expect(ogUrl).toHaveAttribute("content", String(createUrl({ baseUrl, pathname: "/de" })));
-
-		const ogLocale = page.locator('meta[property="og:locale"]');
-		await expect(ogLocale).toHaveAttribute("content", "de");
-	});
+		await expect(ogLocale).toHaveAttribute("content", locale);
+	}
 });
 
-test.describe("should add json+ld metadata", () => {
-	test("with en locale", async ({ page }) => {
-		await page.goto("/en");
+test("should add json+ld metadata", async ({ createIndexPage }) => {
+	for (const locale of locales) {
+		const { indexPage, i18n } = await createIndexPage(locale);
+		await indexPage.goto();
 
-		const metadata = await page.locator('script[type="application/ld+json"]').textContent();
+		const metadata = await indexPage.page
+			.locator('script[type="application/ld+json"]')
+			.textContent();
+
 		// eslint-disable-next-line playwright/prefer-web-first-assertions
 		expect(metadata).toBe(
 			JSON.stringify({
 				"@context": "https://schema.org",
 				"@type": "WebSite",
-				name: "ACDH-CH App",
-				description: "ACDH-CH App",
+				name: escape(i18n.t("DefaultLayout.meta.title")),
+				description: escape(i18n.t("DefaultLayout.meta.description")),
 			}),
 		);
-	});
-
-	test("with de locale", async ({ page }) => {
-		await page.goto("/de");
-
-		const metadata = await page.locator('script[type="application/ld+json"]').textContent();
-		// eslint-disable-next-line playwright/prefer-web-first-assertions
-		expect(metadata).toBe(
-			JSON.stringify({
-				"@context": "https://schema.org",
-				"@type": "WebSite",
-				name: "ACDH-CH App",
-				description: "ACDH-CH App",
-			}),
-		);
-	});
+	}
 });
 
-test("should serve an open-graph image", async ({ page, request }) => {
+test("should serve an open-graph image", async ({ createIndexPage, request }) => {
 	for (const locale of locales) {
 		// FIXME: serve og image per locale
 		// const imagePath = `/${locale}/opengraph-image.png`;
 		const imagePath = "/opengraph-image.png";
 
-		await page.goto(`/${locale}`);
-		await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+		const { indexPage } = await createIndexPage(locale);
+		await indexPage.goto();
+
+		await expect(indexPage.page.locator('meta[property="og:image"]')).toHaveAttribute(
 			"content",
 			expect.stringContaining(String(createUrl({ baseUrl, pathname: imagePath }))),
 		);

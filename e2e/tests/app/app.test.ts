@@ -1,6 +1,6 @@
 import { createUrl } from "@acdh-oeaw/lib";
 
-import { locales } from "@/config/i18n.config";
+import { defaultLocale, locales } from "@/config/i18n.config";
 import { expect, test } from "@/e2e/lib/test";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -58,16 +58,17 @@ test.describe("app", () => {
 		}
 	});
 
-	test("should serve a webmanifest", async ({ request }) => {
+	test("should serve a webmanifest", async ({ createI18n, request }) => {
 		const response = await request.get("/manifest.webmanifest");
 		const body = await response.body();
 
-		// TODO: use toMatchSnapshot
+		const i18n = await createI18n(defaultLocale);
+
 		expect(body.toString()).toEqual(
 			JSON.stringify({
-				name: "ACDH-CH App",
-				short_name: "ACDH-CH App",
-				description: "ACDH-CH App",
+				name: i18n.t("Manifest.name"),
+				short_name: i18n.t("Manifest.short-name"),
+				description: i18n.t("Manifest.description"),
 				start_url: "/",
 				display: "standalone",
 				background_color: "#fff",
@@ -106,18 +107,20 @@ test.describe("app", () => {
 	test.describe("should set color mode according to system preference", () => {
 		test.use({ colorScheme: "no-preference" });
 
-		test("with no preference", async ({ page }) => {
-			await page.goto("/en");
-			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
+		test("with no preference", async ({ createIndexPage }) => {
+			const { indexPage } = await createIndexPage(defaultLocale);
+			await indexPage.goto();
+			await expect(indexPage.page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
 		});
 	});
 
 	test.describe("should set color mode according to system preference", () => {
 		test.use({ colorScheme: "light" });
 
-		test("in light mode", async ({ page }) => {
-			await page.goto("/en");
-			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
+		test("in light mode", async ({ createIndexPage }) => {
+			const { indexPage } = await createIndexPage(defaultLocale);
+			await indexPage.goto();
+			await expect(indexPage.page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
 		});
 	});
 
@@ -131,9 +134,7 @@ test.describe("app", () => {
 	});
 
 	test("should skip to main content with skip-link", async ({ createIndexPage }) => {
-		const locale = "en";
-
-		const { indexPage } = await createIndexPage(locale);
+		const { indexPage } = await createIndexPage(defaultLocale);
 		await indexPage.goto();
 
 		await indexPage.page.keyboard.press("Tab");
