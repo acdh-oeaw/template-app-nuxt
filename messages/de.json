@@ -22,7 +22,8 @@
 	"DefaultLayout": {
 		"meta": {
 			"description": "ACDH-CH App",
-			"title": "ACDH-CH App"
+			"title": "ACDH-CH App",
+			"twitter": "@acdh_oeaw"
 		},
 		"skip-to-main-content": "Zum Hauptinhalt springen"
 	},

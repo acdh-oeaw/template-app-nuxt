@@ -53,8 +53,8 @@ useHead({
 				),
 			},
 			{ name: "twitter:card", content: "summary_large_image" },
-			{ name: "twitter:creator", content: "@acdh_oeaw" },
-			{ name: "twitter:site", content: "@acdh_oeaw" },
+			{ name: "twitter:creator", content: t("DefaultLayout.meta.twitter") },
+			{ name: "twitter:site", content: t("DefaultLayout.meta.twitter") },
 			...(i18nHead.value.meta ?? []),
 		];
 	}),

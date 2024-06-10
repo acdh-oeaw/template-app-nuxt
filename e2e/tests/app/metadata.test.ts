@@ -58,10 +58,10 @@ test("should set page metadata", async ({ createIndexPage }) => {
 		await expect(twCard).toHaveAttribute("content", "summary_large_image");
 
 		const twCreator = page.locator('meta[name="twitter:creator"]');
-		await expect(twCreator).toHaveAttribute("content", "@acdh_oeaw");
+		await expect(twCreator).toHaveAttribute("content", i18n.t("DefaultLayout.meta.twitter"));
 
 		const twSite = page.locator('meta[name="twitter:site"]');
-		await expect(twSite).toHaveAttribute("content", "@acdh_oeaw");
+		await expect(twSite).toHaveAttribute("content", i18n.t("DefaultLayout.meta.twitter"));
 
 		// const googleSiteVerification = page.locator('meta[name="google-site-verification"]');
 		// await expect(googleSiteVerification).toHaveAttribute("content", "");
