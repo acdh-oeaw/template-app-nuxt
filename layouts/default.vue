@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
+import inter from "@fontsource-variable/inter/files/inter-latin-slnt-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
@@ -31,6 +32,7 @@ useHead({
 			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
 			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
 			{ href: "/manifest.webmanifest", rel: "manifest" },
+			{ href: inter, rel: "preload", as: "font", type: "font/woff2", crossorigin: true },
 			...(i18nHead.value.link ?? []),
 		];
 	}),
