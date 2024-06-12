@@ -8,6 +8,8 @@ const env = useRuntimeConfig();
 const locale = useLocale();
 const t = useTranslations();
 
+const router = useRouter();
+
 const i18nHead = useLocaleHead({
 	addDirAttribute: true,
 	identifierAttribute: "id",
@@ -91,6 +93,10 @@ useHead({
 		return scripts;
 	}),
 });
+
+router.afterEach((to, from) => {
+	trackPageView(to, from);
+});
 </script>
 
 <template>
@@ -103,6 +109,6 @@ useHead({
 		</ErrorBoundary>
 		<AppFooter />
 
-		<RouteAnnouncer />
+		<NuxtRouteAnnouncer />
 	</div>
 </template>
