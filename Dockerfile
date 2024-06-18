@@ -14,12 +14,10 @@ WORKDIR /app
 USER node
 
 COPY --chown=node:node .npmrc package.json pnpm-lock.yaml ./
-RUN sed -i "s/use-node-version/# use-node-version/" .npmrc
 
 RUN pnpm fetch
 
 COPY --chown=node:node ./ ./
-RUN sed -i "s/use-node-version/# use-node-version/" .npmrc
 
 ARG NUXT_PUBLIC_APP_BASE_URL
 ARG NUXT_PUBLIC_BOTS
