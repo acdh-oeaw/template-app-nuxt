@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import type { NavLinkProps } from "@/components/nav-link.vue";
+import type { NuxtLinkProps } from "#app";
 
 const t = useTranslations();
 
 const links = computed(() => {
 	return {
 		imprint: { href: { path: "/imprint" }, label: t("AppFooter.links.imprint") },
-	} satisfies Record<string, { href: NavLinkProps["href"]; label: string }>;
+	} satisfies Record<string, { href: NuxtLinkProps["href"]; label: string }>;
 });
 </script>
 
@@ -16,9 +16,9 @@ const links = computed(() => {
 			<nav :aria-label="t('AppFooter.navigation-secondary')">
 				<ul class="flex items-center gap-4" role="list">
 					<li v-for="(link, key) of links" :key="key">
-						<NavLink :href="link.href">
+						<NuxtLinkLocale :href="link.href">
 							{{ link.label }}
-						</NavLink>
+						</NuxtLinkLocale>
 					</li>
 				</ul>
 			</nav>
