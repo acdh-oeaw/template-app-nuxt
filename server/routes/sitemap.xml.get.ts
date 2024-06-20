@@ -9,7 +9,7 @@ import { locales } from "@/config/i18n.config";
 const baseUrl = v.parse(v.pipe(v.string(), v.url()), process.env.NUXT_PUBLIC_APP_BASE_URL);
 
 // eslint-disable-next-line import/no-named-as-default-member
-const paths = fg.globSync("./**/*.vue", { cwd: join(process.cwd(), "pages") });
+const paths = fg.globSync("./**/*.vue", { cwd: join(process.cwd(), "app", "pages") });
 
 const routes: Array<string> = [];
 

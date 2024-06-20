@@ -1,10 +1,10 @@
 import { test as base } from "@playwright/test";
 
 import { defaultLocale, type Locale } from "@/config/i18n.config";
-import { type AccessibilityScanner, createAccessibilityScanner } from "@/e2e/lib/fixtures/a11y";
-import { createI18n, type I18n, type WithI18n } from "@/e2e/lib/fixtures/i18n";
-import { ImprintPage } from "@/e2e/lib/fixtures/imprint-page";
-import { IndexPage } from "@/e2e/lib/fixtures/index-page";
+import { type AccessibilityScanner, createAccessibilityScanner } from "~/e2e/lib/fixtures/a11y";
+import { createI18n, type I18n, type WithI18n } from "~/e2e/lib/fixtures/i18n";
+import { ImprintPage } from "~/e2e/lib/fixtures/imprint-page";
+import { IndexPage } from "~/e2e/lib/fixtures/index-page";
 
 interface Fixtures {
 	createAccessibilityScanner: () => Promise<AccessibilityScanner>;

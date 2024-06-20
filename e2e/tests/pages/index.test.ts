@@ -1,5 +1,5 @@
 import { locales } from "@/config/i18n.config";
-import { expect, test } from "@/e2e/lib/test";
+import { expect, test } from "~/e2e/lib/test";
 
 test.describe("index page", () => {
 	test("should have document title", async ({ createIndexPage }) => {

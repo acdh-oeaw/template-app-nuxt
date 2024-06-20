@@ -4,14 +4,7 @@ import type { Config } from "tailwindcss";
 const preset = createPreset();
 
 const config = {
-	content: [
-		"./app.vue",
-		"./error.vue",
-		"./components/**/*.@(css|ts|vue)",
-		"./content/**/*.md",
-		"./layouts/**/*.@(css|ts|vue)",
-		"./pages/**/*.@(css|ts|vue)",
-	],
+	content: ["./app/**/*.@(css|ts|vue)", "./content/**/*.md"],
 	presets: [preset],
 } satisfies Config;
 
