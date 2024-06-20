@@ -19,7 +19,8 @@ set required environment variables in `.env.local`:
 cp .env.local.example .env.local
 ```
 
-also, set environment variables required by github actions. use
+also, set environment variables required by [validation](./.github/workflows/validate.yml) and
+[deployment](./.github/workflows/build-deploy.yml) github actions. use
 ["variables"](https://github.com/acdh-oeaw/template-app-nuxt/settings/variables/actions) for every
 environment variable prefixed with `NUXT_PUBLIC_`, and
 ["secrets"](https://github.com/acdh-oeaw/template-app-nuxt/settings/secrets/actions) for all others.
@@ -30,7 +31,7 @@ install dependencies:
 pnpm install
 ```
 
-run a development server on [http://localhost:3000](http://localhost:3000):
+run a development server on <http://localhost:3000>:
 
 ```bash
 pnpm run dev
@@ -51,10 +52,12 @@ pnpm run dev
   `NUXT_PUBLIC_REDMINE_ID` variable in your `.env.local` file.
 - ensure required build args (prefixed with `NUXT_PUBLIC_`) are referenced in both the
   [`Dockerfile`](./Dockerfile), as well as the [validation](./.github/workflows/validate.yml) and
-  [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as github variables.
+  [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as
+  [github variables](https://github.com/acdh-oeaw/template-app-nuxt/settings/variables/actions).
 - ensure required runtime environment variables are referenced in the
   [validation](./.github/workflows/validate.yml) and
-  [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as github secrets. github
+  [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as
+  [github secrets](https://github.com/acdh-oeaw/template-app-nuxt/settings/secrets/actions). github
   secrets need to be prefixed with `K8S_SECRET_` to be automatically copied to the runtime
   environment. in case you need secrets in the docker build context, you can
   [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/).
