@@ -45,6 +45,9 @@ export default defineNuxtConfig({
 		/** @see https://github.com/nuxt/nuxt/issues/21821 */
 		inlineStyles: false,
 	},
+	future: {
+		compatibilityVersion: 4,
+	},
 	i18n: {
 		baseUrl,
 		defaultLocale,
