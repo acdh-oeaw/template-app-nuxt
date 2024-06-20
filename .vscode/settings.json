@@ -17,6 +17,7 @@
 		"ignorePath": ".gitignore"
 	},
 	"eslint.validate": ["javascript", "typescript", "vue"],
+	"eslint.workingDirectories": [{ "pattern": "./apps/*/" }],
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
@@ -25,7 +26,7 @@
 	"i18n-ally.annotations": false,
 	"i18n-ally.keepFulfilled": true,
 	"i18n-ally.keystyle": "nested",
-	"i18n-ally.localesPaths": ["./messages"],
+	"i18n-ally.localesPaths": ["./apps/*/messages"],
 	"i18n-ally.review.enabled": false,
 	"i18n-ally.sortKeys": true,
 	"i18n-ally.tabStyle": "tab",

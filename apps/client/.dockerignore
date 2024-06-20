@@ -56,8 +56,8 @@ dist
 
 # tests
 playwright.config.ts
-/e2e/
-/test/
+e2e/
+test/
 
 # misc
 .editorconfig

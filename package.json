@@ -9,132 +9,32 @@
 	},
 	"packageManager": "pnpm@9.3.0",
 	"scripts": {
-		"analyze": "nuxt analyze",
-		"build": "nuxt build --dotenv ./.env.local",
-		"dev": "nuxt dev --dotenv ./.env.local",
-		"format:check": "prettier . \"!./content/**\" --cache --check --ignore-path ./.gitignore",
+		"format:check": "prettier . \"!./apps/client/content/**\" --cache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
-		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
-		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
-		"lint:code:check": "eslint . --cache --ext .js,.ts,.vue --ignore-path ./.gitignore",
-		"lint:code:fix": "pnpm run lint:code:check --fix",
-		"lint:styles:check": "stylelint \"./**/*.@(css|vue)\" --cache --ignore-path ./.gitignore",
-		"lint:styles:fix": "pnpm run lint:styles:check --fix",
-		"postinstall": "nuxt prepare",
+		"lint:check": "pnpm --recursive lint:check",
+		"lint:fix": "pnpm --recursive lint:fix",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup",
 		"setup": "is-ci || simple-git-hooks",
-		"start": "nuxt preview --dotenv ./.env.local",
-		"test": "exit 0",
-		"test:e2e": "playwright test",
-		"test:e2e:codegen": "playwright codegen",
-		"test:e2e:install": "playwright install --with-deps",
-		"test:e2e:ui": "playwright test --ui",
-		"test:e2e:update-snapshots": "playwright test --update-snapshots",
-		"types:check": "nuxt typecheck",
-		"validate": "run-p format:check lint:check types:check test test:e2e"
-	},
-	"dependencies": {
-		"@acdh-oeaw/lib": "^0.1.12",
-		"@fontsource-variable/inter": "^5.0.18",
-		"@nuxt/content": "^2.12.1",
-		"@nuxt/image": "^1.7.0",
-		"@nuxtjs/color-mode": "^3.4.1",
-		"@nuxtjs/i18n": "^8.3.1",
-		"@vueuse/core": "^10.11.0",
-		"@vueuse/nuxt": "^10.11.0",
-		"cva": "^1.0.0-beta.1",
-		"fast-glob": "^3.3.2",
-		"lucide-vue-next": "^0.395.0",
-		"nuxt": "^3.12.2",
-		"pino-http": "^10.1.0",
-		"satori": "^0.10.13",
-		"valibot": "^0.33.2",
-		"vue": "^3.4.29",
-		"vue-i18n": "^9.13.1",
-		"vue-i18n-routing": "^1.2.0",
-		"vue-router": "^4.3.3"
+		"test": "pnpm --recursive test",
+		"test:e2e": "pnpm --recursive test:e2e",
+		"test:e2e:update-snapshots": "pnpm --recursive test:e2e --update-snapshots",
+		"types:check": "pnpm --recursive types:check",
+		"validate": "run-s format:check lint:check types:check test test:e2e"
 	},
 	"devDependencies": {
-		"@acdh-oeaw/eslint-config": "^1.0.7",
-		"@acdh-oeaw/eslint-config-nuxt": "^1.0.13",
-		"@acdh-oeaw/eslint-config-playwright": "^1.0.7",
-		"@acdh-oeaw/eslint-config-vue": "^1.0.12",
 		"@acdh-oeaw/prettier-config": "^2.0.0",
-		"@acdh-oeaw/stylelint-config": "^2.0.1",
-		"@acdh-oeaw/tailwindcss-preset": "^0.0.22",
-		"@acdh-oeaw/tsconfig": "^1.0.2",
-		"@nuxt/devtools": "^1.3.3",
-		"@playwright/test": "^1.44.1",
-		"@types/node": "^20.14.5",
-		"axe-core": "^4.9.1",
-		"axe-playwright": "^2.0.1",
-		"ci-info": "^4.0.0",
-		"dotenv": "^16.4.5",
-		"dotenv-expand": "^11.0.6",
-		"eslint": "^8.57.0",
-		"eslint-plugin-tailwindcss": "^3.17.3",
 		"is-ci": "^3.0.1",
 		"lint-staged": "^15.2.7",
 		"npm-run-all2": "^6.2.0",
-		"postcss": "^8.4.38",
 		"prettier": "^3.3.2",
-		"schema-dts": "^1.1.2",
-		"simple-git-hooks": "^2.11.1",
-		"stylelint": "^16.6.1",
-		"tailwindcss": "^3.4.4",
-		"typescript": "^5.4.5",
-		"vite": "^5.3.1",
-		"vue-tsc": "^2.0.21"
-	},
-	"browserslist": {
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		],
-		"production": [
-			">=0.75%",
-			"not dead",
-			"not op_mini all"
-		]
-	},
-	"eslintConfig": {
-		"extends": [
-			"@acdh-oeaw/eslint-config",
-			"@acdh-oeaw/eslint-config/strict",
-			"@acdh-oeaw/eslint-config-vue",
-			"@acdh-oeaw/eslint-config-nuxt",
-			"@acdh-oeaw/eslint-config-playwright",
-			"plugin:eslint-plugin-tailwindcss/recommended"
-		]
+		"simple-git-hooks": "^2.11.1"
 	},
 	"lint-staged": {
-		"*.@(vue)": [
-			"eslint --cache --fix",
-			"stylelint --cache --fix",
-			"prettier --cache --write"
-		],
-		"*.@(js|ts)": [
-			"eslint --cache --fix",
-			"prettier --cache --write"
-		],
-		"*.@(css)": [
-			"stylelint --cache --fix",
-			"prettier --cache --write"
-		],
-		"*.!(css|js|ts|vue),!./content/**": "prettier --cache --ignore-unknown --write"
-	},
-	"postcss": {
-		"plugins": {
-			"tailwindcss": {}
-		}
+		"*": "prettier --cache --ignore-unknown --write"
 	},
 	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
-	},
-	"stylelint": {
-		"extends": "@acdh-oeaw/stylelint-config"
 	}
 }

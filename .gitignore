@@ -29,7 +29,7 @@ dist
 .output/
 
 # playwright
-/blob-report/
-/playwright/.cache/
-/playwright-report/
-/test-results/
+blob-report/
+playwright/.cache/
+playwright-report/
+test-results/
