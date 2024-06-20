@@ -108,7 +108,5 @@ router.afterEach((to, from) => {
 			<slot />
 		</ErrorBoundary>
 		<AppFooter />
-
-		<NuxtRouteAnnouncer />
 	</div>
 </template>
