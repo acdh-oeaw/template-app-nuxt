@@ -127,9 +127,10 @@ test.describe("app", () => {
 	test.describe("should set color mode according to system preference", () => {
 		test.use({ colorScheme: "dark" });
 
-		test("in dark mode", async ({ page }) => {
-			await page.goto("/en");
-			await expect(page.locator("html")).toHaveAttribute("data-ui-color-scheme", "dark");
+		test("in dark mode", async ({ createIndexPage }) => {
+			const { indexPage } = await createIndexPage(defaultLocale);
+			await indexPage.goto();
+			await expect(indexPage.page.locator("html")).toHaveAttribute("data-ui-color-scheme", "dark");
 		});
 	});
 
@@ -142,5 +143,13 @@ test.describe("app", () => {
 
 		await indexPage.skipLink.click();
 		await expect(indexPage.mainContent).toBeFocused();
+	});
+
+	test("should set `lang` attribute on `html` element", async ({ createIndexPage }) => {
+		for (const locale of locales) {
+			const { indexPage } = await createIndexPage(locale);
+			await indexPage.goto();
+			await expect(indexPage.page.locator("html")).toHaveAttribute("lang", locale);
+		}
 	});
 });

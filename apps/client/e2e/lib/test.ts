@@ -21,7 +21,7 @@ export const test = base.extend<Fixtures>({
 	},
 
 	async createI18n({ page }, use) {
-		await use((locale) => {
+		await use((locale = defaultLocale) => {
 			return createI18n(page, locale);
 		});
 	},
