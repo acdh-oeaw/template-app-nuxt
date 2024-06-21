@@ -6,6 +6,8 @@ node_modules/
 *.log
 
 # non-public environment variables
+.env
+.env.production
 .env.local
 .env.*.local
 
