@@ -7,11 +7,12 @@ import { expect, test } from "~/e2e/lib/test";
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
-test("should set a canonical url", async ({ page }) => {
+test("should set a canonical url", async ({ createIndexPage }) => {
 	for (const locale of locales) {
-		await page.goto(`/${locale}`);
+		const { indexPage } = await createIndexPage(locale);
+		await indexPage.goto();
 
-		const canonicalUrl = page.locator('link[rel="canonical"]');
+		const canonicalUrl = indexPage.page.locator('link[rel="canonical"]');
 		await expect(canonicalUrl).toHaveAttribute(
 			"href",
 			String(createUrl({ baseUrl, pathname: `/${locale}` })),
