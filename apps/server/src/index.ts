@@ -1,18 +1,12 @@
 import { log } from "@acdh-oeaw/lib";
 import { serve } from "@hono/node-server";
-import { Hono } from "hono";
 
-const port = 5000;
-
-const app = new Hono();
-
-app.get("/api", (c) => {
-	return c.text("Hello from the API!");
-});
-
-log.success(`Server is running on port ${String(port)}.`);
+import { app } from "@/app";
+import { env } from "@/config/env.config";
 
 serve({
 	fetch: app.fetch,
-	port,
+	port: env.port,
 });
+
+log.success(`Server is running on port ${String(env.port)}.`);

@@ -3,6 +3,16 @@
 	"private": true,
 	"license": "MIT",
 	"type": "module",
+	"engines": {
+		"node": "20.x",
+		"pnpm": "9.x"
+	},
+	"packageManager": "pnpm@9.4.0",
+	"exports": {
+		"./api": {
+			"types": "./src/app.ts"
+		}
+	},
 	"scripts": {
 		"build": "",
 		"dev": "tsx watch ./src/index.ts",
@@ -10,7 +20,7 @@
 		"format:fix": "pnpm run format:check --write",
 		"lint:check": "eslint . --cache --ext .js,.ts --ignore-path ../../.gitignore",
 		"lint:fix": "pnpm run lint:check --fix",
-		"start": "",
+		"start": "tsx ./src/index.ts",
 		"test": "exit 0",
 		"types:check": "tsc --noEmit",
 		"validate": "run-p format:check lint:check types:check test"
@@ -18,23 +28,26 @@
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.12",
 		"@hono/node-server": "^1.11.4",
+		"@hono/valibot-validator": "^0.3.0",
 		"hono": "^4.4.7",
-		"valibot": "^0.33.2"
+		"valibot": "^0.33.3"
 	},
 	"devDependencies": {
-		"@acdh-oeaw/eslint-config": "^1.0.7",
+		"@acdh-oeaw/eslint-config": "^1.0.9",
+		"@acdh-oeaw/eslint-config-node": "^1.0.10",
 		"@acdh-oeaw/prettier-config": "^2.0.0",
-		"@acdh-oeaw/tsconfig": "^1.0.2",
-		"@types/node": "^20.14.5",
+		"@acdh-oeaw/tsconfig": "^1.1.0",
+		"@types/node": "^20.14.8",
 		"eslint": "^8.57.0",
 		"prettier": "^3.3.2",
 		"tsx": "^4.15.7",
-		"typescript": "^5.4.5"
+		"typescript": "^5.5.2"
 	},
 	"eslintConfig": {
 		"extends": [
 			"@acdh-oeaw/eslint-config",
-			"@acdh-oeaw/eslint-config/strict"
+			"@acdh-oeaw/eslint-config/strict",
+			"@acdh-oeaw/eslint-config-node"
 		]
 	},
 	"lint-staged": {

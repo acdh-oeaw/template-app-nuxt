@@ -7,7 +7,7 @@
 		"node": "20.x",
 		"pnpm": "9.x"
 	},
-	"packageManager": "pnpm@9.3.0",
+	"packageManager": "pnpm@9.4.0",
 	"scripts": {
 		"format:check": "prettier . \"!./apps/client/content/**\" --cache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
@@ -20,7 +20,7 @@
 		"test:e2e": "pnpm --recursive test:e2e",
 		"test:e2e:update-snapshots": "pnpm --recursive test:e2e --update-snapshots",
 		"types:check": "pnpm --recursive types:check",
-		"validate": "run-s format:check lint:check types:check test test:e2e"
+		"validate": "run-p format:check lint:check types:check test test:e2e"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/prettier-config": "^2.0.0",
@@ -28,7 +28,8 @@
 		"lint-staged": "^15.2.7",
 		"npm-run-all2": "^6.2.0",
 		"prettier": "^3.3.2",
-		"simple-git-hooks": "^2.11.1"
+		"simple-git-hooks": "^2.11.1",
+		"typescript": "^5.5.2"
 	},
 	"lint-staged": {
 		"*": "prettier --cache --ignore-unknown --write"

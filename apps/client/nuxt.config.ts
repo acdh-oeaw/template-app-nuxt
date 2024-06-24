@@ -22,11 +22,10 @@ export default defineNuxtConfig({
 	content: {
 		defaultLocale,
 		locales: Object.keys(localesMap),
-		markdown: {},
 	},
 	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
 	devtools: {
-		enabled: process.env.NODE_ENV === "development",
+		enabled: true,
 	},
 	experimental: {
 		componentIslands: {
@@ -79,6 +78,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
+			apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
 			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			bots: process.env.NUXT_PUBLIC_BOTS,
 			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
