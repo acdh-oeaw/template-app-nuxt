@@ -1,8 +1,8 @@
 import { createUrl } from "@acdh-oeaw/lib";
 
-import { locales } from "@/config/i18n.config";
-import { escape } from "@/utils/safe-json-ld-replacer";
-import { expect, test } from "~/e2e/lib/test";
+import { locales } from "#client/config/i18n.config";
+import { escape } from "#client/utils/safe-json-ld-replacer";
+import { expect, test } from "#root/e2e/lib/test";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;

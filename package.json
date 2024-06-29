@@ -8,6 +8,10 @@
 		"pnpm": "9.x"
 	},
 	"packageManager": "pnpm@9.4.0",
+	"imports": {
+		"#client/*": "./app/*",
+		"#root/*": "./*"
+	},
 	"scripts": {
 		"analyze": "nuxt analyze",
 		"build": "nuxt build --dotenv ./.env.local",

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { locales } from "@/config/i18n.config";
+import { locales } from "#client/config/i18n.config";
 
 const currentLocale = useLocale();
 const t = useTranslations();

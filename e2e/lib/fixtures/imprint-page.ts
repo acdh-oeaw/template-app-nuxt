@@ -1,7 +1,7 @@
 import type { Locator, Page } from "@playwright/test";
 
-import { defaultLocale, type Locale } from "@/config/i18n.config";
-import type { I18n } from "~/e2e/lib/fixtures/i18n";
+import { defaultLocale, type Locale } from "#client/config/i18n.config";
+import type { I18n } from "#root/e2e/lib/fixtures/i18n";
 
 export class ImprintPage {
 	readonly page: Page;

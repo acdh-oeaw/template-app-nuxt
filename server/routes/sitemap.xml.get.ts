@@ -4,7 +4,7 @@ import { createUrl } from "@acdh-oeaw/lib";
 import fg from "fast-glob";
 import * as v from "valibot";
 
-import { locales } from "@/config/i18n.config";
+import { locales } from "#client/config/i18n.config";
 
 const baseUrl = v.parse(v.pipe(v.string(), v.url()), process.env.NUXT_PUBLIC_APP_BASE_URL);
 

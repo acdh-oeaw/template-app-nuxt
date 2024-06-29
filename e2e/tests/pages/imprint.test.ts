@@ -1,5 +1,5 @@
-import { locales } from "@/config/i18n.config";
-import { expect, test } from "~/e2e/lib/test";
+import { locales } from "#client/config/i18n.config";
+import { expect, test } from "#root/e2e/lib/test";
 
 test.describe("imprint page", () => {
 	test("should have document title", async ({ createImprintPage }) => {

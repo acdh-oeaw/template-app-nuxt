@@ -1,15 +1,9 @@
-import { fileURLToPath } from "node:url";
-
 import { defaultLocale, localesMap } from "./app/config/i18n.config";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({
-	alias: {
-		"@": fileURLToPath(new URL("./app/", import.meta.url)),
-		"~": fileURLToPath(new URL("./", import.meta.url)),
-	},
 	app: {
 		layoutTransition: false,
 		pageTransition: false,
@@ -18,12 +12,16 @@ export default defineNuxtConfig({
 		classSuffix: "",
 		dataValue: "ui-color-scheme",
 	},
-	components: [{ path: "@/components", extensions: [".vue"], pathPrefix: false }],
+	components: [{ path: "#client/components", extensions: [".vue"], pathPrefix: false }],
 	content: {
 		defaultLocale,
 		locales: Object.keys(localesMap),
 	},
-	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
+	css: [
+		"@fontsource-variable/inter/slnt.css",
+		"tailwindcss/tailwind.css",
+		"#client/styles/index.css",
+	],
 	devtools: {
 		enabled: true,
 	},
@@ -88,15 +86,5 @@ export default defineNuxtConfig({
 	typescript: {
 		shim: false,
 		strict: true,
-		// https://github.com/nuxt/nuxt/issues/14816#issuecomment-1484918081
-		tsConfig: {
-			compilerOptions: {
-				baseUrl: ".",
-				paths: {
-					"@/*": ["./app/*"],
-					"~/*": ["./*"],
-				},
-			},
-		},
 	},
 });

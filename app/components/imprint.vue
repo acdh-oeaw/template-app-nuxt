@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createImprintUrl } from "@/config/imprint.config";
+import { createImprintUrl } from "#client/config/imprint.config";
 
 const env = useRuntimeConfig();
 
