@@ -76,7 +76,6 @@ export default defineNuxtConfig({
 		},
 	},
 	runtimeConfig: {
-		NODE_ENV: process.env.NODE_ENV,
 		public: {
 			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 			bots: process.env.NUXT_PUBLIC_BOTS,
