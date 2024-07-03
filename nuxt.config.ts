@@ -1,5 +1,7 @@
 import { fileURLToPath } from "node:url";
 
+import tailwindcss from "@tailwindcss/vite";
+
 import { defaultLocale, localesMap } from "./app/config/i18n.config";
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -23,7 +25,7 @@ export default defineNuxtConfig({
 		defaultLocale,
 		locales: Object.keys(localesMap),
 	},
-	css: ["@fontsource-variable/inter/slnt.css", "tailwindcss/tailwind.css", "@/styles/index.css"],
+	css: ["@fontsource-variable/inter/slnt.css", "@/styles/index.css"],
 	devtools: {
 		enabled: true,
 	},
@@ -70,11 +72,6 @@ export default defineNuxtConfig({
 			routes: ["/manifest.webmanifest", "/robots.txt", "/sitemap.xml"],
 		},
 	},
-	postcss: {
-		plugins: {
-			tailwindcss: {},
-		},
-	},
 	runtimeConfig: {
 		NODE_ENV: process.env.NODE_ENV,
 		public: {
@@ -99,5 +96,8 @@ export default defineNuxtConfig({
 				},
 			},
 		},
+	},
+	vite: {
+		plugins: [tailwindcss()],
 	},
 });
