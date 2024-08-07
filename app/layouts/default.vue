@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
-import inter from "@fontsource-variable/inter/files/inter-latin-slnt-normal.woff2?url";
+// @ts-expect-error Missing type declaration.
+import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
