@@ -13,6 +13,7 @@ node_modules/
 
 # caches
 .eslintcache
+.prettiercache
 .stylelintcache
 *.tsbuildinfo
 

@@ -12,7 +12,7 @@
 		"analyze": "nuxt analyze",
 		"build": "nuxt build --dotenv ./.env.local",
 		"dev": "nuxt dev --dotenv ./.env.local",
-		"format:check": "prettier . \"!./content/**\" --cache --check --ignore-path ./.gitignore",
+		"format:check": "prettier . \"!./content/**\" --cache --cache-location ./.prettiercache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
@@ -113,17 +113,17 @@
 		"*.@(vue)": [
 			"eslint --cache --fix",
 			"stylelint --cache --fix",
-			"prettier --cache --write"
+			"prettier --cache --cache-location ./.prettiercache --write"
 		],
 		"*.@(js|ts)": [
 			"eslint --cache --fix",
-			"prettier --cache --write"
+			"prettier --cache --cache-location ./.prettiercache --write"
 		],
 		"*.@(css)": [
 			"stylelint --cache --fix",
-			"prettier --cache --write"
+			"prettier --cache --cache-location ./.prettiercache --write"
 		],
-		"*.!(css|js|ts|vue),!./content/**": "prettier --cache --ignore-unknown --write"
+		"*.!(css|js|ts|vue),!./content/**": "prettier --cache --cache-location ./.prettiercache --ignore-unknown --write"
 	},
 	"postcss": {
 		"plugins": {
