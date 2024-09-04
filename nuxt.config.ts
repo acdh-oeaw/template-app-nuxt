@@ -59,11 +59,11 @@ export default defineNuxtConfig({
 		detectBrowserLanguage: {
 			redirectOn: "root",
 		},
-		langDir: "./messages",
+		langDir: "../i18n/messages",
 		lazy: true,
 		locales: Object.values(localesMap),
 		strategy: "prefix",
-		vueI18n: "./i18n.config.ts",
+		vueI18n: "./i18n/i18n.config.ts",
 	},
 	imports: {
 		dirs: ["./config/"],

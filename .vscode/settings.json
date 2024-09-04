@@ -1,5 +1,6 @@
 {
 	"css.validate": false,
+	"debug.toolBarLocation": "docked",
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
@@ -44,7 +45,10 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.labelFormat": "medium",
 	"workbench.tree.enableStickyScroll": true,
-	"[markdown][mdc]": {
+	"[markdown]": {
+		"editor.wordWrap": "on"
+	},
+	"[mdc]": {
 		"editor.wordWrap": "on"
 	}
 }
