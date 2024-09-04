@@ -47,6 +47,11 @@ pnpm run dev
 - set the `PUBLIC_URL` github variable to the application's public url (e.g.
   "https://my-app.acdh-ch-dev.oeaw.ac.at"), and set the `KUBE_INGRESS_BASE_DOMAIN` to the public
   url's base domain (e.g. "acdh-ch-dev.oeaw.ac.at").
+- when deploying to a production domain (i.e. a domain not ending in "acdh-ch-dev.oeaw.ac.at"), set
+  `HELM_UPGRADE_EXTRA_ARGS` to
+  `--set 'ingress.annotations.cert-manager\.io/cluster-issuer=acdh-prod'` for "acdh.oeaw.ac.at"
+  domains, or to `--set 'ingress.annotations.cert-manager\.io/cluster-issuer=letsencrypt-prod'` for
+  any other non-oeaw domains, and ensure `KUBE_INGRESS_BASE_DOMAIN` is set correctly.
 - create a service issue in the acdh-ch [redmine](https://redmine.acdh.oeaw.ac.at) issue tracker,
   and set the `SERVICE_ID` github variable to the issue number. this should match the
   `NUXT_PUBLIC_REDMINE_ID` variable in your `.env.local` file.
