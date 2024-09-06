@@ -4,7 +4,6 @@ import en from "~/i18n/messages/en.json";
 
 const locale = "en";
 
-// @ts-expect-error Only messages for single locale provided.
 const { t } = createI18n({ legacy: false, locale, messages: { [locale]: en } }).global;
 
 const manifest = {

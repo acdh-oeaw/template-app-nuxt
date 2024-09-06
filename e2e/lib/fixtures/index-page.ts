@@ -16,7 +16,7 @@ export class IndexPage {
 		this.page = page;
 		this.locale = locale;
 		this.i18n = i18n;
-		this.url = `/${locale}`;
+		this.url = "/";
 		this.mainContent = page.getByRole("main");
 		this.title = page.getByRole("heading", { level: 1 });
 		this.skipLink = page.getByRole("link", { name: i18n.t("DefaultLayout.skip-to-main-content") });

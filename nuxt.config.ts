@@ -76,7 +76,7 @@ export default defineNuxtConfig({
 		langDir: "messages",
 		lazy: true,
 		locales: Object.values(localesMap),
-		strategy: "prefix",
+		strategy: "no_prefix",
 	},
 	imports: {
 		dirs: ["./config/"],

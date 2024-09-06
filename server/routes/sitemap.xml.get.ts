@@ -29,10 +29,10 @@ paths.forEach((path) => {
 	routes.push(segments.join("/"));
 });
 
-const entries: Array<{ url: string; lastModified?: Date }> = locales.flatMap((locale) => {
+const entries: Array<{ url: string; lastModified?: Date }> = locales.flatMap((_locale) => {
 	return routes.map((pathname) => {
 		return {
-			url: String(createUrl({ baseUrl, pathname: `/${locale}${pathname}` })),
+			url: String(createUrl({ baseUrl, pathname })),
 			// lastModified: new Date(),
 		};
 	});
