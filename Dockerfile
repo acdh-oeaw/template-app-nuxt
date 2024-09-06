@@ -27,6 +27,9 @@ ARG NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION
 ARG NUXT_PUBLIC_MATOMO_BASE_URL
 ARG NUXT_PUBLIC_MATOMO_ID
 ARG NUXT_PUBLIC_REDMINE_ID
+ARG NUXT_PUBLIC_SENTRY_DSN
+ARG NUXT_PUBLIC_SENTRY_ORG
+ARG NUXT_PUBLIC_SENTRY_PROJECT
 
 RUN pnpm install --frozen-lockfile --offline
 
@@ -50,4 +53,4 @@ ENV NODE_ENV=production
 
 EXPOSE 3000
 
-CMD ["node", "./server/index.mjs"]
+CMD ["node", "--import", "./public/instrument.server.mjs", "./server/index.mjs"]
