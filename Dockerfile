@@ -30,6 +30,10 @@ ARG NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL
 ARG NUXT_PUBLIC_APP_MATOMO_BASE_URL
 ARG NUXT_PUBLIC_APP_MATOMO_ID
 ARG NUXT_PUBLIC_APP_SERVICE_ID
+ARG NUXT_PUBLIC_SENTRY_DSN
+ARG NUXT_PUBLIC_SENTRY_ORG
+ARG NUXT_PUBLIC_SENTRY_PII
+ARG NUXT_PUBLIC_SENTRY_PROJECT
 
 RUN pnpm install --frozen-lockfile --offline
 
@@ -53,4 +57,4 @@ ENV NODE_ENV=production
 
 EXPOSE 3000
 
-CMD ["node", "./server/index.mjs"]
+CMD ["node", "--import", "./server/sentry.server.config.mjs", "./server/index.mjs"]

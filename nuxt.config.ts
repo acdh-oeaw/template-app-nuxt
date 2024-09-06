@@ -72,6 +72,7 @@ export default defineNuxtConfig({
 		"@nuxt/test-utils",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
+		"@sentry/nuxt/module",
 		"@vueuse/nuxt",
 	],
 	nitro: {
@@ -92,6 +93,15 @@ export default defineNuxtConfig({
 				serviceId: process.env.NUXT_PUBLIC_APP_SERVICE_ID,
 			},
 		},
+	},
+	sentry: {
+		authToken: process.env.SENTRY_AUTH_TOKEN,
+		org: process.env.NUXT_PUBLIC_SENTRY_ORG,
+		project: process.env.NUXT_PUBLIC_SENTRY_PROJECT,
+		// silent: process.env.CI !== true,
+	},
+	sourcemap: {
+		client: "hidden",
 	},
 	typescript: {
 		shim: false,

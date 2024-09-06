@@ -1,9 +1,15 @@
 <script lang="ts" setup>
+import * as Sentry from "@sentry/nuxt";
+
 const t = useTranslations();
+
+function onError(error: Error) {
+	Sentry.captureException(error);
+}
 </script>
 
 <template>
-	<NuxtErrorBoundary>
+	<NuxtErrorBoundary @error="onError">
 		<slot />
 
 		<template #error="{ error }">
