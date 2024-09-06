@@ -5,6 +5,7 @@ import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
+import queryPlugin from "@tanstack/eslint-plugin-query";
 import gitignore from "eslint-config-flat-gitignore";
 
 import { withNuxt } from "./.nuxt/eslint.config.mjs";
@@ -22,6 +23,7 @@ const config = [
 			"vue/attributes-order": ["warn", { alphabetical: true }],
 		},
 	},
+	...queryPlugin.configs["flat/recommended"],
 ];
 
 export default withNuxt(/** @type {any} */ (config));
