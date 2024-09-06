@@ -78,6 +78,7 @@ export default defineNuxtConfig({
 		"@nuxt/image",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
+		"@sentry/nuxt/module",
 		"@vueuse/nuxt",
 	],
 	nitro: {
@@ -99,6 +100,14 @@ export default defineNuxtConfig({
 			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
 			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
 			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,
+		},
+	},
+	sentry: {
+		debug: false,
+		sourceMapsUploadOptions: {
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+			org: process.env.NUXT_PUBLIC_SENTRY_ORG,
+			project: process.env.NUXT_PUBLIC_SENTRY_PROJECT,
 		},
 	},
 	typescript: {
