@@ -84,3 +84,15 @@ if the validation pipeline passes.
 
 you can reference the [template repository](https://github.com/acdh-oeaw/template-app-nuxt) for a
 working setup.
+
+## template variants
+
+- [`variant/with-commitlint`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-commitlint)
+  branch: enables `commitlint` and runs it as a git hook, and as part of the validation workflow in
+  a github action.
+- [`variant/with-single-locale`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-single-locale)
+  branch: adjusts the template to support a single pre-configured locale only, and removes
+  internationalised routing. ui strings are still managed in the [`i18n/messages`](./i18n/messages)
+  folder to make it easy to activate full i18n support later if needed.
+- [`variant/with-sentry`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-sentry)
+  branch: enables error reporting with [`sentry`](https://acdh-ch.sentry.io).
