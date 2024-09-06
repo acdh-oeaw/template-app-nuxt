@@ -2,7 +2,6 @@ import { fileURLToPath } from "node:url";
 
 import { defaultLocale, localesMap } from "./app/config/i18n.config";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 export default defineNuxtConfig({
@@ -31,6 +30,11 @@ export default defineNuxtConfig({
 	],
 	devtools: {
 		enabled: true,
+	},
+	eslint: {
+		config: {
+			standalone: true,
+		},
 	},
 	experimental: {
 		componentIslands: {
@@ -68,7 +72,14 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["./config/"],
 	},
-	modules: ["@nuxt/content", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
+	modules: [
+		"@nuxt/content",
+		"@nuxt/eslint",
+		"@nuxt/image",
+		"@nuxtjs/color-mode",
+		"@nuxtjs/i18n",
+		"@vueuse/nuxt",
+	],
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {

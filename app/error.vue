@@ -53,7 +53,9 @@ function onReset() {
 				<span>{{ props.error.message }}</span>
 			</div>
 			<div>
-				<button @click="onReset">{{ t("ErrorPage.try-again") }}</button>
+				<button @click="onReset">
+					{{ t("ErrorPage.try-again") }}
+				</button>
 			</div>
 		</template>
 	</MainContent>

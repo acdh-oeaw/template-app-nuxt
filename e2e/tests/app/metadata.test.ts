@@ -4,7 +4,6 @@ import { locales } from "@/config/i18n.config";
 import { escape } from "@/utils/safe-json-ld-replacer";
 import { expect, test } from "~/e2e/lib/test";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
 test("should set a canonical url", async ({ createIndexPage }) => {
