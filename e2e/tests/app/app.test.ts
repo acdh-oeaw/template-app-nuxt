@@ -48,12 +48,12 @@ test.describe("app", () => {
 			].join("\n"),
 		);
 
-		for (const locale of locales) {
-			for (const url of ["", "/imprint"]) {
+		for (const _locale of locales) {
+			for (const pathname of ["/", "/imprint"]) {
 				const loc = String(
 					createUrl({
 						baseUrl,
-						pathname: ["/", locale, url].join(""),
+						pathname,
 					}),
 				);
 

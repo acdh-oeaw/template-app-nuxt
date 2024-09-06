@@ -1,17 +1,17 @@
 import { includes } from "@acdh-oeaw/lib";
 import type { LocaleObject } from "vue-i18n-routing";
 
-import type de from "~/i18n/messages/de.json";
+// import type de from "~/i18n/messages/de.json";
 import type en from "~/i18n/messages/en.json";
 
-export const locales = ["de", "en"] as const;
+export const locales = ["en"] as const;
 
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 
 export const files = [
-	{ code: "de" as const, language: "de", file: "de.json" },
+	// { code: "de" as const, language: "de", file: "de.json" },
 	{ code: "en" as const, language: "en", file: "en.json" },
 ] satisfies Array<LocaleObject>;
 
@@ -26,6 +26,6 @@ export function isValidLocale(value: string): value is Locale {
 }
 
 export interface Translations extends Record<Locale, Messages> {
-	de: typeof de;
+	// de: typeof de;
 	en: typeof en;
 }

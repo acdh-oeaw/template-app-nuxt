@@ -49,10 +49,6 @@
 		},
 		"title": "Startseite"
 	},
-	"LocaleSwitcher": {
-		"current-locale": "Aktuelle Sprache: {locale}",
-		"switch-locale": "Sprache zu {locale} wechseln"
-	},
 	"Manifest": {
 		"description": "ACDH App",
 		"name": "ACDH App",

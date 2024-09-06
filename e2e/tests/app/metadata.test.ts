@@ -2,6 +2,7 @@ import { assert, createUrl } from "@acdh-oeaw/lib";
 
 import { locales } from "@/config/i18n.config";
 import { escape } from "@/utils/safe-json-ld-replacer";
+import { sliceTrailingSlash } from "@/utils/slice-trailing-slash";
 import { expect, test } from "~/e2e/lib/test";
 
 assert(
@@ -19,7 +20,7 @@ test("should set a canonical url", async ({ createIndexPage }) => {
 		const canonicalUrl = indexPage.page.locator('link[rel="canonical"]');
 		await expect(canonicalUrl).toHaveAttribute(
 			"href",
-			String(createUrl({ baseUrl, pathname: `/${locale}` })),
+			sliceTrailingSlash(String(createUrl({ baseUrl, pathname: "/" }))),
 		);
 	}
 });
@@ -31,11 +32,11 @@ test("should set document title on not-found page", async ({ createI18n, page })
 		[i18nEn.t("NotFoundPage.meta.title"), i18nEn.t("DefaultLayout.meta.title")].join(" | "),
 	);
 
-	const i18nDe = await createI18n("de");
-	await page.goto("/de/unknown");
-	await expect(page).toHaveTitle(
-		[i18nDe.t("NotFoundPage.meta.title"), i18nDe.t("DefaultLayout.meta.title")].join(" | "),
-	);
+	// const i18nDe = await createI18n("de");
+	// await page.goto("/de/unknown");
+	// await expect(page).toHaveTitle(
+	// 	[i18nDe.t("NotFoundPage.meta.title"), i18nDe.t("DefaultLayout.meta.title")].join(" | "),
+	// );
 });
 
 test("should disallow indexing of not-found page", async ({ page }) => {
@@ -93,7 +94,7 @@ test("should set page metadata", async ({ createIndexPage }) => {
 		const ogUrl = page.locator('meta[property="og:url"]');
 		await expect(ogUrl).toHaveAttribute(
 			"content",
-			String(createUrl({ baseUrl, pathname: `/${locale}` })),
+			sliceTrailingSlash(String(createUrl({ baseUrl, pathname: "/" }))),
 		);
 
 		const ogLocale = page.locator('meta[property="og:locale"]');

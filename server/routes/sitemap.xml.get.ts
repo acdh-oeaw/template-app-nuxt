@@ -4,8 +4,6 @@ import { join } from "node:path";
 import { createUrl } from "@acdh-oeaw/lib";
 import * as v from "valibot";
 
-import { locales } from "@/config/i18n.config";
-
 const baseUrl = v.parse(v.pipe(v.string(), v.url()), process.env.NUXT_PUBLIC_APP_BASE_URL);
 
 export default defineLazyEventHandler(async () => {
@@ -36,13 +34,11 @@ export default defineLazyEventHandler(async () => {
 		routes.push(segments.join("/"));
 	}
 
-	const entries: Array<{ url: string; lastModified?: Date }> = locales.flatMap((locale) => {
-		return routes.map((pathname) => {
-			return {
-				url: String(createUrl({ baseUrl, pathname: `/${locale}${pathname}` })),
-				// lastModified: new Date(),
-			};
-		});
+	const entries: Array<{ url: string; lastModified?: Date }> = routes.map((pathname) => {
+		return {
+			url: String(createUrl({ baseUrl, pathname })),
+			// lastModified: new Date(),
+		};
 	});
 
 	const sitemap = [
