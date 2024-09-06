@@ -6,6 +6,7 @@ import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
+import queryPlugin from "@tanstack/eslint-plugin-query";
 import { defineConfig, globalIgnores } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
 import checkFilePlugin from "eslint-plugin-check-file";
@@ -24,6 +25,7 @@ const configs = defineConfig(
 	baseConfig,
 	vueConfig,
 	nuxtConfig,
+	queryPlugin.configs["flat/recommended"],
 	{
 		name: "tailwindcss-config",
 		extends: [tailwindcssConfig],
