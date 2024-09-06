@@ -57,6 +57,7 @@
 		"vue-router": "^4.4.5"
 	},
 	"devDependencies": {
+		"@acdh-oeaw/commitlint-config": "^2.0.0",
 		"@acdh-oeaw/eslint-config": "^2.0.1",
 		"@acdh-oeaw/eslint-config-nuxt": "^2.0.6",
 		"@acdh-oeaw/eslint-config-playwright": "^2.0.2",
@@ -66,6 +67,7 @@
 		"@acdh-oeaw/stylelint-config": "^2.0.4",
 		"@acdh-oeaw/tailwindcss-preset": "^0.0.22",
 		"@acdh-oeaw/tsconfig": "^1.2.0",
+		"@commitlint/cli": "^19.5.0",
 		"@nuxt/devtools": "^1.4.2",
 		"@nuxt/eslint": "^0.5.7",
 		"@playwright/test": "^1.47.1",
@@ -103,6 +105,9 @@
 			"not op_mini all"
 		]
 	},
+	"commitlint": {
+		"extends": "@acdh-oeaw/commitlint-config"
+	},
 	"lint-staged": {
 		"*.@(vue)": [
 			"eslint --cache --fix",
@@ -126,6 +131,7 @@
 	},
 	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
+		"commit-msg": "pnpm exec commitlint --edit",
 		"pre-commit": "pnpm exec lint-staged"
 	},
 	"stylelint": {
