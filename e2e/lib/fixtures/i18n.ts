@@ -12,7 +12,6 @@ export async function createI18n(_page: Page, locale = defaultLocale): Promise<I
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 	const messages = _messages.default as Messages;
 
-	// @ts-expect-error Only messages for single locale provided.
 	return _createI18n({
 		legacy: false,
 		locale,
