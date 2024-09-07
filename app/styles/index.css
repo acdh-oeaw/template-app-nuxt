@@ -1,8 +1,25 @@
-:root {
-	--font-body: "Inter Variable";
+@import url("tailwindcss");
+
+@plugin "@tailwindcss/typography";
+
+@variant dark (:where([data-ui-color-scheme="dark"], [data-ui-color-scheme="dark"] *));
+
+@layer base {
+	:root,
+	body {
+		block-size: 100%;
+	}
+
+	#__nuxt {
+		block-size: 100%;
+		isolation: isolate;
+	}
 }
 
-#__nuxt {
-	block-size: 100%;
-	isolation: isolate;
+@theme {
+	--default-font-family: "Inter Variable";
+}
+
+@utility container {
+	@apply px-4 max-w-7xl w-full mx-auto md:px-8;
 }
