@@ -11,7 +11,7 @@ import { withNuxt } from "./.nuxt/eslint.config.mjs";
 
 /** @type {Config} */
 const config = [
-	gitignore(),
+	gitignore({ strict: false }),
 	...baseConfig,
 	...vueConfig,
 	...nuxtConfig,
