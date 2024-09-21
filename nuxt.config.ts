@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 		classSuffix: "",
 		dataValue: "ui-color-scheme",
 	},
-	components: [{ path: "@/components", extensions: [".vue"], pathPrefix: false }],
+	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
 	content: {
 		defaultLocale,
 		locales: Object.keys(localesMap),
@@ -33,6 +33,7 @@ export default defineNuxtConfig({
 	},
 	eslint: {
 		config: {
+			autoInit: false,
 			standalone: true,
 		},
 	},
