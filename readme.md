@@ -69,6 +69,9 @@ pnpm run dev
 - to enable runtime override of public `runtimeConfig` build values through runtime env vars note
   the
   [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables).
+- the `NUXT_PUBLIC_BOTS` variable defaults to "disabled", which signals to web crawlers that the
+  website should not be indexed. when deploying to a production domain (i.e. a domain not ending in
+  "acdh-ch-dev.oeaw.ac.at") this should be set to "enabled".
 
 > [!IMPORTANT]
 >
