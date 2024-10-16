@@ -66,12 +66,12 @@ pnpm run dev
   secrets need to be prefixed with `K8S_SECRET_` to be automatically copied to the runtime
   environment. in case you need secrets in the docker build context, you can
   [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/).
-- to enable runtime override of public `runtimeConfig` build values through runtime env vars note
-  the
-  [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables).
 - the `NUXT_PUBLIC_BOTS` variable defaults to "disabled", which signals to web crawlers that the
   website should not be indexed. when deploying to a production domain (i.e. a domain not ending in
   "acdh-ch-dev.oeaw.ac.at") this should be set to "enabled".
+- to enable runtime override of public `runtimeConfig` build values through runtime env vars note
+  the
+  [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables).
 
 > [!IMPORTANT]
 >
