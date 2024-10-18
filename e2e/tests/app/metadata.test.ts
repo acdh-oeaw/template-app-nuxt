@@ -1,10 +1,15 @@
-import { createUrl } from "@acdh-oeaw/lib";
+import { assert, createUrl } from "@acdh-oeaw/lib";
 
 import { locales } from "@/config/i18n.config";
 import { escape } from "@/utils/safe-json-ld-replacer";
 import { expect, test } from "~/e2e/lib/test";
 
-const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
+assert(
+	process.env.NUXT_PUBLIC_APP_BASE_URL,
+	"Missing NUXT_PUBLIC_APP_BASE_URL environment variable.",
+);
+
+const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL;
 
 test("should set a canonical url", async ({ createIndexPage }) => {
 	for (const locale of locales) {

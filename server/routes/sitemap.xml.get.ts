@@ -15,7 +15,7 @@ const routes: Array<string> = [];
 
 paths.forEach((path) => {
 	const _route = path.slice(0, -".vue".length).replace(/\/?index$/, "");
-	const route = _route.length === 0 ? _route : "/" + _route;
+	const route = _route.length === 0 ? _route : `/${_route}`;
 
 	const segments = [];
 
