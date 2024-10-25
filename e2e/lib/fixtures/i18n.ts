@@ -13,13 +13,7 @@ export async function createI18n(_page: Page, locale = defaultLocale): Promise<I
 	const messages = _messages.default as Messages;
 
 	// @ts-expect-error Only messages for single locale provided.
-	return _createI18n({
-		legacy: false,
-		locale,
-		messages: {
-			[locale]: messages,
-		},
-	}).global;
+	return _createI18n({ legacy: false, locale, messages: { [locale]: messages } }).global;
 }
 
 export type WithI18n<T> = T & { i18n: I18n };

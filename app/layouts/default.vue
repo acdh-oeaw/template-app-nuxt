@@ -10,11 +10,7 @@ const t = useTranslations();
 
 const router = useRouter();
 
-const i18nHead = useLocaleHead({
-	addDirAttribute: true,
-	identifierAttribute: "id",
-	addSeoAttributes: true,
-});
+const i18nHead = useLocaleHead({ key: "id" });
 
 useHead({
 	htmlAttrs: {

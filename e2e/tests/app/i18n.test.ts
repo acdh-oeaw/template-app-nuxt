@@ -85,14 +85,16 @@ test.describe("i18n", () => {
 				await page.goto(`/${locale}${pathname}`);
 
 				const links = await page.locator('link[rel="alternate"]').evaluateAll((elements) => {
-					return elements.map((element) => element.outerHTML);
+					return elements.map((element) => {
+						return [element.getAttribute("hreflang"), element.getAttribute("href")];
+					});
 				});
 
 				expect(links).toEqual(
 					expect.arrayContaining([
-						`<link id="i18n-alt-de" rel="alternate" href="${createAbsoluteUrl(`/de${pathname}`)}" hreflang="de">`,
-						`<link id="i18n-alt-en" rel="alternate" href="${createAbsoluteUrl(`/en${pathname}`)}" hreflang="en">`,
-						`<link id="i18n-xd" rel="alternate" href="${createAbsoluteUrl(`/en${pathname}`)}" hreflang="x-default">`,
+						["de", createAbsoluteUrl(`/de${pathname}`)],
+						["en", createAbsoluteUrl(`/en${pathname}`)],
+						["x-default", createAbsoluteUrl(`/en${pathname}`)],
 					]),
 				);
 			}
