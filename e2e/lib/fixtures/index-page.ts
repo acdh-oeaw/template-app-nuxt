@@ -22,7 +22,7 @@ export class IndexPage {
 		this.skipLink = page.getByRole("link", { name: i18n.t("DefaultLayout.skip-to-main-content") });
 	}
 
-	async goto() {
+	goto() {
 		return this.page.goto(this.url);
 	}
 }
