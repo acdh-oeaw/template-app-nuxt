@@ -11,7 +11,7 @@ on:
 jobs:
   env:
     name: Generate environment variables
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Derive environment from git ref
         id: environment
@@ -40,7 +40,7 @@ jobs:
   vars:
     name: Generate public url
     needs: [env]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: ${{ needs.env.outputs.environment }}
     steps:
@@ -60,7 +60,7 @@ jobs:
   build:
     name: Build and push docker image
     needs: [env, vars]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
