@@ -50,6 +50,7 @@ export default defineNuxtConfig({
 			},
 		},
 		inlineRouteRules: true,
+		// typedPages: true,
 	},
 	features: {
 		/** @see https://github.com/nuxt/nuxt/issues/21821 */
@@ -64,11 +65,13 @@ export default defineNuxtConfig({
 		detectBrowserLanguage: {
 			redirectOn: "root",
 		},
-		langDir: "../i18n/messages",
+		experimental: {
+			typedOptionsAndMessages: "default",
+		},
+		langDir: "messages",
 		lazy: true,
 		locales: Object.values(localesMap),
 		strategy: "prefix",
-		vueI18n: "./i18n/i18n.config.ts",
 	},
 	imports: {
 		dirs: ["./config/"],
