@@ -132,6 +132,9 @@ importers:
       eslint-config-flat-gitignore:
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.16.0(jiti@2.4.1))
+      eslint-plugin-check-file:
+        specifier: ^2.8.0
+        version: 2.8.0(eslint@9.16.0(jiti@2.4.1))
       globals:
         specifier: ^15.13.0
         version: 15.13.0
@@ -2574,6 +2577,12 @@ packages:
     resolution: {integrity: sha512-IvRXXtEajLeyssvW4wJcZ2etxkR9mUf4zpNwgI+m/Uac9RfXHskuJefkHUcawVzePnd6xp24enp5jfgdHzjRdQ==}
     peerDependencies:
       eslint: '*'
+
+  eslint-plugin-check-file@2.8.0:
+    resolution: {integrity: sha512-FvvafMTam2WJYH9uj+FuMxQ1y+7jY3Z6P9T4j2214cH0FBxNzTcmeCiGTj1Lxp3mI6kbbgsXvmgewvf+llKYyw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      eslint: '>=7.28.0'
 
   eslint-plugin-es-x@7.8.0:
     resolution: {integrity: sha512-7Ds8+wAAoV3T+LAKeu39Y5BzXCrGKrcISfgKEqTS4BDN8SFEDQd0S43jiQ8vIa3wUKD07qitZdfzlenSi8/0qQ==}
@@ -8400,6 +8409,12 @@ snapshots:
   eslint-merge-processors@0.1.0(eslint@9.16.0(jiti@2.4.1)):
     dependencies:
       eslint: 9.16.0(jiti@2.4.1)
+
+  eslint-plugin-check-file@2.8.0(eslint@9.16.0(jiti@2.4.1)):
+    dependencies:
+      eslint: 9.16.0(jiti@2.4.1)
+      is-glob: 4.0.3
+      micromatch: 4.0.8
 
   eslint-plugin-es-x@7.8.0(eslint@9.16.0(jiti@2.4.1)):
     dependencies:
