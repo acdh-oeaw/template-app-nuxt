@@ -40,12 +40,29 @@ test.describe("imprint page", () => {
 		}
 	});
 
-	test("should not have visible changes", async ({ createImprintPage }) => {
-		for (const locale of locales) {
-			const { imprintPage } = await createImprintPage(locale);
-			await imprintPage.goto();
+	test.describe("should not have visible changes", () => {
+		test.use({ colorScheme: "light" });
 
-			await expect(imprintPage.page).toHaveScreenshot();
-		}
+		test("in light mode", async ({ createImprintPage }) => {
+			for (const locale of locales) {
+				const { imprintPage } = await createImprintPage(locale);
+				await imprintPage.goto();
+
+				await expect(imprintPage.page).toHaveScreenshot();
+			}
+		});
+	});
+
+	test.describe("should not have visible changes", () => {
+		test.use({ colorScheme: "dark" });
+
+		test("in dark mode", async ({ createImprintPage }) => {
+			for (const locale of locales) {
+				const { imprintPage } = await createImprintPage(locale);
+				await imprintPage.goto();
+
+				await expect(imprintPage.page).toHaveScreenshot();
+			}
+		});
 	});
 });
