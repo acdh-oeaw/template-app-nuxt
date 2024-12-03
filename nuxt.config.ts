@@ -76,6 +76,12 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["./config/"],
 	},
+	mdc: {
+		remarkPlugins: {
+			/** @see https://github.com/nuxt-modules/mdc/issues/187 */
+			"remark-emoji": false,
+		},
+	},
 	modules: [
 		"@nuxt/content",
 		"@nuxt/eslint",
