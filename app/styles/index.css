@@ -26,7 +26,14 @@
 	}
 
 	:root {
-		@apply antialiased bg-white text-neutral-950 dark:bg-neutral-900 dark:text-white;
+		@apply antialiased font-body bg-white text-neutral-950 dark:bg-neutral-900 dark:text-white;
+
+		overflow-wrap: break-word;
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		text-size-adjust: none;
+		-webkit-tap-highlight-color: transparent;
+		interpolate-size: allow-keywords;
 	}
 
 	:root,
@@ -38,12 +45,58 @@
 		color-scheme: dark;
 	}
 
+	:where(:focus) {
+		/** Transparent outline. */
+		@apply outline-hidden;
+	}
+
+	:where(:focus-visible) {
+		@apply outline-solid outline-2 outline-offset-2 outline-neutral-950 dark:outline-white;
+	}
+
+	:where(blockquote) {
+		@apply text-balance;
+	}
+
 	:where(h1, h2, h3, h4, h5, h6) {
-		text-wrap: balance;
+		@apply font-heading text-balance;
+	}
+
+	:where(iframe) {
+		border: 0;
 	}
 
 	:where(p) {
-		text-wrap: pretty;
+		@apply text-pretty;
+	}
+
+	:where(table) {
+		font-variant-numeric: tabular-nums;
+	}
+
+	:where(textarea) {
+		field-sizing: content;
+		min-block-size: 3lh;
+	}
+
+	:where([id]) {
+		scroll-margin-block-start: 2ex;
+	}
+
+	:where([inert] ::-webkit-scrollbar) {
+		display: none;
+	}
+
+	/* stylelint-disable-next-line order/order */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::after,
+		*::before {
+			transition-duration: 0.01ms !important;
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			scroll-behavior: auto !important;
+		}
 	}
 }
 
