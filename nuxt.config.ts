@@ -20,10 +20,7 @@ export default defineNuxtConfig({
 		dataValue: "ui-color-scheme",
 	},
 	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
-	content: {
-		defaultLocale,
-		locales: Object.keys(localesMap),
-	},
+	content: {},
 	css: [
 		"@fontsource-variable/inter/standard.css",
 		"@fontsource-variable/inter/standard-italic.css",
