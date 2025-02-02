@@ -29,6 +29,15 @@
 		@apply antialiased bg-white text-neutral-950 dark:bg-neutral-900 dark:text-white;
 	}
 
+	:root,
+	[data-ui-color-scheme="light"] {
+		color-scheme: light;
+	}
+
+	[data-ui-color-scheme="dark"] {
+		color-scheme: dark;
+	}
+
 	:where(h1, h2, h3, h4, h5, h6) {
 		text-wrap: balance;
 	}
