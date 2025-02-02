@@ -4,7 +4,7 @@ import baseConfig from "@acdh-oeaw/eslint-config";
 import nodeConfig from "@acdh-oeaw/eslint-config-node";
 import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
-import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
+// import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
 import gitignore from "eslint-config-flat-gitignore";
 // @ts-expect-error Missing type declaration.
@@ -24,7 +24,7 @@ const config = [
 	...baseConfig,
 	...vueConfig,
 	...nuxtConfig,
-	...tailwindcssConfig,
+	// ...tailwindcssConfig,
 	...playwrightConfig,
 	{
 		rules: {
