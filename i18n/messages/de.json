@@ -54,9 +54,9 @@
 		"switch-locale": "Zu {locale} wechseln"
 	},
 	"Manifest": {
+		"description": "ACDH-CH App",
 		"name": "ACDH-CH App",
-		"short-name": "ACDH-CH App",
-		"description": "ACDH-CH App"
+		"short-name": "ACDH-CH App"
 	},
 	"NotFoundPage": {
 		"meta": {
