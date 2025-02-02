@@ -28,6 +28,14 @@
 	:root {
 		@apply antialiased bg-white text-neutral-950 dark:bg-neutral-900 dark:text-white;
 	}
+
+	:where(h1, h2, h3, h4, h5, h6) {
+		text-wrap: balance;
+	}
+
+	:where(p) {
+		text-wrap: pretty;
+	}
 }
 
 @theme inline {
