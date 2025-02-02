@@ -58,7 +58,10 @@ export default defineNuxtConfig({
 	},
 	features: {
 		/** @see https://github.com/nuxt/nuxt/issues/21821 */
-		inlineStyles: false,
+		inlineStyles(id) {
+			// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+			return id != null && id.includes(".vue");
+		},
 	},
 	future: {
 		compatibilityVersion: 4,
