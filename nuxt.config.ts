@@ -126,6 +126,9 @@ export default defineNuxtConfig({
 		},
 	},
 	vite: {
+		build: {
+			cssMinify: "lightningcss",
+		},
 		plugins: [tailwindcss()],
 	},
 });
