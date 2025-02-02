@@ -11,7 +11,7 @@ const links = computed(() => {
 </script>
 
 <template>
-	<header class="border-b border-neutral-200">
+	<header class="border-b border-neutral-200 dark:border-neutral-700">
 		<div class="container flex items-center justify-between gap-4 py-8">
 			<nav :aria-label="t('AppHeader.navigation-main')">
 				<ul class="flex items-center gap-4" role="list">
