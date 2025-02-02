@@ -37,6 +37,21 @@ run a development server on <http://localhost:3000>:
 pnpm run dev
 ```
 
+## how to test
+
+generate a production build and run end-to-end tests with:
+
+```bash
+pnpm run build
+pnpm run test:e2e
+```
+
+visual snapshot tests should be run in the template's devcontainer - or a comparable debian bookworm based linux environment -, and can be updated with:
+
+```bash
+pnpm run test:e2e:update-snapshots
+```
+
 ## how to deploy
 
 - ask a sysadmin to create a new acdh-ch kubernetes project.
