@@ -1,8 +1,49 @@
-:root {
-	--font-body: "Inter Variable";
+/* stylelint-disable custom-property-empty-line-before */
+/* stylelint-disable no-duplicate-selectors */
+
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+@custom-variant aria-current-page (&[aria-current="page"]);
+@custom-variant dark (&:where([data-ui-color-scheme="dark"], [data-ui-color-scheme="dark"] *));
+
+@layer base {
+	:root {
+		--_font-body: "Inter Variable";
+		--_font-mono: "Fira Code";
+	}
+
+	:root,
+	body {
+		block-size: 100%;
+	}
+
+	#__nuxt {
+		block-size: 100%;
+		isolation: isolate;
+	}
+
+	:root {
+		@apply antialiased bg-white text-neutral-950 dark:bg-neutral-900 dark:text-white;
+	}
 }
 
-#__nuxt {
-	block-size: 100%;
-	isolation: isolate;
+@theme inline {
+	--breakpoint-xs: 30rem;
+	--breakpoint-sm: 40rem;
+	--breakpoint-md: 48rem;
+	--breakpoint-lg: 64rem;
+	--breakpoint-xl: 80rem;
+	--breakpoint-2xl: 96rem;
+	--breakpoint-3xl: 120rem;
+
+	--font-body: var(--_font-body, ui-sans-serif), system-ui, sans-serif;
+	--font-heading: var(--_font-heading, var(--font-body));
+	--font-mono: var(--_font-mono, ui-monospace), monospace;
+}
+
+@utility container {
+	@apply max-w-7xl w-full mx-auto px-8;
 }

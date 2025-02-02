@@ -1,5 +1,7 @@
 import { fileURLToPath } from "node:url";
 
+import tailwindcss from "@tailwindcss/vite";
+
 import { defaultLocale, localesMap } from "./app/config/i18n.config";
 
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
@@ -25,7 +27,6 @@ export default defineNuxtConfig({
 	css: [
 		"@fontsource-variable/inter/standard.css",
 		"@fontsource-variable/inter/standard-italic.css",
-		"tailwindcss/tailwind.css",
 		"@/styles/index.css",
 	],
 	devtools: {
@@ -103,11 +104,6 @@ export default defineNuxtConfig({
 			routes: ["/manifest.webmanifest", "/robots.txt", "/sitemap.xml"],
 		},
 	},
-	postcss: {
-		plugins: {
-			tailwindcss: {},
-		},
-	},
 	runtimeConfig: {
 		public: {
 			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
@@ -131,5 +127,8 @@ export default defineNuxtConfig({
 				},
 			},
 		},
+	},
+	vite: {
+		plugins: [tailwindcss()],
 	},
 });
