@@ -50,6 +50,10 @@ export default defineNuxtConfig({
 			},
 		},
 		inlineRouteRules: true,
+		/**
+		 * @see https://github.com/nuxt-modules/i18n/issues/3240
+		 */
+		scanPageMeta: true,
 		// typedPages: true,
 	},
 	features: {
