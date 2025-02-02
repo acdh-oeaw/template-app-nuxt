@@ -46,7 +46,7 @@ const config = [
 			"check-file/filename-naming-convention": [
 				"error",
 				{
-					"**/*": `@(${KEBAB_CASE}${MIDDLE_EXTENSION}|${DYNAMIC_SEGMENTS}|${CATCH_ALL_SEGMENTS})`,
+					"**/*": `@(${KEBAB_CASE}${MIDDLE_EXTENSION}|${DYNAMIC_SEGMENTS}${MIDDLE_EXTENSION}|${CATCH_ALL_SEGMENTS}${MIDDLE_EXTENSION})`,
 				},
 			],
 			"check-file/folder-naming-convention": [
