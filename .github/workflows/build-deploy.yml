@@ -22,7 +22,7 @@ jobs:
           elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
             ENVIRONMENT="development"
             APP_NAME_SUFFIX="-development"
-          elif [ "${{github.event_name}}" = "pull_request"]; then
+          elif [ "${{github.event_name}}" = "pull_request" ]; then
             ENVIRONMENT="pr/${{ github.event.pull_request.number }}"
             APP_NAME_SUFFIX="-pr-${{ github.event.pull_request.number }}"
           else
