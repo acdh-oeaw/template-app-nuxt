@@ -13,7 +13,7 @@ import { withNuxt } from "./.nuxt/eslint.config.mjs";
 
 const KEBAB_CASE = "+([a-z])*([a-z0-9])*(-+([a-z0-9]))";
 const CAMEL_CASE = "+([a-z])*([a-z0-9])*([A-Z]*([a-z0-9]))";
-const DYNAMIC_SEGMENTS = `\\[${CAMEL_CASE}\\]`;
+const DYNAMIC_SEGMENTS = `\\[?(\\[)${CAMEL_CASE}\\]?(\\[)`;
 const CATCH_ALL_SEGMENTS = `\\[...${CAMEL_CASE}\\]`;
 const MIDDLE_EXTENSION = "*(.+([a-z0-9]))";
 
