@@ -21,7 +21,6 @@ export default defineNuxtConfig({
 	},
 	compatibilityDate: "2025-01-01",
 	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
-	content: {},
 	css: [
 		"@fontsource-variable/inter/standard.css",
 		"@fontsource-variable/inter/standard-italic.css",
@@ -81,12 +80,6 @@ export default defineNuxtConfig({
 	},
 	imports: {
 		dirs: ["./config/"],
-	},
-	mdc: {
-		remarkPlugins: {
-			/** @see https://github.com/nuxt-modules/mdc/issues/187 */
-			"remark-emoji": false,
-		},
 	},
 	modules: ["@nuxt/eslint", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
 	nitro: {
