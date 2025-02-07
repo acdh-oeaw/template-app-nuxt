@@ -109,6 +109,9 @@ working setup.
 - [`variant/with-commitlint`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-commitlint)
   branch: enables `commitlint` and runs it as a git hook, and as part of the validation workflow in
   a github action.
+- [`variant/with-nuxt-content`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-nuxt-content)
+  branch: includes a basic `@nuxt/content` setup. note that `@nuxt/content` v3 includes a sqlite
+  database, both server- and client-side.
 - [`variant/with-sentry`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-sentry)
   branch: enables error reporting with [`sentry`](https://acdh-ch.sentry.io).
 - [`variant/with-single-locale`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-single-locale)
