@@ -88,14 +88,7 @@ export default defineNuxtConfig({
 			"remark-emoji": false,
 		},
 	},
-	modules: [
-		"@nuxt/content",
-		"@nuxt/eslint",
-		"@nuxt/image",
-		"@nuxtjs/color-mode",
-		"@nuxtjs/i18n",
-		"@vueuse/nuxt",
-	],
+	modules: ["@nuxt/eslint", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {
