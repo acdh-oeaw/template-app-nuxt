@@ -1,4 +1,4 @@
-import { createUrl } from "@acdh-oeaw/lib";
+import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
 
 import { defaultLocale } from "@/config/i18n.config";
 import { expect, test } from "~/e2e/lib/test";
@@ -7,7 +7,8 @@ test.describe("analytics service", () => {
 	// eslint-disable-next-line playwright/no-skipped-test
 	test.skip(() => {
 		return (
-			process.env.NUXT_PUBLIC_MATOMO_BASE_URL == null || process.env.NUXT_PUBLIC_MATOMO_ID == null
+			!isNonEmptyString(process.env.NUXT_PUBLIC_MATOMO_BASE_URL) ||
+			!isNonEmptyString(process.env.NUXT_PUBLIC_MATOMO_ID)
 		);
 	}, "Analytics service disabled.");
 
