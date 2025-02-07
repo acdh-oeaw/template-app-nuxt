@@ -4,7 +4,7 @@ import { expect, test } from "~/e2e/lib/test";
 
 if (process.env.NUXT_PUBLIC_MATOMO_BASE_URL && process.env.NUXT_PUBLIC_MATOMO_ID) {
 	const baseUrl = String(
-		createUrl({ baseUrl: process.env.NEXT_PUBLIC_MATOMO_BASE_URL!, pathname: "/matomo.php?**" }),
+		createUrl({ baseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL, pathname: "/matomo.php?**" }),
 	);
 
 	test.describe("analytics service", () => {
