@@ -1,6 +1,6 @@
 import type { RouteLocationNormalized } from "vue-router";
 
-function track(url: string, referrer: string, title: string) {
+function track(url: string, referrer: string | undefined, title: string) {
 	window._paq?.push(["setReferrerUrl", referrer]);
 	window._paq?.push(["setCustomUrl", url]);
 	window._paq?.push(["setDocumentTitle", title]);
@@ -8,9 +8,12 @@ function track(url: string, referrer: string, title: string) {
 	window._paq?.push(["enableLinkTracking"]);
 }
 
-export function trackPageView(to: RouteLocationNormalized, from: RouteLocationNormalized): void {
+export function trackPageView(
+	to: RouteLocationNormalized,
+	from: RouteLocationNormalized | undefined,
+): void {
 	const url = to.fullPath;
-	const referrer = from.fullPath;
+	const referrer = from?.fullPath;
 
 	if (typeof to.meta.title === "string") {
 		track(url, referrer, to.meta.title);
