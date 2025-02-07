@@ -21,6 +21,20 @@ export default defineNuxtConfig({
 	},
 	compatibilityDate: "2025-01-01",
 	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
+	content: {
+		build: {
+			markdown: {
+				highlight: false,
+				remarkPlugins: {
+					"remark-emoji": false,
+				},
+			},
+		},
+		renderer: {
+			alias: {},
+			anchorLinks: false,
+		},
+	},
 	css: [
 		"@fontsource-variable/inter/standard.css",
 		"@fontsource-variable/inter/standard-italic.css",
@@ -81,7 +95,14 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["./config/"],
 	},
-	modules: ["@nuxt/eslint", "@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "@vueuse/nuxt"],
+	modules: [
+		"@nuxt/content",
+		"@nuxt/eslint",
+		"@nuxt/image",
+		"@nuxtjs/color-mode",
+		"@nuxtjs/i18n",
+		"@vueuse/nuxt",
+	],
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {

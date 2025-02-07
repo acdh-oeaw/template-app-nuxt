@@ -1,4 +1,7 @@
 {
+	"AboutPage": {
+		"page-not-found": "Page not found"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Imprint"
@@ -7,6 +10,7 @@
 	},
 	"AppHeader": {
 		"links": {
+			"about": "About the project",
 			"home": "Home"
 		},
 		"navigation-main": "Main"
