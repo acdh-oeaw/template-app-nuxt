@@ -1,4 +1,7 @@
 {
+	"AboutPage": {
+		"page-not-found": "Seite nicht gefunden"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Impressum"
@@ -7,6 +10,7 @@
 	},
 	"AppHeader": {
 		"links": {
+			"about": "Über das Projekt",
 			"home": "Startseite"
 		},
 		"navigation-main": "Hauptnavigation"
