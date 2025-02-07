@@ -74,7 +74,12 @@ useHead({
 			{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd, safeJsonLdReplacer) },
 		];
 
-		if (isNonEmptyString(env.public.matomoBaseUrl) && isNonEmptyString(env.public.matomoId)) {
+		if (
+			isNonEmptyString(env.public.matomoBaseUrl) &&
+			(isNonEmptyString(env.public.matomoId) ||
+				/** Nuxt tries to cast env vars o_O. @see https://github.com/nuxt/nuxt/issues/24812 */
+				typeof env.public.matomoId === "number")
+		) {
 			const baseUrl = env.public.matomoBaseUrl;
 
 			scripts.push({
