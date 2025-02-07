@@ -1,7 +1,9 @@
 import type { RouteLocationNormalized } from "vue-router";
 
 function track(url: string, referrer: string | undefined, title: string) {
-	window._paq?.push(["setReferrerUrl", referrer]);
+	if (referrer != null) {
+		window._paq?.push(["setReferrerUrl", referrer]);
+	}
 	window._paq?.push(["setCustomUrl", url]);
 	window._paq?.push(["setDocumentTitle", title]);
 	window._paq?.push(["trackPageView"]);
