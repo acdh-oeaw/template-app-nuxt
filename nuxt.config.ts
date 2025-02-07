@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 		classSuffix: "",
 		dataValue: "ui-color-scheme",
 	},
+	compatibilityDate: "2025-01-01",
 	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
 	content: {},
 	css: [
