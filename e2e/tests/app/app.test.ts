@@ -162,11 +162,12 @@ test.describe("app", () => {
 		await indexPage.goto();
 
 		const homeLink = indexPage.page
+			.getByRole("navigation")
 			.getByRole("link", {
 				name: i18n.t("AppHeader.links.home"),
 			})
 			.first();
-		const imprintLink = indexPage.page.getByRole("link", {
+		const imprintLink = indexPage.page.getByRole("navigation").getByRole("link", {
 			name: i18n.t("AppFooter.links.imprint"),
 		});
 
