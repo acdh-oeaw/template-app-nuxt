@@ -7,7 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 	 * We are *not* dispatching an initial `trackPageView` event in the matomo
 	 * init script, so we need to do it here.
 	 */
-	router.isReady().then(() => {
+	void router.isReady().then(() => {
 		trackPageView(router.currentRoute.value, undefined);
 	});
 
