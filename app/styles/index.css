@@ -45,12 +45,12 @@
 		color-scheme: dark;
 	}
 
-	:where(:focus) {
+	:focus {
 		/** Transparent outline. */
 		@apply outline-hidden;
 	}
 
-	:where(:focus-visible) {
+	:focus-visible {
 		@apply outline-solid outline-2 outline-offset-2 outline-neutral-950 dark:outline-white;
 	}
 
