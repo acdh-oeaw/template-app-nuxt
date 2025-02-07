@@ -1,25 +1,32 @@
 import { createUrl } from "@acdh-oeaw/lib";
 
+import { defaultLocale } from "@/config/i18n.config";
 import { expect, test } from "~/e2e/lib/test";
 
-if (process.env.NUXT_PUBLIC_MATOMO_BASE_URL && process.env.NUXT_PUBLIC_MATOMO_ID) {
+test.describe("analytics service", () => {
+	// eslint-disable-next-line playwright/no-skipped-test
+	test.skip(() => {
+		return (
+			process.env.NUXT_PUBLIC_MATOMO_BASE_URL == null || process.env.NUXT_PUBLIC_MATOMO_ID == null
+		);
+	}, "Analytics service disabled.");
+
 	const baseUrl = String(
-		createUrl({ baseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL, pathname: "/matomo.php?**" }),
+		createUrl({ baseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL!, pathname: "/matomo.php?**" }),
 	);
 
-	test.describe("analytics service", () => {
-		test("should track page views", async ({ createIndexPage }) => {
-			const { indexPage, i18n } = await createIndexPage(defaultLocale);
-			const { page } = indexPage;
-			const initialResponsePromise = page.waitForResponse(baseUrl);
-			await indexPage.goto();
-			const initialResponse = await initialResponsePromise;
-			expect(initialResponse.status()).toBe(204);
+	test("should track page views", async ({ createIndexPage }) => {
+		const { indexPage, i18n } = await createIndexPage(defaultLocale);
+		const { page } = indexPage;
 
-			const responsePromise = page.waitForResponse(baseUrl);
-			await page.getByRole("link", { name: i18n.t("AppFooter.links.imprint") }).click();
-			const response = await responsePromise;
-			expect(response.status()).toBe(204);
-		});
+		const initialResponsePromise = page.waitForResponse(baseUrl);
+		await indexPage.goto();
+		const initialResponse = await initialResponsePromise;
+		expect(initialResponse.status()).toBe(204);
+
+		const responsePromise = page.waitForResponse(baseUrl);
+		await page.getByRole("link", { name: i18n.t("AppFooter.links.imprint") }).click();
+		const response = await responsePromise;
+		expect(response.status()).toBe(204);
 	});
-}
+});
