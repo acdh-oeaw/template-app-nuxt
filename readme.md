@@ -7,7 +7,7 @@ template repository for nuxt 3 apps.
 prerequisites:
 
 - [node.js 22.x](https://nodejs.org/en/download)
-- [pnpm 9.x](https://pnpm.io/installation)
+- [pnpm 10.x](https://pnpm.io/installation)
 
 > [!TIP]
 >

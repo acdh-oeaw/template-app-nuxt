@@ -5,9 +5,9 @@
 	"type": "module",
 	"engines": {
 		"node": "22.x",
-		"pnpm": "9.x"
+		"pnpm": "10.x"
 	},
-	"packageManager": "pnpm@9.15.5",
+	"packageManager": "pnpm@10.2.1",
 	"scripts": {
 		"analyze": "nuxt analyze --dotenv ./.env.local",
 		"build": "nuxt build --dotenv ./.env.local",
@@ -41,7 +41,7 @@
 		"@fontsource-variable/inter": "^5.1.1",
 		"@nuxt/image": "^1.9.0",
 		"@nuxtjs/color-mode": "^3.5.2",
-		"@nuxtjs/i18n": "^9.1.5",
+		"@nuxtjs/i18n": "^9.2.0",
 		"@vueuse/core": "^12.5.0",
 		"@vueuse/nuxt": "^12.5.0",
 		"fast-glob": "^3.3.3",
@@ -52,7 +52,7 @@
 		"sharp": "^0.33.5",
 		"valibot": "^1.0.0-beta.15",
 		"vue": "^3.5.13",
-		"vue-i18n": "^11.1.0",
+		"vue-i18n": "^11.1.1",
 		"vue-i18n-routing": "^1.2.0",
 		"vue-router": "^4.5.0"
 	},
@@ -70,7 +70,7 @@
 		"@nuxt/eslint": "^1.0.1",
 		"@playwright/test": "^1.50.1",
 		"@tailwindcss/typography": "^0.5.16",
-		"@tailwindcss/vite": "^4.0.4",
+		"@tailwindcss/vite": "^4.0.5",
 		"@types/node": "^22.13.1",
 		"axe-core": "^4.10.2",
 		"axe-playwright": "^2.1.0",
@@ -78,7 +78,7 @@
 		"dotenv": "^16.4.7",
 		"dotenv-cli": "^8.0.0",
 		"dotenv-expand": "^12.0.1",
-		"eslint": "^9.19.0",
+		"eslint": "^9.20.0",
 		"eslint-config-flat-gitignore": "^2.0.0",
 		"eslint-plugin-check-file": "^3.0.0",
 		"globals": "^15.14.0",
@@ -90,7 +90,7 @@
 		"schema-dts": "^1.1.2",
 		"simple-git-hooks": "^2.11.1",
 		"stylelint": "^16.14.1",
-		"tailwindcss": "^4.0.4",
+		"tailwindcss": "^4.0.5",
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.7.3",
 		"vite": "^6.1.0",
