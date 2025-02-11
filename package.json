@@ -7,7 +7,7 @@
 		"node": "22.x",
 		"pnpm": "10.x"
 	},
-	"packageManager": "pnpm@10.2.1",
+	"packageManager": "pnpm@10.3.0",
 	"scripts": {
 		"analyze": "nuxt analyze --dotenv ./.env.local",
 		"build": "nuxt build --dotenv ./.env.local",
@@ -96,6 +96,17 @@
 		"typescript-eslint": "^8.24.0",
 		"vite": "^6.1.0",
 		"vue-tsc": "^2.2.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@intlify/vue-i18n-bridge",
+			"@intlify/vue-router-bridge",
+			"@parcel/watcher",
+			"esbuild",
+			"sharp",
+			"simple-git-hooks",
+			"vue-demi"
+		]
 	},
 	"browserslist": {
 		"development": [
