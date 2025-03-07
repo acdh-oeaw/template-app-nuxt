@@ -5,7 +5,7 @@ const isVisible = import.meta.dev;
 <template>
 	<div
 		v-if="isVisible"
-		class="fixed bottom-4 right-4 z-10 grid size-8 place-content-center rounded-full font-mono text-xs font-medium bg-neutral-950 text-white dark:bg-white dark:text-neutral-950"
+		class="fixed right-4 bottom-4 z-10 grid size-8 place-content-center rounded-full bg-neutral-950 font-mono text-xs font-medium text-white dark:bg-white dark:text-neutral-950"
 		role="status"
 	>
 		<span class="xs:hidden">2xs</span>

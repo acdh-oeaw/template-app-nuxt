@@ -20,7 +20,7 @@ const imprint = await useFetch(String(createImprintUrl(locale.value, redmineId))
 	<!-- eslint-disable vue/no-v-html -->
 	<div
 		v-if="imprint.data.value"
-		class="prose dark:prose-invert max-w-3xl"
+		class="prose max-w-3xl dark:prose-invert"
 		v-html="imprint.data.value"
 	/>
 	<!-- eslint-enable vue/no-v-html -->

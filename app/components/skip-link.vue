@@ -16,7 +16,7 @@ function onClick() {
 
 <template>
 	<NuxtLink
-		class="rounded fixed -translate-y-full px-4 py-3 bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 transition focus:translate-y-0"
+		class="fixed -translate-y-full rounded bg-neutral-950 px-4 py-3 text-white transition focus:translate-y-0 dark:bg-white dark:text-neutral-950"
 		:href="{ hash: `#${props.targetId}`, query: route.query }"
 		@click="onClick"
 	>

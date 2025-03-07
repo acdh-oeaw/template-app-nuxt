@@ -26,7 +26,7 @@
 	}
 
 	:root {
-		@apply antialiased font-body bg-white text-neutral-950 dark:bg-neutral-900 dark:text-white;
+		@apply bg-white font-body text-neutral-950 antialiased dark:bg-neutral-900 dark:text-white;
 
 		overflow-wrap: break-word;
 		font-synthesis: none;
@@ -115,5 +115,5 @@
 }
 
 @utility container {
-	@apply max-w-7xl w-full mx-auto px-8;
+	@apply mx-auto w-full max-w-7xl px-8;
 }
