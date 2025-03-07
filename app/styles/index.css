@@ -51,7 +51,7 @@
 	}
 
 	:focus-visible {
-		@apply outline-solid outline-2 outline-offset-2 outline-neutral-950 dark:outline-white;
+		@apply outline-2 outline-offset-2 outline-neutral-950 dark:outline-white;
 	}
 
 	:where(blockquote) {

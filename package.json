@@ -87,6 +87,7 @@
 		"npm-run-all2": "^7.0.2",
 		"postcss": "^8.5.3",
 		"prettier": "^3.5.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
 		"schema-dts": "^1.1.5",
 		"simple-git-hooks": "^2.11.1",
 		"stylelint": "^16.15.0",
@@ -136,7 +137,6 @@
 		],
 		"*.!(css|js|ts|vue),!./@(content|public)/**": "prettier --cache --cache-location ./.prettiercache --ignore-unknown --write"
 	},
-	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
 	},
