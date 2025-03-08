@@ -37,9 +37,7 @@
 	"terminal.integrated.enablePersistentSessions": false,
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"typescript.inlayHints.parameterNames.enabled": "all",
-	"typescript.preferences.autoImportFileExcludePatterns": [
-    "lucide-vue-next"
-  ],
+	"typescript.preferences.autoImportFileExcludePatterns": ["lucide-vue-next"],
 	"typescript.preferences.importModuleSpecifier": "non-relative",
 	"typescript.preferences.preferTypeOnlyAutoImports": true,
 	"typescript.tsdk": "node_modules/typescript/lib",
