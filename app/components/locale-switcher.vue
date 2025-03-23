@@ -16,16 +16,9 @@ const labels = computed(() => {
 		<template v-for="(locale, index) of locales" :key="locale">
 			<span v-if="index !== 0">|</span>
 
-			<!--
-				`@nuxtjs/i18n` does not update the locale cookie on route change, so we need to
-				call `setLocale` explicitly.
-
-				@see https://i18n.nuxtjs.org/guide/lang-switcher
-			 -->
 			<NuxtLink
 				v-if="locale !== currentLocale"
 				:href="{ path: switchLocalePath(locale), query: route.query }"
-				@click.prevent.stop="setLocale(locale)"
 			>
 				<span class="sr-only">
 					{{ t("LocaleSwitcher.switch-locale", { locale: labels.of(locale) }) }}
