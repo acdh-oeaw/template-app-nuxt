@@ -4,7 +4,6 @@ import { locales } from "@/config/i18n.config";
 const currentLocale = useLocale();
 const t = useTranslations();
 const switchLocalePath = useSwitchLocalePath();
-const { setLocale } = useI18n();
 const route = useRoute();
 const labels = computed(() => {
 	return new Intl.DisplayNames([currentLocale.value], { type: "language" });
