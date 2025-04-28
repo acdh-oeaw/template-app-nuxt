@@ -66,6 +66,9 @@ export default defineNuxtConfig({
 	},
 	i18n: {
 		baseUrl,
+		bundle: {
+			optimizeTranslationDirective: false,
+		},
 		defaultLocale,
 		detectBrowserLanguage: {
 			redirectOn: "root",
