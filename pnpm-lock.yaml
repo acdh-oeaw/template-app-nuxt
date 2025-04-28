@@ -81,9 +81,6 @@ importers:
       '@acdh-oeaw/eslint-config-playwright':
         specifier: ^2.0.10
         version: 2.0.10(@acdh-oeaw/eslint-config@2.0.9(eslint@9.25.1(jiti@2.4.2))(globals@16.0.0)(typescript@5.8.3))(eslint@9.25.1(jiti@2.4.2))
-      '@acdh-oeaw/eslint-config-tailwindcss':
-        specifier: ^2.0.11
-        version: 2.0.11(@acdh-oeaw/eslint-config@2.0.9(eslint@9.25.1(jiti@2.4.2))(globals@16.0.0)(typescript@5.8.3))(tailwindcss@4.1.4)
       '@acdh-oeaw/eslint-config-vue':
         specifier: ^2.0.12
         version: 2.0.12(@acdh-oeaw/eslint-config@2.0.9(eslint@9.25.1(jiti@2.4.2))(globals@16.0.0)(typescript@5.8.3))(eslint@9.25.1(jiti@2.4.2))
@@ -207,12 +204,6 @@ packages:
 
   '@acdh-oeaw/eslint-config-playwright@2.0.10':
     resolution: {integrity: sha512-GdRyZoMOh6go3fovy9BRkK8ugkEMIWb+GrF7bE+3j+e33MbTnJyE8+W9HcSRsuWCa2Y5b5rUjsY8lTSOGME7/w==}
-    engines: {node: '>=20.11'}
-    peerDependencies:
-      '@acdh-oeaw/eslint-config': 2.0.9
-
-  '@acdh-oeaw/eslint-config-tailwindcss@2.0.11':
-    resolution: {integrity: sha512-mdduQKrXaiGgEXg0uh1e9SEnFn0KrvW6BUcqiCxPj4KRa/JHRkyITVaUypP/vcqYnInO7LLFXIL86y7LKv1f7w==}
     engines: {node: '>=20.11'}
     peerDependencies:
       '@acdh-oeaw/eslint-config': 2.0.9
@@ -3105,12 +3096,6 @@ packages:
     resolution: {integrity: sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==}
     peerDependencies:
       eslint: '>=5.0.0'
-
-  eslint-plugin-tailwindcss@3.18.0:
-    resolution: {integrity: sha512-PQDU4ZMzFH0eb2DrfHPpbgo87Zgg2EXSMOj1NSfzdZm+aJzpuwGerfowMIaVehSREEa0idbf/eoNYAOHSJoDAQ==}
-    engines: {node: '>=18.12.0'}
-    peerDependencies:
-      tailwindcss: ^3.4.0
 
   eslint-plugin-unicorn@58.0.0:
     resolution: {integrity: sha512-fc3iaxCm9chBWOHPVjn+Czb/wHS0D2Mko7wkOdobqo9R2bbFObc4LyZaLTNy0mhZOP84nKkLhTUQxlLOZ7EjKw==}
@@ -6150,13 +6135,6 @@ snapshots:
       eslint-plugin-playwright: 2.2.0(eslint@9.25.1(jiti@2.4.2))
     transitivePeerDependencies:
       - eslint
-
-  '@acdh-oeaw/eslint-config-tailwindcss@2.0.11(@acdh-oeaw/eslint-config@2.0.9(eslint@9.25.1(jiti@2.4.2))(globals@16.0.0)(typescript@5.8.3))(tailwindcss@4.1.4)':
-    dependencies:
-      '@acdh-oeaw/eslint-config': 2.0.9(eslint@9.25.1(jiti@2.4.2))(globals@16.0.0)(typescript@5.8.3)
-      eslint-plugin-tailwindcss: 3.18.0(tailwindcss@4.1.4)
-    transitivePeerDependencies:
-      - tailwindcss
 
   '@acdh-oeaw/eslint-config-vue@2.0.12(@acdh-oeaw/eslint-config@2.0.9(eslint@9.25.1(jiti@2.4.2))(globals@16.0.0)(typescript@5.8.3))(eslint@9.25.1(jiti@2.4.2))':
     dependencies:
@@ -9306,12 +9284,6 @@ snapshots:
   eslint-plugin-simple-import-sort@12.1.1(eslint@9.25.1(jiti@2.4.2)):
     dependencies:
       eslint: 9.25.1(jiti@2.4.2)
-
-  eslint-plugin-tailwindcss@3.18.0(tailwindcss@4.1.4):
-    dependencies:
-      fast-glob: 3.3.3
-      postcss: 8.5.3
-      tailwindcss: 4.1.4
 
   eslint-plugin-unicorn@58.0.0(eslint@9.25.1(jiti@2.4.2)):
     dependencies:
