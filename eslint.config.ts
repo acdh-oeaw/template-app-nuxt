@@ -2,12 +2,10 @@ import baseConfig from "@acdh-oeaw/eslint-config";
 import nodeConfig from "@acdh-oeaw/eslint-config-node";
 import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
-// import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
 import gitignore from "eslint-config-flat-gitignore";
-// @ts-expect-error Missing type declaration.
 import checkFilePlugin from "eslint-plugin-check-file";
-import type { Config } from "typescript-eslint";
+import { config } from "typescript-eslint";
 
 import { withNuxt } from "./.nuxt/eslint.config.mjs";
 
@@ -17,27 +15,25 @@ const DYNAMIC_SEGMENTS = `\\[?(\\[)${CAMEL_CASE}\\]?(\\[)`;
 const CATCH_ALL_SEGMENTS = `\\[...${CAMEL_CASE}\\]`;
 const MIDDLE_EXTENSION = "*(.+([a-z0-9]))";
 
-const config: Config = [
+const configs = config(
 	gitignore({ strict: false }),
-	...baseConfig,
-	...vueConfig,
-	...nuxtConfig,
-	// ...tailwindcssConfig,
-	...playwrightConfig,
+	{ ignores: ["content/**", "public/**"] },
+	baseConfig,
+	vueConfig,
+	nuxtConfig,
+	playwrightConfig,
 	{
+		files: ["**/*.vue"],
 		rules: {
 			"vue/attributes-order": ["warn", { alphabetical: true }],
 		},
 	},
-	...nodeConfig.map((config) => {
-		return {
-			files: ["server/**/*.ts"],
-			...config,
-		};
-	}),
+	{
+		files: ["server/**/*.ts"],
+		extends: [nodeConfig],
+	},
 	{
 		plugins: {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			"check-file": checkFilePlugin,
 		},
 		rules: {
@@ -55,7 +51,7 @@ const config: Config = [
 			],
 		},
 	},
-];
+);
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
-export default withNuxt(config as any);
+export default withNuxt(configs as any);
