@@ -1,10 +1,10 @@
 ignoredBuiltDependencies:
   - unrs-resolver
-
 onlyBuiltDependencies:
   - '@intlify/vue-i18n-bridge'
   - '@intlify/vue-router-bridge'
   - '@parcel/watcher'
+  - '@tailwindcss/oxide'
   - esbuild
   - sharp
   - simple-git-hooks

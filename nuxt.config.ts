@@ -49,6 +49,9 @@ export default defineNuxtConfig({
 		},
 		inlineRouteRules: true,
 		/**
+		 * Workaround works up until `@nuxtjs/i18n@9.4.0`, which is why currently
+		 * the version is pinned.
+		 *
 		 * @see https://github.com/nuxt-modules/i18n/issues/3240
 		 */
 		scanPageMeta: true,
