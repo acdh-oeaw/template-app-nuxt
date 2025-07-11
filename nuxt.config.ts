@@ -100,7 +100,7 @@ export default defineNuxtConfig({
 					"~/*": ["./*"],
 				},
 			},
-			include: ["../*.config.js", "../*.config.ts", "../i18n/*.config.ts", "../e2e/**/*.ts"],
+			include: ["../*.config.ts", "../i18n/*.config.ts", "../e2e/**/*.ts"],
 		},
 	},
 	vite: {
