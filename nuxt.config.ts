@@ -32,7 +32,7 @@ export default defineNuxtConfig({
 	eslint: {
 		config: {
 			autoInit: false,
-			standalone: true,
+			standalone: false,
 		},
 	},
 	experimental: {
@@ -100,6 +100,7 @@ export default defineNuxtConfig({
 					"~/*": ["./*"],
 				},
 			},
+			include: ["../*.config.js", "../*.config.ts", "../i18n/*.config.ts", "../e2e/**/*.ts"],
 		},
 	},
 	vite: {
