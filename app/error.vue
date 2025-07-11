@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const props = defineProps<{
+const { error } = defineProps<{
 	error:
 		| Error
 		| {
@@ -16,7 +16,7 @@ const t = useTranslations();
 const localePath = useLocalePath();
 
 const isNotFoundPage = computed(() => {
-	return "statusCode" in props.error && props.error.statusCode === 404;
+	return "statusCode" in error && error.statusCode === 404;
 });
 
 /** `error.vue` is *not* wrapped in default layout out of the box. */
@@ -49,8 +49,8 @@ function onReset() {
 		<template v-else>
 			<PageTitle>{{ t("ErrorPage.title") }}</PageTitle>
 			<div class="flex items-center gap-4">
-				<span>{{ "statusCode" in props.error ? props.error.statusCode : 500 }}</span>
-				<span>{{ props.error.message }}</span>
+				<span>{{ "statusCode" in error ? error.statusCode : 500 }}</span>
+				<span>{{ error.message }}</span>
 			</div>
 			<div>
 				<button @click="onReset">
