@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
 
-import { defaultLocale, localesMap } from "./app/config/i18n.config";
+import { defaultLocale, files } from "./app/config/i18n.config";
 
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
@@ -36,9 +36,6 @@ export default defineNuxtConfig({
 		},
 	},
 	experimental: {
-		componentIslands: {
-			selectiveClient: true,
-		},
 		defaults: {
 			useAsyncData: {
 				deep: false,
@@ -47,31 +44,9 @@ export default defineNuxtConfig({
 				timeout: 250,
 			},
 		},
-		inlineRouteRules: true,
-		/**
-		 * Workaround works up until `@nuxtjs/i18n@9.4.0`, which is why currently
-		 * the version is pinned.
-		 *
-		 * @see https://github.com/nuxt-modules/i18n/issues/3240
-		 */
-		scanPageMeta: true,
-		// typedPages: true,
-	},
-	features: {
-		/** @see https://github.com/nuxt/nuxt/issues/21821 */
-		inlineStyles(id) {
-			// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
-			return id != null && id.includes(".vue");
-		},
-	},
-	future: {
-		compatibilityVersion: 4,
 	},
 	i18n: {
 		baseUrl,
-		bundle: {
-			optimizeTranslationDirective: false,
-		},
 		defaultLocale,
 		detectBrowserLanguage: {
 			redirectOn: "root",
@@ -80,8 +55,7 @@ export default defineNuxtConfig({
 			typedOptionsAndMessages: "default",
 		},
 		langDir: "messages",
-		lazy: true,
-		locales: Object.values(localesMap),
+		locales: files,
 		strategy: "prefix",
 	},
 	imports: {
@@ -90,7 +64,10 @@ export default defineNuxtConfig({
 	modules: [
 		"@nuxt/eslint",
 		"@nuxt/fonts",
+		"@nuxt/icon",
 		"@nuxt/image",
+		"@nuxt/scripts",
+		"@nuxt/test-utils",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
 		"@vueuse/nuxt",
