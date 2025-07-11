@@ -8,7 +8,7 @@ const env = useRuntimeConfig();
 const locale = useLocale();
 const t = useTranslations();
 
-const i18nHead = useLocaleHead({ key: "id" });
+const i18nHead = useLocaleHead();
 
 useHead({
 	htmlAttrs: {
