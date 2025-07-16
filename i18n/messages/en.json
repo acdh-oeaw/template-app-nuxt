@@ -21,8 +21,8 @@
 	},
 	"DefaultLayout": {
 		"meta": {
-			"description": "ACDH-CH App",
-			"title": "ACDH-CH App",
+			"description": "ACDH App",
+			"title": "ACDH App",
 			"twitter": "{'@acdh_oeaw'}"
 		},
 		"skip-to-main-content": "Skip to main content"
@@ -54,9 +54,9 @@
 		"switch-locale": "Switch to {locale}"
 	},
 	"Manifest": {
-		"description": "ACDH-CH App",
-		"name": "ACDH-CH App",
-		"short-name": "ACDH-CH App"
+		"description": "ACDH App",
+		"name": "ACDH App",
+		"short-name": "ACDH App"
 	},
 	"NotFoundPage": {
 		"meta": {
