@@ -1,8 +1,4 @@
 <script lang="ts" setup>
-defineRouteRules({
-	prerender: true,
-});
-
 const t = useTranslations();
 
 usePageMetadata({
