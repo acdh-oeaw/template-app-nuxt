@@ -10,7 +10,7 @@ import { expand } from "dotenv-expand";
  * available to the vs code plugin as well.
  */
 for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]) {
-	expand(dotenv({ path: join(process.cwd(), envFilePath) }));
+	expand(dotenv({ path: join(process.cwd(), envFilePath), quiet: true }));
 }
 
 const port = 3000;
