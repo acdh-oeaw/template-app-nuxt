@@ -8,10 +8,10 @@ FROM node:22-alpine AS build
 
 RUN corepack enable
 
-USER node
-
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
+
+USER node
 
 COPY --chown=node:node .npmrc package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # COPY --chown=node:node ./patches ./patches
@@ -42,10 +42,10 @@ RUN pnpm run build
 # serve
 FROM node:22-alpine AS serve
 
-USER node
-
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
+
+USER node
 
 COPY --from=build --chown=node:node /app/.output ./
 

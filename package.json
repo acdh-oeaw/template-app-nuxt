@@ -6,13 +6,6 @@
 	"engines": {
 		"node": "^22"
 	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": ">= 22.18 < 23",
-			"onFail": "download"
-		}
-	},
 	"packageManager": "pnpm@10.15.1",
 	"scripts": {
 		"analyze": "nuxt analyze --dotenv ./.env.local",
