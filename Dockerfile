@@ -8,10 +8,10 @@ FROM node:22-alpine AS build
 
 RUN corepack enable
 
-USER node
-
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
+
+USER node
 
 COPY --chown=node:node .npmrc package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # COPY --chown=node:node ./patches ./patches
@@ -26,7 +26,7 @@ COPY --chown=node:node ./ ./
 ARG NUXT_PUBLIC_APP_BASE_URL
 ARG NUXT_PUBLIC_BOTS
 ARG NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-ARG NEXT_PUBLIC_IMPRINT_SERVICE_BASE_URL
+ARG NUXT_PUBLIC_IMPRINT_SERVICE_BASE_URL
 ARG NUXT_PUBLIC_MATOMO_BASE_URL
 ARG NUXT_PUBLIC_MATOMO_ID
 ARG NUXT_PUBLIC_REDMINE_ID
@@ -42,10 +42,10 @@ RUN pnpm run build
 # serve
 FROM node:22-alpine AS serve
 
-USER node
-
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
+
+USER node
 
 COPY --from=build --chown=node:node /app/.output ./
 
