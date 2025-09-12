@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createImprintUrl } from "@/config/imprint.config";
+import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
 const env = useRuntimeConfig();
 
@@ -7,7 +7,13 @@ const locale = useLocale();
 
 const redmineId = env.public.redmineId;
 
-const imprint = await useFetch(String(createImprintUrl(locale.value, redmineId)), {
+const url = createUrl({
+	baseUrl: env.public.imprintServiceBaseUrl,
+	pathname: `/${redmineId}`,
+	searchParams: createUrlSearchParams({ locale: locale.value }),
+});
+
+const imprint = await useFetch(String(url), {
 	responseType: "text",
 	onResponseError(error) {
 		throw createError({ fatal: true, statusCode: error.response.status });
