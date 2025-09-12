@@ -6,9 +6,9 @@ import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
+import { defineConfig } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
 import checkFilePlugin from "eslint-plugin-check-file";
-import { config } from "typescript-eslint";
 
 import { withNuxt } from "./.nuxt/eslint.config.mjs";
 
@@ -18,7 +18,7 @@ const DYNAMIC_SEGMENTS = `\\[?(\\[)${CAMEL_CASE}\\]?(\\[)`;
 const CATCH_ALL_SEGMENTS = `\\[...${CAMEL_CASE}\\]`;
 const MIDDLE_EXTENSION = "*(.+([a-z0-9]))";
 
-const configs = config(
+const configs = defineConfig(
 	gitignore({ strict: false }),
 	{ ignores: ["content/**", "public/**"] },
 	baseConfig,
@@ -64,5 +64,4 @@ const configs = config(
 	},
 );
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
-export default withNuxt(configs as any);
+export default withNuxt(configs);
