@@ -4,9 +4,9 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "^22"
+		"node": "^24"
 	},
-	"packageManager": "pnpm@10.15.1",
+	"packageManager": "pnpm@10.19.0",
 	"scripts": {
 		"analyze": "nuxt analyze --dotenv ./.env.local",
 		"build": "nuxt build --dotenv ./.env.local",
@@ -74,7 +74,7 @@
 		"@playwright/test": "^1.55.0",
 		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.13",
-		"@types/node": "^22.18.1",
+		"@types/node": "^24.9.1",
 		"axe-core": "^4.10.3",
 		"axe-playwright": "^2.2.2",
 		"dotenv": "^17.2.2",
