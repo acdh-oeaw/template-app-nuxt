@@ -12,8 +12,8 @@
 		"build": "nuxt build --dotenv ./.env.local",
 		"clean": "nuxt cleanup",
 		"dev": "nuxt dev --dotenv ./.env.local",
-		"format:check": "prettier . --cache --cache-location ./.prettiercache --check",
-		"format:fix": "pnpm run format:check --write",
+		"format:check": "oxfmt --check",
+		"format:fix": "oxfmt",
 		"generate": "nuxt generate --dotenv ./.env.local",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
@@ -66,7 +66,6 @@
 		"@acdh-oeaw/eslint-config-playwright": "^2.0.12",
 		"@acdh-oeaw/eslint-config-tailwindcss": "^3.0.2",
 		"@acdh-oeaw/eslint-config-vue": "^2.0.14",
-		"@acdh-oeaw/prettier-config": "^2.0.1",
 		"@acdh-oeaw/stylelint-config": "^2.3.0",
 		"@acdh-oeaw/tsconfig": "^1.5.1",
 		"@nuxt/devtools": "^2.6.3",
@@ -87,8 +86,8 @@
 		"is-in-ci": "^2.0.0",
 		"lint-staged": "^16.1.6",
 		"npm-run-all2": "^8.0.4",
+		"oxfmt": "^0.8.0",
 		"postcss": "^8.5.6",
-		"prettier": "^3.6.2",
 		"schema-dts": "^1.1.5",
 		"simple-git-hooks": "^2.13.1",
 		"stylelint": "^16.24.0",
@@ -115,17 +114,17 @@
 		"*.@(vue)": [
 			"eslint --fix --flag unstable_native_nodejs_ts_config",
 			"stylelint --cache --fix",
-			"prettier --cache --cache-location ./.prettiercache --write"
+			"oxfmt"
 		],
 		"*.@(js|ts)": [
 			"eslint --fix --flag unstable_native_nodejs_ts_config",
-			"prettier --cache --cache-location ./.prettiercache --write"
+			"oxfmt"
 		],
 		"*.@(css)": [
 			"stylelint --cache --fix",
-			"prettier --cache --cache-location ./.prettiercache --write"
+			"oxfmt"
 		],
-		"*.!(css|js|ts|vue)": "prettier --cache --cache-location ./.prettiercache --ignore-unknown --write"
+		"*.!(css|js|ts|vue)": "oxfmt --no-error-on-unmatched-pattern"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
