@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "^22"
+		"node": "^24"
 	},
 	"packageManager": "pnpm@10.19.0",
 	"scripts": {
@@ -74,7 +74,7 @@
 		"@playwright/test": "^1.56.1",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.16",
-		"@types/node": "^22.18.12",
+		"@types/node": "^24.9.1",
 		"axe-core": "^4.11.0",
 		"axe-playwright": "^2.2.2",
 		"dotenv": "^17.2.3",
