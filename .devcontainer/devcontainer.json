@@ -11,6 +11,7 @@
 				"mikestead.dotenv",
 				"ms-playwright.playwright",
 				"nuxt.mdc",
+				"oxc.oxc-vscode",
 				"stylelint.vscode-stylelint",
 				"vue.volar"
 			]

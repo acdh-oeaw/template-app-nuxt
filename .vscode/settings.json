@@ -31,6 +31,7 @@
 	"i18n-ally.sortKeys": true,
 	"i18n-ally.tabStyle": "tab",
 	"less.validate": false,
+	"oxc.fmt.experimental": true,
 	"scss.validate": false,
 	"stylelint.enable": true,
 	"stylelint.snippet": ["css", "postcss", "tailwindcss", "vue"],
