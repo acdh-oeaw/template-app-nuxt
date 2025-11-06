@@ -4,7 +4,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
-	"editor.defaultFormatter": "oxc.oxc-vscode",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
 	"editor.inlayHints.enabled": "offUnlessPressed",
 	"editor.linkedEditing": true,
@@ -46,6 +46,9 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.labelFormat": "medium",
 	"workbench.tree.enableStickyScroll": true,
+	"[javascript][typescript]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
 	"[markdown]": {
 		"editor.wordWrap": "on"
 	},
