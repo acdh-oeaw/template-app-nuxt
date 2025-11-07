@@ -1,6 +1,7 @@
 {
 	"name": "Nuxt",
 	"image": "ghcr.io/acdh-oeaw/devcontainer-frontend:24",
+	"runArgs": ["--add-host=host.docker.internal:host-gateway"],
 	"customizations": {
 		"vscode": {
 			"extensions": [
