@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const t = useTranslations();
+const { t } = useI18n();
 </script>
 
 <template>
