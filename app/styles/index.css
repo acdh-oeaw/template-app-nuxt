@@ -2,6 +2,7 @@
 /* stylelint-disable no-duplicate-selectors */
 
 @import "tailwindcss";
+@import "@nuxt/ui";
 
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";

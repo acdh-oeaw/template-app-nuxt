@@ -68,6 +68,7 @@ export default defineNuxtConfig({
 		"@nuxt/image",
 		"@nuxt/scripts",
 		"@nuxt/test-utils",
+		"@nuxt/ui",
 		"@nuxtjs/color-mode",
 		"@nuxtjs/i18n",
 		"@vueuse/nuxt",

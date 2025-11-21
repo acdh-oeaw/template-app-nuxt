@@ -35,6 +35,8 @@
 	"stylelint.enable": true,
 	"stylelint.snippet": ["css", "postcss", "tailwindcss", "vue"],
 	"stylelint.validate": ["css", "postcss", "tailwindcss", "vue"],
+	"tailwindCSS.classAttributes": ["class", "ui"],
+	"tailwindCSS.experimental.classRegex": [["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]],
 	"tailwindCSS.validate": true,
 	"terminal.integrated.enablePersistentSessions": false,
 	"typescript.enablePromptUseWorkspaceTsdk": true,
