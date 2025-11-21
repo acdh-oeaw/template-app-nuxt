@@ -5,7 +5,7 @@ assignees:
 labels:
   - needs-review
   - enhancement
-type: enhancement
+type: feature
 body:
   - type: textarea
     attributes:
