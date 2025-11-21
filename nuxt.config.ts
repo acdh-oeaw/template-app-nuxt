@@ -21,11 +21,7 @@ export default defineNuxtConfig({
 	},
 	compatibilityDate: "2025-01-01",
 	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
-	css: [
-		"@fontsource-variable/inter/standard.css",
-		"@fontsource-variable/inter/standard-italic.css",
-		"@/styles/index.css",
-	],
+	css: ["@/styles/index.css"],
 	devtools: {
 		enabled: true,
 	},
@@ -63,7 +59,6 @@ export default defineNuxtConfig({
 	},
 	modules: [
 		"@nuxt/eslint",
-		"@nuxt/fonts",
 		"@nuxt/icon",
 		"@nuxt/image",
 		"@nuxt/scripts",
