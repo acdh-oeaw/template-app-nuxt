@@ -5,8 +5,7 @@ import type { WebSite, WithContext } from "schema-dts";
 
 const env = useRuntimeConfig();
 
-const locale = useLocale();
-const t = useTranslations();
+const { locale, t } = useI18n();
 
 const i18nHead = useLocaleHead();
 

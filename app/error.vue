@@ -11,8 +11,7 @@ const { error } = defineProps<{
 		  };
 }>();
 
-// const locale = useLocale();
-const t = useTranslations();
+const { t } = useI18n();
 const localePath = useLocalePath();
 
 const isNotFoundPage = computed(() => {

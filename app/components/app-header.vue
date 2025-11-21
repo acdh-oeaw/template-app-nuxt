@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { NuxtLinkProps } from "#app";
 
-const t = useTranslations();
+const { t } = useI18n();
 
 const links = computed(() => {
 	return {

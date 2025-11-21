@@ -8,7 +8,7 @@
 			"\tprerender: true,",
 			"});",
 			"",
-			"const t = useTranslations();",
+			"const { t } = useI18n();",
 			"",
 			"usePageMetadata({",
 			"\ttitle: \"${1:Name}Page.meta.title\",",

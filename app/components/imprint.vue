@@ -3,7 +3,7 @@ import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
 const env = useRuntimeConfig();
 
-const locale = useLocale();
+const { locale } = useI18n();
 
 const redmineId = env.public.redmineId;
 

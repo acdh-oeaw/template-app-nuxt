@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { type Locale, locales } from "@/config/i18n.config";
 
-const currentLocale = useLocale();
-const t = useTranslations();
+const { locale: currentLocale } = useI18n();
+const { t } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const route = useRoute();
 
