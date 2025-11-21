@@ -51,7 +51,7 @@
 	},
 	"LocaleSwitcher": {
 		"current-locale": "Aktuelle Sprache: {locale}",
-		"switch-locale": "Zu {locale} wechseln"
+		"switch-locale": "Sprache zu {locale} wechseln"
 	},
 	"Manifest": {
 		"description": "ACDH App",
