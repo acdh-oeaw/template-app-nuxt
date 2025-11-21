@@ -20,7 +20,7 @@
 	}
 
 	:root {
-		@apply bg-white font-body text-neutral-950 antialiased dark:bg-neutral-900 dark:text-white;
+		@apply font-body antialiased;
 
 		overflow-wrap: break-word;
 		font-synthesis: none;
@@ -106,6 +106,22 @@
 	--font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 	--font-heading: var(--font-body);
 	--font-mono: "Fira Code", ui-monospace, monospace;
+}
+
+@layer base {
+	:root {
+		--ui-color-neutral-50: var(--color-zinc-50);
+		--ui-color-neutral-100: var(--color-zinc-100);
+		--ui-color-neutral-200: var(--color-zinc-200);
+		--ui-color-neutral-300: var(--color-zinc-300);
+		--ui-color-neutral-400: var(--color-zinc-400);
+		--ui-color-neutral-500: var(--color-zinc-500);
+		--ui-color-neutral-600: var(--color-zinc-600);
+		--ui-color-neutral-700: var(--color-zinc-700);
+		--ui-color-neutral-800: var(--color-zinc-800);
+		--ui-color-neutral-900: var(--color-zinc-900);
+		--ui-color-neutral-950: var(--color-zinc-950);
+	}
 }
 
 @utility container {
