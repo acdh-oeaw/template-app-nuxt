@@ -20,7 +20,7 @@ export default defineNuxtConfig({
 		dataValue: "ui-color-scheme",
 	},
 	compatibilityDate: "2025-01-01",
-	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
+	components: [{ extensions: [".vue"], path: "components", pathPrefix: false }],
 	css: [
 		"@fontsource-variable/inter/standard.css",
 		"@fontsource-variable/inter/standard-italic.css",
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
 		strategy: "prefix",
 	},
 	imports: {
-		dirs: ["./config/"],
+		dirs: ["@/config/"],
 	},
 	modules: [
 		"@nuxt/eslint",
@@ -101,7 +101,7 @@ export default defineNuxtConfig({
 					"~/*": ["./*"],
 				},
 			},
-			include: ["../*.config.ts", "../i18n/*.config.ts", "../e2e/**/*.ts"],
+			include: ["../*.config.ts", "../i18n/*.config.ts", "../e2e/**/*.ts", "../scripts/**/*.ts"],
 		},
 	},
 	vite: {
