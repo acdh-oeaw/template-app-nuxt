@@ -127,6 +127,7 @@
 		],
 		"*.!(css|js|ts|vue)": "prettier --cache --cache-location ./.prettiercache --ignore-unknown --write"
 	},
+	"prettier": "@acdh-oeaw/prettier-config",
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
 	},
