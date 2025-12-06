@@ -2,7 +2,7 @@ name: Validate
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-validate
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 on:
   pull_request:
