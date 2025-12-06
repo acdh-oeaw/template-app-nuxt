@@ -2,9 +2,9 @@
 /* stylelint-disable no-duplicate-selectors */
 
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @plugin "@tailwindcss/typography";
-@plugin "tailwindcss-animate";
 
 @custom-variant aria-current-page (&[aria-current="page"]);
 @custom-variant dark (&:where([data-ui-color-scheme="dark"], [data-ui-color-scheme="dark"] *));
