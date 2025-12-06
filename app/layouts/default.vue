@@ -81,7 +81,7 @@ useHead({
 			const baseUrl = env.public.matomoBaseUrl;
 
 			scripts.push({
-				type: "",
+				type: "text/javascript",
 				innerHTML: createAnalyticsScript(
 					baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`,
 					env.public.matomoId,
