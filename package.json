@@ -65,7 +65,7 @@
 		"@acdh-oeaw/eslint-config-node": "^2.0.11",
 		"@acdh-oeaw/eslint-config-nuxt": "^2.0.17",
 		"@acdh-oeaw/eslint-config-playwright": "^2.0.13",
-		"@acdh-oeaw/eslint-config-tailwindcss": "^3.0.3",
+		"@acdh-oeaw/eslint-config-tailwindcss": "^4.0.1",
 		"@acdh-oeaw/eslint-config-vue": "^2.0.15",
 		"@acdh-oeaw/prettier-config": "^2.0.1",
 		"@acdh-oeaw/stylelint-config": "^2.3.2",
