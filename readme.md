@@ -70,7 +70,7 @@ pnpm run test:e2e:update-snapshots
   any other non-oeaw domains, and ensure `KUBE_INGRESS_BASE_DOMAIN` is set correctly.
 - create a service issue in the acdh [redmine](https://redmine.acdh.oeaw.ac.at) issue tracker, and
   set the `SERVICE_ID` github variable to the issue number. this should match the
-  `NUXT_PUBLIC_REDMINE_ID` variable in your `.env.local` file.
+  `NEXT_PUBLIC_APP_SERVICE_ID` variable in your `.env.local` file.
 - ensure required build args (prefixed with `NUXT_PUBLIC_`) are referenced in both the
   [`Dockerfile`](./Dockerfile), as well as the [validation](./.github/workflows/validate.yml) and
   [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as
@@ -82,7 +82,7 @@ pnpm run test:e2e:update-snapshots
   secrets need to be prefixed with `K8S_SECRET_` to be automatically copied to the runtime
   environment. in case you need secrets in the docker build context, you can
   [mount a secret in the Dockerfile](https://docs.docker.com/build/building/secrets/).
-- the `NUXT_PUBLIC_BOTS` variable defaults to "disabled", which signals to web crawlers that the
+- the `NUXT_PUBLIC_APP_BOTS` variable defaults to "disabled", which signals to web crawlers that the
   website should not be indexed. when deploying to a production domain (i.e. a domain not ending in
   "acdh-dev.oeaw.ac.at") this should be set to "enabled".
 - to enable runtime override of public `runtimeConfig` build values through runtime env vars note

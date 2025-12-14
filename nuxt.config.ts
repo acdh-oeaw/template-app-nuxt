@@ -81,13 +81,15 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
-			bots: process.env.NUXT_PUBLIC_BOTS,
-			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-			imprintServiceBaseUrl: process.env.NUXT_PUBLIC_IMPRINT_SERVICE_BASE_URL,
-			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
-			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
-			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,
+			app: {
+				baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
+				bots: process.env.NUXT_PUBLIC_APP_BOTS,
+				googleSiteVerification: process.env.NEXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION,
+				imprintServiceBaseUrl: process.env.NEXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL,
+				matomoBaseUrl: process.env.NEXT_PUBLIC_APP_MATOMO_BASE_URL,
+				matomoId: process.env.NEXT_PUBLIC_APP_MATOMO_ID,
+				serviceId: process.env.NEXT_PUBLIC_APP_SERVICE_ID,
+			},
 		},
 	},
 	typescript: {

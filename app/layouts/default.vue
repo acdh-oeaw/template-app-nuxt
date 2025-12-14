@@ -43,7 +43,7 @@ useHead({
 				property: "og:image",
 				content: String(
 					createUrl({
-						baseUrl: env.public.appBaseUrl,
+						baseUrl: env.public.app.baseUrl,
 						pathname: "/opengraph-image.png",
 					}),
 				),
@@ -54,8 +54,11 @@ useHead({
 			...(i18nHead.value.meta ?? []),
 		];
 
-		if (isNonEmptyString(env.public.googleSiteVerification)) {
-			meta.push({ name: "google-site-verification", content: env.public.googleSiteVerification });
+		if (isNonEmptyString(env.public.app.googleSiteVerification)) {
+			meta.push({
+				name: "google-site-verification",
+				content: env.public.app.googleSiteVerification,
+			});
 		}
 
 		return meta;
@@ -73,18 +76,18 @@ useHead({
 		];
 
 		if (
-			isNonEmptyString(env.public.matomoBaseUrl) &&
-			(isNonEmptyString(env.public.matomoId) ||
+			isNonEmptyString(env.public.app.matomoBaseUrl) &&
+			(isNonEmptyString(env.public.app.matomoId) ||
 				/** Nuxt tries to cast env vars o_O. @see https://github.com/nuxt/nuxt/issues/24812 */
-				typeof env.public.matomoId === "number")
+				typeof env.public.app.matomoId === "number")
 		) {
-			const baseUrl = env.public.matomoBaseUrl;
+			const baseUrl = env.public.app.matomoBaseUrl;
 
 			scripts.push({
 				type: "text/javascript",
 				innerHTML: createAnalyticsScript(
 					baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`,
-					env.public.matomoId,
+					env.public.app.matomoId,
 				),
 			});
 		}
