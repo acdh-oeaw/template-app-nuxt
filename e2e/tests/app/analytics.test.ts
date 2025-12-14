@@ -7,14 +7,14 @@ test.describe("analytics service", () => {
 	// eslint-disable-next-line playwright/no-skipped-test
 	test.skip(() => {
 		return (
-			!isNonEmptyString(process.env.NEXT_PUBLIC_APP_MATOMO_BASE_URL) ||
-			!isNonEmptyString(process.env.NEXT_PUBLIC_APP_MATOMO_ID)
+			!isNonEmptyString(process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL) ||
+			!isNonEmptyString(process.env.NUXT_PUBLIC_APP_MATOMO_ID)
 		);
 	}, "Analytics service disabled.");
 
 	const baseUrl = String(
 		createUrl({
-			baseUrl: process.env.NEXT_PUBLIC_APP_MATOMO_BASE_URL!,
+			baseUrl: process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL!,
 			pathname: "/matomo.php?**",
 		}),
 	);
