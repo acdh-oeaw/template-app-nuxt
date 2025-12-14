@@ -70,7 +70,7 @@ pnpm run test:e2e:update-snapshots
   any other non-oeaw domains, and ensure `KUBE_INGRESS_BASE_DOMAIN` is set correctly.
 - create a service issue in the acdh [redmine](https://redmine.acdh.oeaw.ac.at) issue tracker, and
   set the `SERVICE_ID` github variable to the issue number. this should match the
-  `NEXT_PUBLIC_APP_SERVICE_ID` variable in your `.env.local` file.
+  `NUXT_PUBLIC_APP_SERVICE_ID` variable in your `.env.local` file.
 - ensure required build args (prefixed with `NUXT_PUBLIC_`) are referenced in both the
   [`Dockerfile`](./Dockerfile), as well as the [validation](./.github/workflows/validate.yml) and
   [deployment](./.github/workflows/build-deploy.yml) pipelines, and set as
