@@ -44,6 +44,7 @@ export default defineNuxtConfig({
 				timeout: 250,
 			},
 		},
+		inlineRouteRules: true,
 	},
 	i18n: {
 		baseUrl,

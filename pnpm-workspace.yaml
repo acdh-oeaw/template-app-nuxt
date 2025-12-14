@@ -4,18 +4,14 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@tailwindcss/oxide'
   - esbuild
-  - node
   - sharp
   - simple-git-hooks
   - unrs-resolver
   - vue-demi
 
 overrides:
-  # @see https://github.com/nuxt/image/issues/1908
-  sharp: "$sharp"
+  sharp: $sharp
 
-# https://pnpm.io/settings#shellemulator
 shellEmulator: true
 
-# https://pnpm.io/settings#strictdepbuilds
 strictDepBuilds: true
