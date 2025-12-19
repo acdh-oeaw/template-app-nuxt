@@ -12,7 +12,13 @@
 		]
 	},
 	"experimentalSortPackageJson": false,
-	"ignorePatterns": ["pnpm-lock.yaml", "pnpm-workspace.yaml", "/content/**", "/public/**"],
+	"ignorePatterns": [
+		"pnpm-lock.yaml",
+		"pnpm-workspace.yaml",
+		"/content",
+		"/e2e/snapshots",
+		"/public"
+	],
 	"printWidth": 100,
 	"useTabs": true
 }
