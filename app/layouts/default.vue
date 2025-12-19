@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
+import { addTrailingSlash, createUrl, isNonEmptyString, removeTrailingSlash } from "@acdh-oeaw/lib";
 import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
@@ -7,6 +7,16 @@ const env = useRuntimeConfig();
 
 const locale = useLocale();
 const t = useTranslations();
+
+const basePath = removeTrailingSlash(env.app.baseURL);
+
+function withBasePath(pathname: string) {
+	if (basePath.length !== 0) {
+		return `${basePath}${pathname}`;
+	}
+
+	return pathname;
+}
 
 const i18nHead = useLocaleHead();
 
@@ -24,10 +34,10 @@ useHead({
 	}),
 	link: computed(() => {
 		return [
-			{ href: "/favicon.ico", rel: "icon", sizes: "any" },
-			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
-			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
-			{ href: "/manifest.webmanifest", rel: "manifest" },
+			{ href: withBasePath("/favicon.ico"), rel: "icon", sizes: "any" },
+			{ href: withBasePath("/icon.svg"), rel: "icon", type: "image/svg+xml", sizes: "any" },
+			{ href: withBasePath("/apple-icon.png"), rel: "apple-touch-icon" },
+			{ href: withBasePath("/manifest.webmanifest"), rel: "manifest" },
 			{ href: inter, rel: "preload", as: "font", type: "font/woff2", crossorigin: "anonymous" },
 			...(i18nHead.value.link ?? []),
 		];
@@ -44,7 +54,7 @@ useHead({
 				content: String(
 					createUrl({
 						baseUrl: env.public.app.baseUrl,
-						pathname: "/opengraph-image.png",
+						pathname: withBasePath("/opengraph-image.png"),
 					}),
 				),
 			},
@@ -85,10 +95,7 @@ useHead({
 
 			scripts.push({
 				type: "text/javascript",
-				innerHTML: createAnalyticsScript(
-					baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`,
-					env.public.app.matomoId,
-				),
+				innerHTML: createAnalyticsScript(addTrailingSlash(baseUrl), env.public.app.matomoId),
 			});
 		}
 
