@@ -88,7 +88,7 @@ useHead({
 		if (
 			isNonEmptyString(env.public.app.matomoBaseUrl) &&
 			(isNonEmptyString(env.public.app.matomoId) ||
-				/** Nuxt tries to cast env vars o_O. @see https://github.com/nuxt/nuxt/issues/24812 */
+				/** Nuxt tries to cast env vars. @see {@link https://github.com/nuxt/nuxt/issues/24812} */
 				typeof env.public.app.matomoId === "number")
 		) {
 			const baseUrl = env.public.app.matomoBaseUrl;

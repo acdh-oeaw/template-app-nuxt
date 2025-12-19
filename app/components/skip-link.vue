@@ -5,9 +5,7 @@ const { targetId } = defineProps<{
 
 const route = useRoute();
 
-/**
- * @see https://bugzilla.mozilla.org/show_bug.cgi?id=308064
- */
+/** @see {@link https://bugzilla.mozilla.org/show_bug.cgi?id=308064} */
 function onClick() {
 	const element = document.getElementById(targetId);
 	element?.focus();

@@ -21,8 +21,8 @@ export function escape(value: string) {
 /**
  * A replacer for JSON.stringify to strip JSON-LD of illegal HTML entities.
  *
- * @see https://www.w3.org/TR/json-ld11/#restrictions-for-contents-of-json-ld-script-elements
- * @see https://github.com/google/react-schemaorg/blob/main/src/json-ld.tsx
+ * @see {@link https://www.w3.org/TR/json-ld11/#restrictions-for-contents-of-json-ld-script-elements}
+ * @see {@link https://github.com/google/react-schemaorg/blob/main/src/json-ld.tsx}
  */
 export function safeJsonLdReplacer(_key: string, value: JsonValue): JsonValue | undefined {
 	// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check

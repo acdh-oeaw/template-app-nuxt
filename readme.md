@@ -23,3 +23,7 @@ see [documentation](./docs/contributing.md).
 - [`variant/with-vue-query`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-vue-query)
   branch: adds [`vue-query`](https://tanstack.com/query/latest/docs/framework/vue/overview) for
   request caching and de-duplication.
+- [`variant/github-pages`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/github-pages)
+  branch: generates a static build and deploys to github pages. requires enabling "github pages" in
+  the [repository settings](https://github.com/acdh-oeaw/template-app-nuxt/settings/pages) (choose
+  "github actions" as source, and "main" as branch).
