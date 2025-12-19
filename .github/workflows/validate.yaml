@@ -92,11 +92,12 @@ jobs:
           retention-days: 30
 
   build-deploy:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     needs: [validate]
     uses: ./.github/workflows/build-deploy.yaml
     secrets: inherit
     # https://docs.github.com/en/actions/using-workflows/reusing-workflows#access-and-permissions
     permissions:
       contents: read
-      packages: write
+      id-token: write
+      pages: write
