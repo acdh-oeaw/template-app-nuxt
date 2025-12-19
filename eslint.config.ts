@@ -6,9 +6,9 @@ import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
-import { defineConfig, globalIgnores } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
 import checkFilePlugin from "eslint-plugin-check-file";
+import { defineConfig, globalIgnores } from "eslint/config";
 
 import { withNuxt } from "./.nuxt/eslint.config.mjs";
 
@@ -22,6 +22,13 @@ const configs = defineConfig(
 	gitignore({ strict: false }),
 	globalIgnores(["content/**", "public/**"]),
 	baseConfig,
+	/** Sorting is handled by `oxfmt` now. */
+	{
+		rules: {
+			"simple-import-sort/imports": "off",
+			"simple-import-sort/exports": "off",
+		},
+	},
 	vueConfig,
 	nuxtConfig,
 	{
