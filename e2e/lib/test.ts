@@ -18,7 +18,7 @@ interface Fixtures {
 }
 
 export const test = base.extend<Fixtures>({
-	/** @see https://playwright.dev/docs/test-fixtures#adding-global-beforeeachaftereach-hooks */
+	/** @see {@link https://playwright.dev/docs/test-fixtures#adding-global-beforeeachaftereach-hooks} */
 	beforeEachTest: [
 		async ({ context }, use) => {
 			const baseUrl = process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL;
