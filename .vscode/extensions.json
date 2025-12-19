@@ -7,7 +7,7 @@
 		"mikestead.dotenv",
 		"ms-playwright.playwright",
 		"nuxt.mdc",
-		"prettier.prettier-vscode",
+		"oxc.oxc-vscode",
 		"stylelint.vscode-stylelint",
 		"vue.volar"
 	]

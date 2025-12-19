@@ -1,0 +1,18 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"experimentalSortImports": {
+		"groups": [
+			["side-effect"],
+			["side-effect-style"],
+			["style"],
+			["builtin"],
+			["external"],
+			["internal", "subpath"],
+			["unknown"]
+		]
+	},
+	"experimentalSortPackageJson": false,
+	"ignorePatterns": ["pnpm-lock.yaml", "pnpm-workspace.yaml", "/content/**", "/public/**"],
+	"printWidth": 100,
+	"useTabs": true
+}
