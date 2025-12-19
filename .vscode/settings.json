@@ -4,7 +4,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
-	"editor.defaultFormatter": "prettier.prettier-vscode",
+	"editor.defaultFormatter": "oxc.oxc-vscode",
 	"editor.formatOnSave": true,
 	"editor.inlayHints.enabled": "offUnlessPressed",
 	"editor.linkedEditing": true,
@@ -31,7 +31,6 @@
 	"i18n-ally.sortKeys": true,
 	"i18n-ally.tabStyle": "tab",
 	"less.validate": false,
-	"oxc.fmt.experimental": true,
 	"scss.validate": false,
 	"stylelint.enable": true,
 	"stylelint.snippet": ["css", "postcss", "tailwindcss", "vue"],
@@ -46,9 +45,6 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.labelFormat": "medium",
 	"workbench.tree.enableStickyScroll": true,
-	"[javascript][typescript]": {
-		"editor.defaultFormatter": "oxc.oxc-vscode"
-	},
 	"[markdown]": {
 		"editor.wordWrap": "on"
 	},
