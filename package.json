@@ -13,7 +13,7 @@
 		"clean": "nuxt cleanup",
 		"dev": "nuxt dev --dotenv ./.env.local",
 		"format:check": "oxfmt --check",
-		"format:fix": "oxfmt",
+		"format:fix": "oxfmt --write",
 		"generate": "nuxt generate --dotenv ./.env.local",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
@@ -115,17 +115,17 @@
 		"*.@(vue)": [
 			"eslint --fix --flag unstable_native_nodejs_ts_config",
 			"stylelint --cache --fix",
-			"oxfmt"
+			"oxfmt --write"
 		],
 		"*.@(js|ts)": [
 			"eslint --fix --flag unstable_native_nodejs_ts_config",
-			"oxfmt"
+			"oxfmt --write"
 		],
 		"*.@(css)": [
 			"stylelint --cache --fix",
-			"oxfmt"
+			"oxfmt --write"
 		],
-		"*.!(css|js|ts|vue)": "oxfmt --no-error-on-unmatched-pattern"
+		"*.!(css|js|ts|vue)": "oxfmt --no-error-on-unmatched-pattern --write"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "pnpm exec lint-staged"
