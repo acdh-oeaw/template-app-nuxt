@@ -3,6 +3,10 @@
 	"private": true,
 	"license": "MIT",
 	"type": "module",
+	"engines": {
+		"node": "^24"
+	},
+	"packageManager": "pnpm@10.25.0",
 	"scripts": {
 		"analyze": "nuxt analyze --dotenv ./.env.local",
 		"build": "nuxt build --dotenv ./.env.local",
@@ -95,8 +99,17 @@
 		"vite": "^7.2.7",
 		"vue-tsc": "^3.1.8"
 	},
-	"simple-git-hooks": {
-		"pre-commit": "pnpm exec lint-staged"
+	"browserslist": {
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		],
+		"production": [
+			">=0.75%",
+			"not dead",
+			"not op_mini all"
+		]
 	},
 	"lint-staged": {
 		"*.@(vue)": [
@@ -114,23 +127,10 @@
 		],
 		"*.!(css|js|ts|vue)": "oxfmt --no-error-on-unmatched-pattern"
 	},
-	"browserslist": {
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		],
-		"production": [
-			">=0.75%",
-			"not dead",
-			"not op_mini all"
-		]
+	"simple-git-hooks": {
+		"pre-commit": "pnpm exec lint-staged"
 	},
 	"stylelint": {
 		"extends": "@acdh-oeaw/stylelint-config"
-	},
-	"engines": {
-		"node": "^24"
-	},
-	"packageManager": "pnpm@10.25.0"
+	}
 }

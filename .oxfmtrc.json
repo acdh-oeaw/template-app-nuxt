@@ -1,11 +1,7 @@
 {
 	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"ignorePatterns": [
-		"pnpm-lock.yaml",
-		"pnpm-workspace.yaml",
-		"/content/**",
-		"/public/**"
-	],
+	"experimentalSortPackageJson": false,
+	"ignorePatterns": ["pnpm-lock.yaml", "pnpm-workspace.yaml", "/content/**", "/public/**"],
 	"printWidth": 100,
 	"useTabs": true
 }
