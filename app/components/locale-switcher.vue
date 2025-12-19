@@ -25,6 +25,7 @@ const names = computed(() => {
 			<NuxtLink
 				v-if="locale !== currentLocale"
 				:href="{ path: switchLocalePath(locale), query: route.query }"
+				:hreflang="locale"
 			>
 				<span class="sr-only">
 					{{ t("LocaleSwitcher.switch-locale", { locale: names[currentLocale].of(locale) }) }}

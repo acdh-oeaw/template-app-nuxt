@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
+import { addTrailingSlash, createUrl, isNonEmptyString, removeTrailingSlash } from "@acdh-oeaw/lib";
 import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
@@ -7,6 +7,16 @@ const env = useRuntimeConfig();
 
 const locale = useLocale();
 const t = useTranslations();
+
+const basePath = removeTrailingSlash(env.app.baseURL);
+
+function withBasePath(pathname: string) {
+	if (basePath.length !== 0) {
+		return `${basePath}${pathname}`;
+	}
+
+	return pathname;
+}
 
 const i18nHead = useLocaleHead();
 
@@ -24,10 +34,10 @@ useHead({
 	}),
 	link: computed(() => {
 		return [
-			{ href: "/favicon.ico", rel: "icon", sizes: "any" },
-			{ href: "/icon.svg", rel: "icon", type: "image/svg+xml", sizes: "any" },
-			{ href: "/apple-icon.png", rel: "apple-touch-icon" },
-			{ href: "/manifest.webmanifest", rel: "manifest" },
+			{ href: withBasePath("/favicon.ico"), rel: "icon", sizes: "any" },
+			{ href: withBasePath("/icon.svg"), rel: "icon", type: "image/svg+xml", sizes: "any" },
+			{ href: withBasePath("/apple-icon.png"), rel: "apple-touch-icon" },
+			{ href: withBasePath("/manifest.webmanifest"), rel: "manifest" },
 			{ href: inter, rel: "preload", as: "font", type: "font/woff2", crossorigin: "anonymous" },
 			...(i18nHead.value.link ?? []),
 		];
@@ -43,8 +53,8 @@ useHead({
 				property: "og:image",
 				content: String(
 					createUrl({
-						baseUrl: env.public.appBaseUrl,
-						pathname: "/opengraph-image.png",
+						baseUrl: env.public.app.baseUrl,
+						pathname: withBasePath("/opengraph-image.png"),
 					}),
 				),
 			},
@@ -54,8 +64,11 @@ useHead({
 			...(i18nHead.value.meta ?? []),
 		];
 
-		if (isNonEmptyString(env.public.googleSiteVerification)) {
-			meta.push({ name: "google-site-verification", content: env.public.googleSiteVerification });
+		if (isNonEmptyString(env.public.app.googleSiteVerification)) {
+			meta.push({
+				name: "google-site-verification",
+				content: env.public.app.googleSiteVerification,
+			});
 		}
 
 		return meta;
@@ -73,19 +86,16 @@ useHead({
 		];
 
 		if (
-			isNonEmptyString(env.public.matomoBaseUrl) &&
-			(isNonEmptyString(env.public.matomoId) ||
-				/** Nuxt tries to cast env vars o_O. @see https://github.com/nuxt/nuxt/issues/24812 */
-				typeof env.public.matomoId === "number")
+			isNonEmptyString(env.public.app.matomoBaseUrl) &&
+			(isNonEmptyString(env.public.app.matomoId) ||
+				/** Nuxt tries to cast env vars. @see {@link https://github.com/nuxt/nuxt/issues/24812} */
+				typeof env.public.app.matomoId === "number")
 		) {
-			const baseUrl = env.public.matomoBaseUrl;
+			const baseUrl = env.public.app.matomoBaseUrl;
 
 			scripts.push({
-				type: "",
-				innerHTML: createAnalyticsScript(
-					baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`,
-					env.public.matomoId,
-				),
+				type: "text/javascript",
+				innerHTML: createAnalyticsScript(addTrailingSlash(baseUrl), env.public.app.matomoId),
 			});
 		}
 

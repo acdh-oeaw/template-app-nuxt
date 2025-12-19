@@ -1,4 +1,4 @@
-import { resolve } from "node:path";
+import * as path from "node:path";
 
 import baseConfig from "@acdh-oeaw/eslint-config";
 import nodeConfig from "@acdh-oeaw/eslint-config-node";
@@ -6,7 +6,7 @@ import nuxtConfig from "@acdh-oeaw/eslint-config-nuxt";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import vueConfig from "@acdh-oeaw/eslint-config-vue";
-import { defineConfig } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
 import checkFilePlugin from "eslint-plugin-check-file";
 
@@ -20,15 +20,19 @@ const MIDDLE_EXTENSION = "*(.+([a-z0-9]))";
 
 const configs = defineConfig(
 	gitignore({ strict: false }),
-	{ ignores: ["content/**", "public/**"] },
+	globalIgnores(["content/**", "public/**"]),
 	baseConfig,
 	vueConfig,
 	nuxtConfig,
-	tailwindcssConfig,
 	{
+		name: "tailwindcss-config",
+		extends: [tailwindcssConfig],
+		rules: {
+			"better-tailwindcss/no-unknown-classes": ["error", { ignore: ["lead", "not-richtext"] }],
+		},
 		settings: {
-			tailwindcss: {
-				config: resolve("./app/styles/index.css"),
+			"better-tailwindcss": {
+				entryPoint: path.resolve("./app/styles/index.css"),
 			},
 		},
 	},

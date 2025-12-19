@@ -20,7 +20,7 @@ export default defineNuxtConfig({
 		dataValue: "ui-color-scheme",
 	},
 	compatibilityDate: "2025-01-01",
-	components: [{ extensions: [".vue"], path: "@/components", pathPrefix: false }],
+	components: [{ extensions: [".vue"], path: "components", pathPrefix: false }],
 	css: [
 		"@fontsource-variable/inter/standard.css",
 		"@fontsource-variable/inter/standard-italic.css",
@@ -44,6 +44,7 @@ export default defineNuxtConfig({
 				timeout: 250,
 			},
 		},
+		inlineRouteRules: true,
 	},
 	i18n: {
 		baseUrl,
@@ -59,11 +60,12 @@ export default defineNuxtConfig({
 		strategy: "prefix",
 	},
 	imports: {
-		dirs: ["./config/"],
+		dirs: ["@/config/"],
 	},
 	modules: [
 		"@nuxt/eslint",
 		"@nuxt/fonts",
+		"@nuxt/hints",
 		"@nuxt/icon",
 		"@nuxt/image",
 		"@nuxt/scripts",
@@ -80,13 +82,15 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			appBaseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
-			bots: process.env.NUXT_PUBLIC_BOTS,
-			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-			imprintServiceBaseUrl: process.env.NUXT_PUBLIC_IMPRINT_SERVICE_BASE_URL,
-			matomoBaseUrl: process.env.NUXT_PUBLIC_MATOMO_BASE_URL,
-			matomoId: process.env.NUXT_PUBLIC_MATOMO_ID,
-			redmineId: process.env.NUXT_PUBLIC_REDMINE_ID,
+			app: {
+				baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
+				bots: process.env.NUXT_PUBLIC_APP_BOTS,
+				googleSiteVerification: process.env.NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION,
+				imprintServiceBaseUrl: process.env.NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL,
+				matomoBaseUrl: process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL,
+				matomoId: process.env.NUXT_PUBLIC_APP_MATOMO_ID,
+				serviceId: process.env.NUXT_PUBLIC_APP_SERVICE_ID,
+			},
 		},
 	},
 	typescript: {
@@ -101,7 +105,13 @@ export default defineNuxtConfig({
 					"~/*": ["./*"],
 				},
 			},
-			include: ["../*.config.ts", "../i18n/*.config.ts", "../e2e/**/*.ts"],
+			include: [
+				"../*.config.ts",
+				"../i18n/*.config.ts",
+				"../e2e/**/*.ts",
+				"../scripts/**/*.ts",
+				"../server/**/*.ts",
+			],
 		},
 	},
 	vite: {

@@ -2,7 +2,7 @@ name: Validate
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-validate
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 on:
   pull_request:
@@ -26,10 +26,10 @@ jobs:
 
     env:
       NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
-      NUXT_PUBLIC_IMPRINT_SERVICE_BASE_URL: "${{ vars.NUXT_PUBLIC_IMPRINT_SERVICE_BASE_URL }}"
-      NUXT_PUBLIC_MATOMO_BASE_URL: "${{ vars.NUXT_PUBLIC_MATOMO_BASE_URL }}"
-      NUXT_PUBLIC_MATOMO_ID: "${{ vars.NUXT_PUBLIC_MATOMO_ID }}"
-      NUXT_PUBLIC_REDMINE_ID: "${{ vars.SERVICE_ID }}"
+      NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL: "${{ vars.NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL }}"
+      NUXT_PUBLIC_APP_MATOMO_BASE_URL: "${{ vars.NUXT_PUBLIC_APP_MATOMO_BASE_URL }}"
+      NUXT_PUBLIC_APP_MATOMO_ID: "${{ vars.NUXT_PUBLIC_APP_MATOMO_ID }}"
+      NUXT_PUBLIC_APP_SERVICE_ID: "${{ vars.SERVICE_ID }}"
 
     steps:
       - name: Checkout repository
@@ -65,7 +65,7 @@ jobs:
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
       - name: Cache playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: cache-playwright-browsers
         with:
           path: "~/.cache/ms-playwright"
@@ -84,7 +84,7 @@ jobs:
       - name: Run e2e tests
         run: pnpm run test:e2e
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: playwright-report

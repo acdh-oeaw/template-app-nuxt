@@ -5,11 +5,9 @@ const env = useRuntimeConfig();
 
 const locale = useLocale();
 
-const redmineId = env.public.redmineId;
-
 const url = createUrl({
-	baseUrl: env.public.imprintServiceBaseUrl,
-	pathname: `/${redmineId}`,
+	baseUrl: env.public.app.imprintServiceBaseUrl,
+	pathname: `/${env.public.app.serviceId}`,
 	searchParams: createUrlSearchParams({ locale: locale.value }),
 });
 
