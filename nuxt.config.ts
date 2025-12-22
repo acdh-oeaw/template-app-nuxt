@@ -86,6 +86,7 @@ export default defineNuxtConfig({
 				baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
 				bots: process.env.NUXT_PUBLIC_APP_BOTS,
 				googleSiteVerification: process.env.NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION,
+				imprintCustomConfig: process.env.NUXT_PUBLIC_APP_IMPRINT_CUSTOM_CONFIG,
 				imprintServiceBaseUrl: process.env.NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL,
 				matomoBaseUrl: process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL,
 				matomoId: process.env.NUXT_PUBLIC_APP_MATOMO_ID,

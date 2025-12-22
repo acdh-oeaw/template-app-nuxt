@@ -8,7 +8,10 @@ const locale = useLocale();
 const url = createUrl({
 	baseUrl: env.public.app.imprintServiceBaseUrl,
 	pathname: `/${env.public.app.serviceId}`,
-	searchParams: createUrlSearchParams({ locale: locale.value }),
+	searchParams: createUrlSearchParams({
+		locale: locale.value,
+		redmine: env.public.app.imprintCustomConfig,
+	}),
 });
 
 const imprint = await useFetch(String(url), {
