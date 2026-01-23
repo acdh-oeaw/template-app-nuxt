@@ -12,11 +12,6 @@
 		]
 	},
 	"experimentalSortPackageJson": false,
-	"ignorePatterns": [
-		"pnpm-workspace.yaml",
-		"/content",
-		"/e2e/snapshots",
-		"/public"
-	],
+	"ignorePatterns": ["pnpm-workspace.yaml", "/content", "/e2e/snapshots", "/public"],
 	"useTabs": true
 }
