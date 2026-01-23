@@ -17,7 +17,7 @@ const url = createUrl({
 const imprint = await useFetch(String(url), {
 	responseType: "text",
 	onResponseError(error) {
-		throw createError({ fatal: true, statusCode: error.response.status });
+		throw createError({ fatal: true, status: error.response.status });
 	},
 	watch: [locale],
 });
