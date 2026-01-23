@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 		classSuffix: "",
 		dataValue: "ui-color-scheme",
 	},
-	compatibilityDate: "2025-01-01",
+	compatibilityDate: "2026-01-01",
 	components: [{ extensions: [".vue"], path: "components", pathPrefix: false }],
 	css: [
 		"@fontsource-variable/inter/standard.css",
@@ -45,6 +45,9 @@ export default defineNuxtConfig({
 			},
 		},
 		inlineRouteRules: true,
+	},
+	future: {
+		compatibilityVersion: 5,
 	},
 	i18n: {
 		baseUrl,
