@@ -6,14 +6,16 @@ const env = useRuntimeConfig();
 const locale = useLocale();
 
 const url = computed(() => {
-	return createUrl({
-		baseUrl: env.public.app.imprintServiceBaseUrl,
-		pathname: `/${env.public.app.serviceId}`,
-		searchParams: createUrlSearchParams({
-			locale: locale.value,
-			redmine: env.public.app.imprintCustomConfig,
+	return String(
+		createUrl({
+			baseUrl: env.public.app.imprintServiceBaseUrl,
+			pathname: `/${env.public.app.serviceId}`,
+			searchParams: createUrlSearchParams({
+				locale: locale.value,
+				redmine: env.public.app.imprintCustomConfig,
+			}),
 		}),
-	});
+	);
 });
 
 const imprint = await useFetch(url, {
