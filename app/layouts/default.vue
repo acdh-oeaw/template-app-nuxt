@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { addTrailingSlash, createUrl, isNonEmptyString, removeTrailingSlash } from "@acdh-oeaw/lib";
+import { createUrl, isNonEmptyString, removeTrailingSlash } from "@acdh-oeaw/lib";
 import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
@@ -81,25 +81,7 @@ useHead({
 			description: t("DefaultLayout.meta.description"),
 		};
 
-		const scripts = [
-			{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd, safeJsonLdReplacer) },
-		];
-
-		if (
-			isNonEmptyString(env.public.app.matomoBaseUrl) &&
-			(isNonEmptyString(env.public.app.matomoId) ||
-				/** Nuxt tries to cast env vars. @see {@link https://github.com/nuxt/nuxt/issues/24812} */
-				typeof env.public.app.matomoId === "number")
-		) {
-			const baseUrl = env.public.app.matomoBaseUrl;
-
-			scripts.push({
-				type: "text/javascript",
-				innerHTML: createAnalyticsScript(addTrailingSlash(baseUrl), env.public.app.matomoId),
-			});
-		}
-
-		return scripts;
+		return [{ type: "application/ld+json", innerHTML: JSON.stringify(jsonLd, safeJsonLdReplacer) }];
 	}),
 });
 </script>

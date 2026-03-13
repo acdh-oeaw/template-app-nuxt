@@ -1,17 +1,24 @@
-import type { Router } from "vue-router";
+import { isNonEmptyString } from "@acdh-oeaw/lib";
 
-export default defineNuxtPlugin((nuxtApp) => {
-	const router = nuxtApp.$router as Router;
+export default defineNuxtPlugin(() => {
+	const env = useRuntimeConfig();
+	const { matomoBaseUrl, matomoId } = env.public.app;
 
-	/**
-	 * We are *not* dispatching an initial `trackPageView` event in the matomo
-	 * init script, so we need to do it here.
-	 */
-	void router.isReady().then(() => {
-		trackPageView(router.currentRoute.value, undefined);
+	if (
+		!isNonEmptyString(matomoBaseUrl) ||
+		/** Nuxt tries to type-cast env vars. @see {@link https://github.com/nuxt/nuxt/issues/24812} */
+		typeof matomoId !== "number"
+	) {
+		return;
+	}
+
+	/** Provided by `@nuxt/scripts`. */
+	const { proxy } = useScriptMatomoAnalytics({
+		matomoUrl: matomoBaseUrl,
+		siteId: String(matomoId),
+		disableCookies: true,
+		enableLinkTracking: true,
 	});
 
-	router.afterEach((to, from) => {
-		trackPageView(to, from);
-	});
+	proxy._paq.push(["enableHeartBeatTimer"]);
 });
