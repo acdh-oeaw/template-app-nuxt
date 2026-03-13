@@ -124,9 +124,7 @@ test("should add json+ld metadata", async ({ createIndexPage }) => {
 
 test("should serve an open-graph image", async ({ createIndexPage, request }) => {
 	for (const locale of locales) {
-		// FIXME: serve og image per locale
-		// const imagePath = `/${locale}/opengraph-image.png`;
-		const imagePath = "/opengraph-image.png";
+		const imagePath = `/${locale}/opengraph-image.png`;
 
 		const { indexPage } = await createIndexPage(locale);
 		await indexPage.goto();

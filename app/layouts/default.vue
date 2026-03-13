@@ -54,7 +54,7 @@ useHead({
 				content: String(
 					createUrl({
 						baseUrl: env.public.app.baseUrl,
-						pathname: withBasePath("/opengraph-image.png"),
+						pathname: withBasePath(`/${locale.value}/opengraph-image.png`),
 					}),
 				),
 			},

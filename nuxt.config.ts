@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
 
-import { defaultLocale, files } from "./app/config/i18n.config";
+import { defaultLocale, files, locales } from "./app/config/i18n.config";
 
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
 
@@ -80,7 +80,12 @@ export default defineNuxtConfig({
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {
-			routes: ["/manifest.webmanifest", "/robots.txt", "/sitemap.xml"],
+			routes: [
+				"/manifest.webmanifest",
+				"/robots.txt",
+				"/sitemap.xml",
+				...locales.map((locale) => `/${locale}/opengraph-image.png`),
+			],
 		},
 	},
 	runtimeConfig: {
