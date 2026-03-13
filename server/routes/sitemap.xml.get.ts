@@ -40,7 +40,6 @@ export default defineLazyEventHandler(async () => {
 		return routes.map((pathname) => {
 			return {
 				url: String(createUrl({ baseUrl, pathname: `/${locale}${pathname}` })),
-				// lastModified: new Date(),
 			};
 		});
 	});

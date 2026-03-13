@@ -5,21 +5,22 @@ const env = useRuntimeConfig();
 
 const locale = useLocale();
 
-const url = createUrl({
-	baseUrl: env.public.app.imprintServiceBaseUrl,
-	pathname: `/${env.public.app.serviceId}`,
-	searchParams: createUrlSearchParams({
-		locale: locale.value,
-		redmine: env.public.app.imprintCustomConfig,
-	}),
+const url = computed(() => {
+	return createUrl({
+		baseUrl: env.public.app.imprintServiceBaseUrl,
+		pathname: `/${env.public.app.serviceId}`,
+		searchParams: createUrlSearchParams({
+			locale: locale.value,
+			redmine: env.public.app.imprintCustomConfig,
+		}),
+	});
 });
 
-const imprint = await useFetch(String(url), {
+const imprint = await useFetch(url, {
 	responseType: "text",
 	onResponseError(error) {
 		throw createError({ fatal: true, status: error.response.status });
 	},
-	watch: [locale],
 });
 </script>
 
