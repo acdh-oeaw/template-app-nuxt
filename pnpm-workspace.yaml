@@ -1,13 +1,12 @@
-onlyBuiltDependencies:
-  - '@intlify/vue-i18n-bridge'
-  - '@intlify/vue-router-bridge'
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
-  - simple-git-hooks
-  - unrs-resolver
-  - vue-demi
+allowBuilds:
+  '@intlify/vue-i18n-bridge': true
+  '@intlify/vue-router-bridge': true
+  '@parcel/watcher': true
+  esbuild: true
+  sharp: true
+  simple-git-hooks: true
+  unrs-resolver: false
+  vue-demi: true
 
 overrides:
   sharp: $sharp

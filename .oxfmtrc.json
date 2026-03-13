@@ -1,9 +1,9 @@
 {
 	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"experimentalSortImports": {
+	"sortImports": {
 		"groups": [
-			["side-effect"],
-			["side-effect-style"],
+			["side_effect"],
+			["side_effect_style"],
 			["style"],
 			["builtin"],
 			["external"],
@@ -11,7 +11,9 @@
 			["unknown"]
 		]
 	},
-	"experimentalSortPackageJson": false,
+	"sortPackageJson": {
+		"sortScripts": true
+	},
 	"ignorePatterns": ["pnpm-workspace.yaml", "/content", "/e2e/snapshots", "/public"],
 	"useTabs": true
 }
