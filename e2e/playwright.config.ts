@@ -1,17 +1,20 @@
 import { join } from "node:path";
 
+import { config as dotenv } from "@dotenvx/dotenvx";
 import { defineConfig, devices } from "@playwright/test";
-import { config as dotenv } from "dotenv";
-import { expand } from "dotenv-expand";
 import isCI from "is-in-ci";
 
 /**
- * Reading `.env` files here instead of using `dotenv-cli` so environment variables are
+ * Reading `.env` files here instead of using `dotenvx run` so environment variables are
  * available to the vs code plugin as well.
  */
-for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]) {
-	expand(dotenv({ path: join(process.cwd(), envFilePath), quiet: true }));
-}
+dotenv({
+	path: [".env.test.local", ".env.local", ".env.test", ".env"].map((filePath) =>
+		join(import.meta.dirname, "..", filePath),
+	),
+	ignore: ["MISSING_ENV_FILE"],
+	quiet: true,
+});
 
 const port = Number(process.env.PORT) || 3000;
 const baseUrl = `http://localhost:${String(port)}`;
