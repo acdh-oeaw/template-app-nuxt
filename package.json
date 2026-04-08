@@ -126,7 +126,7 @@
 		"extends": "@acdh-oeaw/stylelint-config"
 	},
 	"engines": {
-		"node": "^24"
+		"node": "24.x"
 	},
 	"packageManager": "pnpm@10.33.0"
 }

@@ -8,6 +8,8 @@ allowBuilds:
   unrs-resolver: false
   vue-demi: true
 
+minimumReleaseAge: 1440
+
 overrides:
   sharp: $sharp
 
