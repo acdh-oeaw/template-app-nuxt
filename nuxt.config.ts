@@ -1,10 +1,16 @@
 import { fileURLToPath } from "node:url";
 
+import { assert, isNonEmptyString } from "@acdh-oeaw/lib";
 import tailwindcss from "@tailwindcss/vite";
 
 import { defaultLocale, files, locales } from "./app/config/i18n.config";
 
-const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL!;
+const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL;
+
+assert(
+	isNonEmptyString(baseUrl),
+	"Missing `NUXT_PUBLIC_APP_BASE_URL` environment variable.\nYou may have forgotten to `cp .env.local.example .env.local`.",
+);
 
 export default defineNuxtConfig({
 	alias: {
