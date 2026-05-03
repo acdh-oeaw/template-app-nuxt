@@ -3,8 +3,8 @@ allowBuilds:
   '@intlify/vue-router-bridge': true
   '@parcel/watcher': true
   esbuild: true
+  lefthook: true
   sharp: true
-  simple-git-hooks: true
   unrs-resolver: false
   vue-demi: true
 
@@ -14,5 +14,3 @@ overrides:
   sharp: $sharp
 
 shellEmulator: true
-
-strictDepBuilds: true
