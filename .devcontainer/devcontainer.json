@@ -6,7 +6,6 @@
 		"vscode": {
 			"extensions": [
 				"bradlc.vscode-tailwindcss",
-				"dbaeumer.vscode-eslint",
 				"editorconfig.editorconfig",
 				"lokalise.i18n-ally",
 				"mikestead.dotenv",

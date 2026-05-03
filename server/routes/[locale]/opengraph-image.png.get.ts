@@ -26,7 +26,7 @@ export default defineLazyEventHandler(async () => {
 		const { t } = createI18n({
 			legacy: false,
 			locale,
-			messages: { [locale]: messages[locale] },
+			messages,
 		}).global;
 
 		const title = t("DefaultLayout.meta.title");
