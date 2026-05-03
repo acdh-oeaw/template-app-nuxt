@@ -6,7 +6,7 @@
 # build
 FROM node:24-alpine AS build
 
-RUN corepack enable
+RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
