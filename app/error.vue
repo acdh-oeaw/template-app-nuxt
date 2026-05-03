@@ -19,7 +19,7 @@ const isNotFoundPage = computed(() => {
 	return "statusCode" in error && error.statusCode === 404;
 });
 
-/** `error.vue` is *not* wrapped in default layout out of the box. */
+/** `error.vue` is _not_ wrapped in default layout out of the box. */
 useHead({
 	titleTemplate: computed(() => {
 		return ["%s", t("DefaultLayout.meta.title")].join(" | ");

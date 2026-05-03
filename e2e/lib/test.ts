@@ -25,9 +25,9 @@ export const test = base.extend<Fixtures>({
 
 			if (baseUrl != null) {
 				/**
-				 * If we were to block loading the actual matomo javascript snippet, we would need to
-				 * check if `windows._paq` was pushed to (because no requests to `matomo.php`
-				 * would be dispatched).
+				 * If we were to block loading the actual matomo javascript snippet, we would need to check
+				 * if `windows._paq` was pushed to (because no requests to `matomo.php` would be
+				 * dispatched).
 				 */
 				// const scriptUrl = String(createUrl({ baseUrl: baseUrl, pathname: "/matomo.js" }));
 
