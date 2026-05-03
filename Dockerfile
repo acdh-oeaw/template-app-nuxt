@@ -6,6 +6,8 @@
 # build
 FROM node:24-alpine AS build
 
+ENV PNPM_HOME="/pnpm"
+ENV PATH="${PNPM_HOME}/bin:${PATH}"
 RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
 RUN mkdir /app && chown -R node:node /app
