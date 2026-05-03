@@ -14,11 +14,7 @@
 	},
 	"editor.rulers": [100],
 	"editor.stickyScroll.enabled": true,
-	"eslint.enable": true,
-	"eslint.options": {
-		"flags": ["unstable_native_nodejs_ts_config"]
-	},
-	"eslint.validate": ["javascript", "typescript", "vue"],
+	"eslint.enable": false,
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
@@ -38,6 +34,11 @@
 	"js/ts.tsdk.path": "./node_modules/typescript/lib",
 	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
 	"less.validate": false,
+	"oxc.enable.oxfmt": true,
+	"oxc.enable.oxlint": true,
+	"oxc.requireConfig": true,
+	"oxc.typeAware": true,
+	"oxc.unusedDisableDirectives": "deny",
 	"prettier.enable": false,
 	"scss.validate": false,
 	"stylelint.enable": true,

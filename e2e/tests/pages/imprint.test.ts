@@ -36,7 +36,7 @@ test.describe("imprint page", () => {
 			await imprintPage.goto();
 
 			const { getViolations } = await createAccessibilityScanner();
-			expect(await getViolations()).toEqual([]);
+			expect(await getViolations()).toStrictEqual([]);
 		}
 	});
 

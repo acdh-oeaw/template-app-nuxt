@@ -2,9 +2,9 @@
 	"pre-commit": {
 		"parallel": false,
 		"commands": {
-			"eslint": {
+			"oxlint": {
 				"glob": "**/*.{js,ts,vue}",
-				"run": "eslint --fix --flag unstable_native_nodejs_ts_config {staged_files}",
+				"run": "oxlint --fix {staged_files}",
 				"stage_fixed": true
 			},
 			"stylelint": {

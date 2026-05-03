@@ -22,11 +22,11 @@ test.describe("index page", () => {
 			await indexPage.goto();
 
 			const { getViolations } = await createAccessibilityScanner();
-			expect(await getViolations()).toEqual([]);
+			expect(await getViolations()).toStrictEqual([]);
 		}
 	});
 
-	// eslint-disable-next-line playwright/no-skipped-test
+	// oxlint-disable-next-line playwright/no-skipped-test
 	test.describe.skip("should not have visible changes", () => {
 		test.use({ colorScheme: "light" });
 
@@ -40,7 +40,7 @@ test.describe("index page", () => {
 		});
 	});
 
-	// eslint-disable-next-line playwright/no-skipped-test
+	// oxlint-disable-next-line playwright/no-skipped-test
 	test.describe.skip("should not have visible changes", () => {
 		test.use({ colorScheme: "dark" });
 

@@ -16,7 +16,7 @@ test.describe("app", () => {
 			const response = await request.get("/robots.txt");
 			const body = await response.body();
 
-			expect(body.toString()).toEqual(
+			expect(body.toString()).toStrictEqual(
 				["User-Agent: *", "Disallow: /", `Host: ${baseUrl}`].join("\n"),
 			);
 		});
@@ -25,7 +25,7 @@ test.describe("app", () => {
 			const response = await request.get("/robots.txt");
 			const body = await response.body();
 
-			expect(body.toString()).toEqual(
+			expect(body.toString()).toStrictEqual(
 				[
 					"User-Agent: *",
 					"Allow: /",
@@ -68,7 +68,7 @@ test.describe("app", () => {
 
 		const i18n = await createI18n(defaultLocale);
 
-		expect(body.toString()).toEqual(
+		expect(body.toString()).toStrictEqual(
 			JSON.stringify({
 				name: i18n.t("Manifest.name"),
 				short_name: i18n.t("Manifest.short-name"),
@@ -91,21 +91,21 @@ test.describe("app", () => {
 		const response = await request.get("/favicon.ico");
 		const status = response.status();
 
-		expect(status).toEqual(200);
+		expect(status).toBe(200);
 	});
 
 	test("should serve an svg favicon", async ({ request }) => {
 		const response = await request.get("/icon.svg");
 		const status = response.status();
 
-		expect(status).toEqual(200);
+		expect(status).toBe(200);
 	});
 
 	test("should serve an apple favicon", async ({ request }) => {
 		const response = await request.get("/apple-icon.png");
 		const status = response.status();
 
-		expect(status).toEqual(200);
+		expect(status).toBe(200);
 	});
 
 	test.describe("should set color mode according to system preference", () => {
@@ -114,6 +114,7 @@ test.describe("app", () => {
 		test("with no preference", async ({ createIndexPage }) => {
 			const { indexPage } = await createIndexPage(defaultLocale);
 			await indexPage.goto();
+			// oxlint-disable-next-line playwright/no-raw-locators
 			await expect(indexPage.page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
 		});
 	});
@@ -124,6 +125,7 @@ test.describe("app", () => {
 		test("in light mode", async ({ createIndexPage }) => {
 			const { indexPage } = await createIndexPage(defaultLocale);
 			await indexPage.goto();
+			// oxlint-disable-next-line playwright/no-raw-locators
 			await expect(indexPage.page.locator("html")).toHaveAttribute("data-ui-color-scheme", "light");
 		});
 	});
@@ -134,6 +136,7 @@ test.describe("app", () => {
 		test("in dark mode", async ({ createIndexPage }) => {
 			const { indexPage } = await createIndexPage(defaultLocale);
 			await indexPage.goto();
+			// oxlint-disable-next-line playwright/no-raw-locators
 			await expect(indexPage.page.locator("html")).toHaveAttribute("data-ui-color-scheme", "dark");
 		});
 	});
@@ -153,6 +156,7 @@ test.describe("app", () => {
 		for (const locale of locales) {
 			const { indexPage } = await createIndexPage(locale);
 			await indexPage.goto();
+			// oxlint-disable-next-line playwright/no-raw-locators
 			await expect(indexPage.page.locator("html")).toHaveAttribute("lang", locale);
 		}
 	});

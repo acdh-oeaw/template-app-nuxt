@@ -8,7 +8,6 @@ import { ImprintPage } from "~/e2e/lib/fixtures/imprint-page";
 import { IndexPage } from "~/e2e/lib/fixtures/index-page";
 
 interface Fixtures {
-	// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 	beforeEachTest: void;
 
 	createAccessibilityScanner: () => Promise<AccessibilityScanner>;

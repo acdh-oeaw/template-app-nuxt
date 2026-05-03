@@ -25,7 +25,6 @@ export function escape(value: string) {
  * @see {@link https://github.com/google/react-schemaorg/blob/main/src/json-ld.tsx}
  */
 export function safeJsonLdReplacer(_key: string, value: JsonValue): JsonValue | undefined {
-	// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
 	switch (typeof value) {
 		case "object": {
 			if (value === null) return undefined;

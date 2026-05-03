@@ -84,13 +84,14 @@ test.describe("i18n", () => {
 			for (const locale of locales) {
 				await page.goto(`/${locale}${pathname}`);
 
+				// oxlint-disable-next-line playwright/no-raw-locators
 				const links = await page.locator('link[rel="alternate"]').evaluateAll((elements) => {
 					return elements.map((element) => {
 						return [element.getAttribute("hreflang"), element.getAttribute("href")];
 					});
 				});
 
-				expect(links).toEqual(
+				expect(links).toStrictEqual(
 					expect.arrayContaining([
 						["de", createAbsoluteUrl(`/de${pathname}`)],
 						["en", createAbsoluteUrl(`/en${pathname}`)],

@@ -26,7 +26,6 @@ export default defineLazyEventHandler(async () => {
 		const { t } = createI18n({
 			legacy: false,
 			locale,
-			// @ts-expect-error Only messages for single locale provided.
 			messages: { [locale]: messages[locale] },
 		}).global;
 
