@@ -1,21 +1,21 @@
 {
-  "pre-commit": {
-    "parallel": false,
-    "commands": {
-      "eslint": {
-        "glob": "**/*.{js,ts,vue}",
-        "run": "eslint --fix --flag unstable_native_nodejs_ts_config {staged_files}",
-        "stage_fixed": true
-      },
-      "stylelint": {
-        "glob": "**/*.{css,vue}",
-        "run": "stylelint --cache --fix {staged_files}",
-        "stage_fixed": true
-      },
-      "oxfmt": {
-        "run": "oxfmt --no-error-on-unmatched-pattern --write {staged_files}",
-        "stage_fixed": true
-      }
-    }
-  }
+	"pre-commit": {
+		"parallel": false,
+		"commands": {
+			"eslint": {
+				"glob": "**/*.{js,ts,vue}",
+				"run": "eslint --fix --flag unstable_native_nodejs_ts_config {staged_files}",
+				"stage_fixed": true
+			},
+			"stylelint": {
+				"glob": "**/*.{css,vue}",
+				"run": "stylelint --cache --fix {staged_files}",
+				"stage_fixed": true
+			},
+			"oxfmt": {
+				"run": "oxfmt --no-error-on-unmatched-pattern --write {staged_files}",
+				"stage_fixed": true
+			}
+		}
+	}
 }
