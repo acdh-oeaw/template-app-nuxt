@@ -14,9 +14,10 @@ function loadNuxtGlobals(): OxlintGlobals {
 	return JSON.parse(readFileSync(globalsFile, { encoding: "utf8" })) as OxlintGlobals;
 }
 
-export default defineConfig({
+const config = defineConfig({
 	categories: {
 		correctness: "error",
+		suspicious: "warn",
 	},
 	env: {
 		browser: true,
@@ -36,6 +37,11 @@ export default defineConfig({
 		typeCheck: true,
 	},
 	plugins: ["import", "node", "typescript", "vue", "oxc"],
+	rules: {
+		"no-shadow": "off",
+		"no-underscore-dangle": "off",
+		"no-unsafe-type-assertion": "off",
+	},
 	settings: {
 		"better-tailwindcss": {
 			entryPoint: path.resolve(projectRoot, "app/styles/index.css"),
@@ -128,3 +134,5 @@ export default defineConfig({
 		},
 	],
 });
+
+export default config;
