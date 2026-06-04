@@ -8,7 +8,7 @@ FROM node:24-alpine AS build
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="${PNPM_HOME}/bin:${PATH}"
-ENV PNPM_VERSION=11.0.4
+ENV PNPM_VERSION=11.5.1
 RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
 RUN mkdir /app && chown -R node:node /app
