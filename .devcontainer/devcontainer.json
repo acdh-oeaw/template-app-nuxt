@@ -2,6 +2,9 @@
 	"name": "Nuxt",
 	"image": "ghcr.io/acdh-oeaw/devcontainer-frontend:24",
 	"runArgs": ["--add-host=host.docker.internal:host-gateway"],
+	"postCreateCommand": {
+		"init": "pnpm install && pnpm exec playwright install"
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [

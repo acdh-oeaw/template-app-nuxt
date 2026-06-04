@@ -33,6 +33,7 @@
 		"@fontsource-variable/inter": "^5.2.8",
 		"@iconify-json/lucide": "^1.2.111",
 		"@iconify-json/simple-icons": "^1.2.85",
+		"@lucide/vue": "^1.17.0",
 		"@nuxt/fonts": "^0.14.0",
 		"@nuxt/icon": "^2.2.3",
 		"@nuxt/image": "^2.0.0",
@@ -41,7 +42,6 @@
 		"@nuxtjs/i18n": "^10.4.0",
 		"@vueuse/core": "^14.3.0",
 		"@vueuse/nuxt": "^14.3.0",
-		"lucide-vue-next": "^1.0.0",
 		"nuxt": "^4.4.7",
 		"pino-http": "^11.0.0",
 		"satori": "^0.26.0",
@@ -97,8 +97,23 @@
 	"stylelint": {
 		"extends": "@acdh-oeaw/stylelint-config"
 	},
-	"engines": {
-		"node": "24.x"
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^11",
+			"onFail": "download"
+		},
+		"runtime": {
+			"name": "node",
+			"version": "^24",
+			"onFail": "download"
+		}
 	},
-	"packageManager": "pnpm@11.5.1"
+	"engines": {
+		"runtime": {
+			"name": "node",
+			"version": "^24",
+			"onFail": "download"
+		}
+	}
 }
