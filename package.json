@@ -1,4 +1,5 @@
 {
+	"$schema": "https://www.schemastore.org/package",
 	"name": "@acdh-oeaw/app",
 	"private": true,
 	"license": "MIT",
@@ -67,11 +68,12 @@
 		"axe-playwright": "^2.2.2",
 		"eslint-plugin-better-tailwindcss": "^4.5.0",
 		"eslint-plugin-playwright": "^2.10.4",
+		"eslint-plugin-regexp": "^3.1.0",
 		"is-in-ci": "^2.0.0",
 		"lefthook": "^2.1.9",
 		"npm-run-all2": "^9.0.1",
-		"oxfmt": "^0.53.0",
-		"oxlint": "^1.68.0",
+		"oxfmt": "^0.55.0",
+		"oxlint": "^1.70.0",
 		"oxlint-tsgolint": "^0.23.0",
 		"postcss": "^8.5.15",
 		"schema-dts": "^2.0.0",
@@ -100,19 +102,19 @@
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "^11",
+			"version": "^11.7.0",
 			"onFail": "download"
 		},
 		"runtime": {
 			"name": "node",
-			"version": "^24",
+			"version": "^24.16.0",
 			"onFail": "download"
 		}
 	},
 	"engines": {
 		"runtime": {
 			"name": "node",
-			"version": "^24",
+			"version": "^24.16.0",
 			"onFail": "download"
 		}
 	}
