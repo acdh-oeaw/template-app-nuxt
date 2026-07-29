@@ -7,3 +7,6 @@ allowBuilds:
 minimumReleaseAge: 1440
 
 shellEmulator: true
+
+overrides:
+  typescript: npm:typescript-native-bridge@6.0.3-bridge.7.tsgo.7.0.2
