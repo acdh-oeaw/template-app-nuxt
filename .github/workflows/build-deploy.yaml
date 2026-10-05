@@ -33,7 +33,7 @@ jobs:
           echo "APP_NAME_SUFFIX=$APP_NAME_SUFFIX" >> $GITHUB_OUTPUT
     outputs:
       environment: "${{ steps.environment.outputs.ENVIRONMENT }}"
-      app_name: "frontend${{ steps.environment.outputs.APP_NAME_SUFFIX }}"
+      app_name: "template-nuxt${{ steps.environment.outputs.APP_NAME_SUFFIX }}"
       registry: ghcr.io
       image: ${{ github.repository }}
 
