@@ -56,12 +56,53 @@ pnpm run build
 pnpm run test:e2e
 ```
 
-visual snapshot tests should be run in the template's devcontainer - or a comparable debian bookworm
-based linux environment -, and can be updated with:
+visual snapshots should be generated on Ubuntu 26.04 with the same browser versions and x86-64
+architecture as CI. with Docker Engine (or Docker Desktop) and Docker Compose v2 installed, run:
 
 ```bash
 pnpm run test:e2e:update-snapshots
 ```
+
+this builds an Ubuntu 26.04 Playwright image with node.js 26, installs dependencies from the lockfile,
+builds the app, and updates the visual snapshots in `e2e/snapshots`. the source is mounted read-only
+and copied into a temporary container directory, including local `.env` files. host dependencies and
+build output are isolated. snapshots, `playwright-report`, and `test-results` are written back to the
+checkout. the container is removed after the run.
+
+the test Compose configuration lives in [`e2e/docker/compose.yaml`](../e2e/docker/compose.yaml),
+alongside the test Dockerfile and runner script. app service configurations can live separately;
+the test commands select their Compose file explicitly.
+
+use the same `.env.local` values as CI for imprint and analytics settings. the container sets the
+base URL to `http://localhost:3000` and disables bots and custom imprints to match validation.
+
+to run all end-to-end tests without updating snapshots, or to pass Playwright options:
+
+```bash
+pnpm run test:e2e:docker
+pnpm run test:e2e:update-snapshots --project chromium
+```
+
+open the saved HTML report with `pnpm exec playwright show-report playwright-report/html`.
+
+the container defaults to user/group `1000:1000` so snapshots are not owned by root. on Linux with
+different IDs, prefix the command with `DOCKER_UID=$(id -u) DOCKER_GID=$(id -g)`. the Playwright image
+version in [`e2e/docker/Dockerfile`](../e2e/docker/Dockerfile) must match `@playwright/test` in
+`pnpm-lock.yaml`; keep them in sync when upgrading Playwright. x86-64 emulation on ARM hosts can make
+these commands slower.
+
+both Dockerfiles declare `NODE_VERSION` and `PNPM_VERSION` build arguments at the top; the test Dockerfile also accepts
+`PLAYWRIGHT_VERSION` (without the `v` prefix). Compose forwards environment variables with those names
+and uses the Dockerfile defaults when they are unset. to use the active pnpm version and the locked
+Playwright version without editing Dockerfiles:
+
+```bash
+PNPM_VERSION=$(pnpm --version) \
+PLAYWRIGHT_VERSION=$(pnpm list @playwright/test --lockfile-only --json | node -pe 'JSON.parse(require("node:fs").readFileSync(0, "utf8"))[0].devDependencies["@playwright/test"].version') \
+pnpm run test:e2e:update-snapshots
+```
+
+for a production image, pass `docker build --build-arg PNPM_VERSION="$(pnpm --version)" ...`.
 
 ## how to deploy
 

@@ -22,7 +22,7 @@ jobs:
       fail-fast: true
       matrix:
         node-version: [26.x]
-        os: [ubuntu-24.04]
+        os: [ubuntu-26.04]
 
     env:
       NUXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"

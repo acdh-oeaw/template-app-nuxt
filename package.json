@@ -21,7 +21,9 @@
 		"styles:fix": "stylelint \"./**/*.@(css|vue)\" --cache --fix --ignore-path ./.gitignore",
 		"test": "exit 0",
 		"test:e2e": "playwright test --config ./e2e/playwright.config.ts",
+		"test:e2e:docker": "mkdir -p playwright-report test-results && docker compose --file e2e/docker/compose.yaml run --build --rm e2e",
 		"test:e2e:install": "playwright install --with-deps",
+		"test:e2e:update-snapshots": "pnpm run test:e2e:docker --update-snapshots --grep 'should not have visible changes'",
 		"types:check": "nuxt typecheck --dotenv ./.env.local"
 	},
 	"dependencies": {

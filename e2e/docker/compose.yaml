@@ -1,0 +1,27 @@
+services:
+  e2e:
+    build:
+      context: .
+      args:
+        - NODE_VERSION
+        - PNPM_VERSION
+        - PLAYWRIGHT_VERSION
+    # Match the architecture of the GitHub-hosted runner, including on Apple Silicon.
+    platform: linux/amd64
+    init: true
+    ipc: host
+    user: "${DOCKER_UID:-1000}:${DOCKER_GID:-1000}"
+    environment:
+      CI: "true"
+      HOME: /tmp
+      LEFTHOOK: "0"
+      PLAYWRIGHT_HTML_OUTPUT_DIR: /playwright-report/html
+      NUXT_PUBLIC_APP_BASE_URL: http://localhost:3000
+      NUXT_PUBLIC_APP_BOTS: disabled
+      NUXT_PUBLIC_APP_IMPRINT_CUSTOM_CONFIG: disabled
+    volumes:
+      - ../..:/source:ro
+      - ../snapshots:/snapshots
+      - ../../playwright-report:/playwright-report
+      - ../../test-results:/test-results
+    entrypoint: ["sh", "/source/e2e/docker/run.sh"]

@@ -1,0 +1,36 @@
+replicaCount: 1
+image:
+  repository: $repository
+  tag: "$tag"
+  pullPolicy: Always
+  secrets: []
+extraLabels:
+  "ID": "$service_id"
+gitlab:
+  app: "$app_name"
+  envURL: "$repo_url"
+service:
+  enabled: true
+  name: "web"
+  url: "$public_url"
+  type: ClusterIP
+  externalPort: 3000
+  internalPort: 3000
+ingress:
+  enabled: true
+  path: "/"
+  className: "traefik"
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-compress@kubernetescrd
+livenessProbe:
+  path: "/api/health/live"
+  initialDelaySeconds: 15
+  timeoutSeconds: 15
+  scheme: "HTTP"
+  probeType: "httpGet"
+readinessProbe:
+  path: "/api/health/ready"
+  initialDelaySeconds: 5
+  timeoutSeconds: 3
+  scheme: "HTTP"
+  probeType: "httpGet"
