@@ -1,3 +1,4 @@
+import { defaultContentType, defineEventHandler } from "h3";
 import { createI18n } from "vue-i18n";
 
 import de from "~/i18n/messages/de.json";

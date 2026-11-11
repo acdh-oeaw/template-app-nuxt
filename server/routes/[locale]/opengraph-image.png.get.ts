@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
+import { defineEventHandler, defineLazyEventHandler, getRouterParam, setHeader } from "h3";
 import satori from "satori";
 import sharp from "sharp";
 import * as v from "valibot";

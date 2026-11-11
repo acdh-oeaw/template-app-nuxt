@@ -3,8 +3,8 @@ import { fileURLToPath } from "node:url";
 import { assert, isNonEmptyString } from "@acdh-oeaw/lib";
 import tailwindcss from "@tailwindcss/vite";
 
-import { defaultLocale, files, locales } from "./app/config/i18n.config";
-import oxlintGlobals from "./modules/oxlint-globals";
+import { defaultLocale, files, locales } from "./app/config/i18n.config.ts";
+import oxlintGlobals from "./modules/oxlint-globals.ts";
 
 const baseUrl = process.env.NUXT_PUBLIC_APP_BASE_URL;
 
@@ -80,6 +80,13 @@ export default defineNuxtConfig({
 	],
 	nitro: {
 		compressPublicAssets: true,
+		imports: {
+			/**
+			 * Nuxt 5 disables Nitro's default imports, but @nuxtjs/i18n still uses this export.
+			 * @see https://github.com/nuxt-modules/i18n/issues/4175
+			 */
+			imports: [{ name: "useRuntimeConfig", from: "nuxt/server" }],
+		},
 		prerender: {
 			routes: [
 				"/manifest.webmanifest",

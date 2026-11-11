@@ -36,7 +36,7 @@ useSeoMeta({
 });
 
 function onReset() {
-	void clearError({ redirect: localePath("/") });
+	void clearError({ redirect: localePath({ name: "index" }) });
 }
 </script>
 

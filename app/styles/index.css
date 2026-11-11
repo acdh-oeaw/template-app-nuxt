@@ -21,15 +21,15 @@
 	}
 
 	#__nuxt {
-		block-size: 100%;
 		isolation: isolate;
+		block-size: 100%;
 	}
 
 	:root {
 		@apply bg-white font-body text-neutral-950 antialiased dark:bg-neutral-900 dark:text-white;
 
-		overflow-wrap: break-word;
 		font-synthesis: none;
+		overflow-wrap: break-word;
 		text-rendering: optimizeLegibility;
 		text-size-adjust: none;
 		-webkit-tap-highlight-color: transparent;
@@ -75,15 +75,15 @@
 	}
 
 	:where(textarea) {
-		field-sizing: content;
 		min-block-size: 3lh;
+		field-sizing: content;
 	}
 
 	:where([id]) {
 		scroll-margin-block-start: 2ex;
 	}
 
-	:where([inert] ::-webkit-scrollbar) {
+	:where([inert]) ::-webkit-scrollbar {
 		display: none;
 	}
 
@@ -92,10 +92,10 @@
 		*,
 		*::after,
 		*::before {
+			scroll-behavior: auto !important;
 			transition-duration: 0.01ms !important;
 			animation-duration: 0.01ms !important;
 			animation-iteration-count: 1 !important;
-			scroll-behavior: auto !important;
 		}
 	}
 }

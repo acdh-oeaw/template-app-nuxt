@@ -4,9 +4,16 @@ allowBuilds:
   lefthook: true
   sharp: true
 
+autoDedupe: true
+
+engineStrict: true
+
 minimumReleaseAge: 1440
 
-shellEmulator: true
-
 overrides:
-  typescript: npm:typescript-native-bridge@6.0.3-bridge.7.tsgo.7.0.2
+  # Stylelint 18 compatibility until the shared config updates its dependencies.
+  '@acdh-oeaw/stylelint-config>stylelint-config-hudochenkov': ^14.0.0
+  '@acdh-oeaw/stylelint-config>stylelint-config-standard': ^41.0.0
+  typescript: npm:typescript-native-bridge@6.0.3-bridge.12.tsgo.7.0.2
+
+shellEmulator: true

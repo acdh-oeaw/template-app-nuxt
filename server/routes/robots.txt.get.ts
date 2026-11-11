@@ -1,4 +1,5 @@
 import { createUrl } from "@acdh-oeaw/lib";
+import { defaultContentType, defineEventHandler } from "h3";
 import * as v from "valibot";
 
 const baseUrl = v.parse(v.pipe(v.string(), v.url()), process.env.NUXT_PUBLIC_APP_BASE_URL);

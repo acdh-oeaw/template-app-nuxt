@@ -1,3 +1,4 @@
+import { defineEventHandler } from "h3";
 import pino from "pino-http";
 
 const logger = pino();

@@ -2,6 +2,7 @@ import { glob } from "node:fs/promises";
 import { join } from "node:path";
 
 import { createUrl } from "@acdh-oeaw/lib";
+import { defaultContentType, defineEventHandler, defineLazyEventHandler } from "h3";
 import * as v from "valibot";
 
 import { locales } from "@/config/i18n.config";
