@@ -8,9 +8,9 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"antfu.x18n",
 				"bradlc.vscode-tailwindcss",
 				"editorconfig.editorconfig",
-				"lokalise.i18n-ally",
 				"mikestead.dotenv",
 				"ms-playwright.playwright",
 				"nuxt.mdc",

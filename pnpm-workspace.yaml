@@ -19,4 +19,6 @@ overrides:
   '@acdh-oeaw/stylelint-config>stylelint-config-standard': ^41.0.0
   typescript: npm:typescript-native-bridge@6.0.3-bridge.12.tsgo.7.0.2
 
+saveTypes: true
+
 shellEmulator: true

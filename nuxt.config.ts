@@ -83,6 +83,7 @@ export default defineNuxtConfig({
 		imports: {
 			/**
 			 * Nuxt 5 disables Nitro's default imports, but @nuxtjs/i18n still uses this export.
+			 *
 			 * @see https://github.com/nuxt-modules/i18n/issues/4175
 			 */
 			imports: [{ name: "useRuntimeConfig", from: "nuxt/server" }],
