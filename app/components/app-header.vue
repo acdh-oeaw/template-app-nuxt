@@ -23,10 +23,7 @@ const links = computed(() => {
 				</ul>
 			</nav>
 
-			<div class="flex items-center gap-4">
-				<ColorSchemeSwitcher />
-				<LocaleSwitcher />
-			</div>
+			<LocaleSwitcher />
 		</div>
 	</header>
 </template>

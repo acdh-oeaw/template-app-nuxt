@@ -22,6 +22,8 @@ const links = computed(() => {
 					</li>
 				</ul>
 			</nav>
+
+			<ColorSchemeSwitcher />
 		</div>
 	</footer>
 </template>

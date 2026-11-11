@@ -49,6 +49,12 @@ const config = defineConfig({
 	},
 	overrides: [
 		{
+			/**
+			 * Oxlint JS plugins currently only lint Vue script blocks, so these Tailwind rules do not
+			 * check classes in Vue templates. Revisit when upstream adds template support.
+			 *
+			 * @see https://github.com/oxc-project/oxc/issues/15761
+			 */
 			files: ["app/**/*.{ts,tsx,vue}"],
 			rules: {
 				/** Correctness. */
