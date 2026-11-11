@@ -2,12 +2,12 @@
 
 ## prerequisites
 
-- [node.js 24.x](https://nodejs.org/en/download)
-- [pnpm 11.x](https://pnpm.io/installation)
+- [node.js 26.x](https://nodejs.org/en/download)
+- [pnpm 12.x](https://pnpm.io/installation)
 
 > [!TIP]
 >
-> you can use `pnpm` to install the required node.js version with `pnpm runtime set node 24`
+> you can use `pnpm` to install the required node.js version with `pnpm runtime set node 26`
 
 ## environment variables
 

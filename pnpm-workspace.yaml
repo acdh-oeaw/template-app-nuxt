@@ -8,6 +8,9 @@ autoDedupe: true
 
 engineStrict: true
 
+lockfile:
+  includeResolutionSettings: true
+
 minimumReleaseAge: 1440
 
 overrides:

@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [24.x]
+        node-version: [26.x]
         os: [ubuntu-24.04]
 
     env:
@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install pnpm
         uses: pnpm/action-setup@v6
@@ -43,7 +43,7 @@ jobs:
           cache: true
 
       - name: Use node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -71,7 +71,7 @@ jobs:
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
       - name: Cache playwright browsers
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: cache-playwright-browsers
         with:
           path: "~/.cache/ms-playwright"
@@ -85,7 +85,7 @@ jobs:
         run: pnpm exec playwright install-deps
 
       - name: Cache nuxt build output
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             .nuxt

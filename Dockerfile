@@ -4,12 +4,12 @@
 # @see https://sharp.pixelplumbing.com/install#linux-memory-allocator
 
 # build
-FROM node:24-alpine AS build
+FROM node:26-alpine AS build
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="${PNPM_HOME}/bin:${PATH}"
-ENV PNPM_VERSION=11.5.1
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
+ENV PNPM_VERSION=12.18.0
+RUN npm install --global pnpm@${PNPM_VERSION}
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
@@ -43,7 +43,7 @@ ENV NODE_ENV=production
 RUN pnpm run build
 
 # serve
-FROM node:24-alpine AS serve
+FROM node:26-alpine AS serve
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
