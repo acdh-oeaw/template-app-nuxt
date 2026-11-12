@@ -1,24 +1,23 @@
 import { isNonEmptyString } from "@acdh-oeaw/lib";
 
-export default defineNuxtPlugin(() => {
-	const env = useRuntimeConfig();
-	const { matomoBaseUrl, matomoId } = env.public.app;
+export default defineNuxtPlugin({
+	dependsOn: ["validated-runtime-config"],
+	setup() {
+		const env = useValidatedRuntimeConfig();
+		const { matomoBaseUrl, matomoId } = env.public.app;
 
-	if (
-		!isNonEmptyString(matomoBaseUrl) ||
-		/** Nuxt tries to type-cast env vars. @see {@link https://github.com/nuxt/nuxt/issues/24812} */
-		typeof matomoId !== "number"
-	) {
-		return;
-	}
+		if (!isNonEmptyString(matomoBaseUrl) || !isNonEmptyString(matomoId)) {
+			return;
+		}
 
-	/** Provided by `@nuxt/scripts`. */
-	const { proxy } = useScriptMatomoAnalytics({
-		matomoUrl: matomoBaseUrl,
-		siteId: String(matomoId),
-		disableCookies: true,
-		enableLinkTracking: true,
-	});
+		/** Provided by `@nuxt/scripts`. */
+		const { proxy } = useScriptMatomoAnalytics({
+			matomoUrl: matomoBaseUrl,
+			siteId: matomoId,
+			disableCookies: true,
+			enableLinkTracking: true,
+		});
 
-	proxy._paq.push(["enableHeartBeatTimer"]);
+		proxy._paq.push(["enableHeartBeatTimer"]);
+	},
 });

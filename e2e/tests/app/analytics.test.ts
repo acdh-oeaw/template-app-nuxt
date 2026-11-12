@@ -8,18 +8,17 @@ test.describe("analytics service", () => {
 	test.skip(() => {
 		return (
 			!isNonEmptyString(process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL) ||
-			!isNonEmptyString(process.env.NUXT_PUBLIC_APP_MATOMO_ID)
+			!isNonEmptyString(process.env.NUXT_PUBLIC_APP_MATOMO_ID?.trim())
 		);
 	}, "Analytics service disabled.");
 
-	const baseUrl = String(
-		createUrl({
-			baseUrl: process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL!,
-			pathname: "/matomo.php?**",
-		}),
-	);
-
 	test("should track page views", async ({ createIndexPage }) => {
+		const baseUrl = String(
+			createUrl({
+				baseUrl: process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL!,
+				pathname: "/matomo.php?**",
+			}),
+		);
 		const { indexPage, i18n } = await createIndexPage(defaultLocale);
 		const { page } = indexPage;
 
@@ -27,6 +26,9 @@ test.describe("analytics service", () => {
 		await indexPage.goto();
 		const initialResponse = await initialResponsePromise;
 		expect(initialResponse.status()).toBe(204);
+		expect(new URL(initialResponse.url()).searchParams.get("idsite")).toBe(
+			process.env.NUXT_PUBLIC_APP_MATOMO_ID?.trim(),
+		);
 
 		const responsePromise = page.waitForResponse(baseUrl);
 		await page.getByRole("link", { name: i18n.t("AppFooter.links.imprint") }).click();

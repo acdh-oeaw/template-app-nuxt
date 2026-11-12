@@ -1,4 +1,4 @@
-import { createUrl } from "@acdh-oeaw/lib";
+import { createUrl, isNonEmptyString } from "@acdh-oeaw/lib";
 import { test as base } from "@playwright/test";
 
 import { defaultLocale, type Locale } from "@/config/i18n.config";
@@ -22,7 +22,7 @@ export const test = base.extend<Fixtures>({
 		async ({ context }, use) => {
 			const baseUrl = process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL;
 
-			if (baseUrl != null) {
+			if (isNonEmptyString(baseUrl)) {
 				/**
 				 * If we were to block loading the actual matomo javascript snippet, we would need to check
 				 * if `windows._paq` was pushed to (because no requests to `matomo.php` would be

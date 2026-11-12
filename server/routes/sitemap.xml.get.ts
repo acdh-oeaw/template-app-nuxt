@@ -3,11 +3,9 @@ import { join } from "node:path";
 
 import { createUrl } from "@acdh-oeaw/lib";
 import { defaultContentType, defineEventHandler, defineLazyEventHandler } from "h3";
-import * as v from "valibot";
 
 import { locales } from "@/config/i18n.config";
-
-const baseUrl = v.parse(v.pipe(v.string(), v.url()), process.env.NUXT_PUBLIC_APP_BASE_URL);
+import { useValidatedRuntimeConfig } from "~/server/utils/use-validated-runtime-config";
 
 export default defineLazyEventHandler(async () => {
 	const routes: Array<string> = [];
@@ -37,29 +35,30 @@ export default defineLazyEventHandler(async () => {
 		routes.push(segments.join("/"));
 	}
 
-	const entries: Array<{ url: string; lastModified?: Date }> = locales.flatMap((locale) => {
-		return routes.map((pathname) => {
-			return {
-				url: String(createUrl({ baseUrl, pathname: `/${locale}${pathname}` })),
-			};
-		});
-	});
-
-	const sitemap = [
-		'<?xml version="1.0" encoding="UTF-8"?>',
-		'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-		...entries.flatMap((entry) => {
-			const elements = ["<url>", `<loc>${entry.url}</loc>`];
-			if (entry.lastModified != null) {
-				elements.push(`<lastmod>${entry.lastModified.toISOString()}</lastmod>`);
-			}
-			elements.push("</url>");
-			return elements;
-		}),
-		"</urlset>",
-	].join("\n");
-
 	return defineEventHandler((event) => {
+		const { baseUrl } = useValidatedRuntimeConfig(event).public.app;
+		const entries: Array<{ url: string; lastModified?: Date }> = locales.flatMap((locale) => {
+			return routes.map((pathname) => {
+				return {
+					url: String(createUrl({ baseUrl, pathname: `/${locale}${pathname}` })),
+				};
+			});
+		});
+
+		const sitemap = [
+			'<?xml version="1.0" encoding="UTF-8"?>',
+			'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+			...entries.flatMap((entry) => {
+				const elements = ["<url>", `<loc>${entry.url}</loc>`];
+				if (entry.lastModified != null) {
+					elements.push(`<lastmod>${entry.lastModified.toISOString()}</lastmod>`);
+				}
+				elements.push("</url>");
+				return elements;
+			}),
+			"</urlset>",
+		].join("\n");
+
 		defaultContentType(event, "application/xml");
 		return sitemap;
 	});

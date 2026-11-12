@@ -66,7 +66,8 @@ export default defineConfig({
 		// },
 	],
 	webServer: {
-		command: `pnpm run start --port ${String(port)}`,
+		command: `node ./e2e/lib/start-production-server.ts ${String(port)}`,
+		cwd: join(import.meta.dirname, ".."),
 		url: baseUrl,
 		reuseExistingServer: !isCI,
 	},

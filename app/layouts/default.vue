@@ -3,7 +3,7 @@ import { createUrl, isNonEmptyString, removeTrailingSlash } from "@acdh-oeaw/lib
 import inter from "@fontsource-variable/inter/files/inter-latin-standard-normal.woff2?url";
 import type { WebSite, WithContext } from "schema-dts";
 
-const env = useRuntimeConfig();
+const env = useValidatedRuntimeConfig();
 
 const locale = useLocale();
 const t = useTranslations();

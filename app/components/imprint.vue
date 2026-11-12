@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
-const env = useRuntimeConfig();
+const env = useValidatedRuntimeConfig();
 
 const locale = useLocale();
 
@@ -20,10 +20,24 @@ const url = computed(() => {
 
 const imprint = await useFetch(url, {
 	responseType: "text",
-	onResponseError(error) {
-		throw createError({ fatal: true, status: error.response.status });
+	onRequestError() {
+		throw createError({ statusCode: 502 });
 	},
 });
+
+watch(
+	imprint.error,
+	(error) => {
+		if (error != null) {
+			showError({
+				fatal: true,
+				statusCode: error.statusCode ?? 502,
+				statusMessage: "Failed to load imprint",
+			});
+		}
+	},
+	{ immediate: true },
+);
 </script>
 
 <template>

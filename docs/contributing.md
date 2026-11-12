@@ -17,21 +17,36 @@ set required environment variables in `.env.local`:
 cp .env.local.example .env.local
 ```
 
-| environment variable                     | required | default    | description                    |
-| ---------------------------------------- | -------- | ---------- | ------------------------------ |
-| NUXT_PUBLIC_APP_BASE_URL                 | true     |            | deployment base url            |
-| NUXT_PUBLIC_APP_BOTS                     | true     | "disabled" | indexing by web crawlers       |
-| NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION | false    |            | google search console property |
-| NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL | true     |            | acdh imprint service base url  |
-| NUXT_PUBLIC_APP_MATOMO_BASE_URL          | false    |            | acdh matomo analytics base url |
-| NUXT_PUBLIC_APP_MATOMO_ID                | false    |            | acdh matomo analytics id       |
-| NUXT_PUBLIC_APP_SERVICE_ID               | true     |            | acdh service id                |
+| environment variable                     | required | default    | description                                 |
+| ---------------------------------------- | -------- | ---------- | ------------------------------------------- |
+| NUXT_PUBLIC_APP_BASE_URL                 | true     |            | deployment base url                         |
+| NUXT_PUBLIC_APP_BOTS                     | false    | "disabled" | indexing by web crawlers                    |
+| NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION | false    |            | google search console property              |
+| NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL | true     |            | acdh imprint service base url               |
+| NUXT_PUBLIC_APP_MATOMO_BASE_URL          | false    |            | acdh matomo analytics base url              |
+| NUXT_PUBLIC_APP_MATOMO_ID                | false    |            | acdh matomo analytics id                    |
+| NUXT_PUBLIC_APP_SERVICE_ID               | false    |            | acdh service id; empty uses generic imprint |
 
 also, set environment variables required by [validation](./.github/workflows/validate.yml) and
 [deployment](./.github/workflows/build-deploy.yml) github actions. use
 ["variables"](https://github.com/acdh-oeaw/template-app-nuxt/settings/variables/actions) for every
 environment variable prefixed with `NUXT_PUBLIC_`, and
 ["secrets"](https://github.com/acdh-oeaw/template-app-nuxt/settings/secrets/actions) for all others.
+
+Application runtime settings are declared in
+[`shared/config/runtime-config.ts`](../shared/config/runtime-config.ts). Add public settings to
+`publicRuntimeConfigSchema` and server-only settings to `privateRuntimeConfigSchema`, alongside their
+defaults in `nuxt.config.ts`. Nuxt and module configuration is preserved separately.
+
+Use `useValidatedRuntimeConfig()` in app components, composables, and plugins. Plugins that use it
+must declare `dependsOn: ["validated-runtime-config"]`. In Nitro handlers, import the server utility
+from `~/server/utils/use-validated-runtime-config` and pass the request event. Server middleware
+validates once per request; SSR reuses that result, and the browser validates public settings once
+when the app starts. Validation errors identify invalid keys without including their values.
+
+Matomo and service IDs accept numeric or string inputs and are normalized to strings. Empty IDs
+are allowed; analytics is disabled when its URL or ID is empty. Non-empty IDs must be positive
+integers. An empty service ID requests the imprint service's generic disclosure.
 
 ## local development
 
@@ -55,6 +70,12 @@ generate a production build and run end-to-end tests with:
 pnpm run build
 pnpm run test:e2e
 ```
+
+`pnpm test` checks runtime configuration validation. The e2e server starts the built output directly
+and removes `NUXT_PUBLIC_APP_*` runtime overrides, so it tests the embedded build defaults used by
+Docker. To exercise analytics locally, set a Matomo URL and ID before both building and testing;
+the browser test intercepts tracking requests. CI supplies test defaults when analytics settings
+are absent, so the analytics regression is always exercised.
 
 visual snapshots should be generated on Ubuntu 26.04 with the same browser versions and x86-64
 architecture as CI. with Docker Engine (or Docker Desktop) and Docker Compose v2 installed, run:
@@ -139,11 +160,6 @@ for a production image, pass `docker build --build-arg PNPM_VERSION="$(pnpm --ve
 - to enable runtime override of public `runtimeConfig` build values through runtime env vars note
   the
   [naming conventions](https://nuxt.com/docs/guide/going-further/runtime-config#environment-variables).
-
-> [!IMPORTANT]
->
-> this is a feature exclusive to nuxt 3. for most deployment scenarios it is not needed, but it can
-> be useful for deploying multiple instances from a single build.
 
 - ensure both the github repository, and the
   [package registry](https://github.com/orgs/acdh-oeaw/packages/container/my-app/settings) is set to

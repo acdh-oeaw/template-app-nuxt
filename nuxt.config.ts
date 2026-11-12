@@ -128,6 +128,8 @@ export default defineNuxtConfig({
 				"../e2e/**/*.ts",
 				"../scripts/**/*.ts",
 				"../server/**/*.ts",
+				"../shared/**/*.ts",
+				"../tests/**/*.ts",
 			],
 		},
 	},
