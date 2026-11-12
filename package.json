@@ -10,6 +10,7 @@
 		"build:static": "nuxt generate --dotenv ./.env.local",
 		"clean": "nuxt cleanup",
 		"dev": "nuxt dev --dotenv ./.env.local",
+		"docker:versions": "node scripts/docker-versions.ts",
 		"format:check": "oxfmt --check",
 		"format:fix": "oxfmt --write",
 		"lint:check": "oxlint",
@@ -21,9 +22,10 @@
 		"styles:fix": "stylelint \"./**/*.@(css|vue)\" --cache --fix --ignore-path ./.gitignore",
 		"test": "node --test tests/*.test.ts",
 		"test:e2e": "playwright test --config ./e2e/playwright.config.ts",
-		"test:e2e:docker": "mkdir -p playwright-report test-results && docker compose --file e2e/docker/compose.yaml run --build --rm e2e",
+		"test:e2e:docker": "node scripts/test-e2e-docker.ts",
 		"test:e2e:install": "playwright install --with-deps",
-		"test:e2e:update-snapshots": "pnpm run test:e2e:docker --update-snapshots --grep 'should not have visible changes'",
+		"test:e2e:update-snapshots": "pnpm run test:e2e:docker --update-snapshots=changed --grep 'should not have visible changes'",
+		"test:e2e:update-snapshots:ci": "node scripts/update-snapshots-ci.ts",
 		"types:check": "nuxt typecheck --dotenv ./.env.local"
 	},
 	"dependencies": {

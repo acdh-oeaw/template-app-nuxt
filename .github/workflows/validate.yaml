@@ -11,6 +11,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      update-snapshots:
+        description: Update visual snapshots and upload them as an artifact
+        type: boolean
+        default: false
 
 jobs:
   validate:
@@ -65,40 +71,17 @@ jobs:
       - name: Test
         run: pnpm run test
 
-      - name: Get playwright version
-        run: |
-          PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test --json | jq --raw-output '.[0].devDependencies["@playwright/test"].version')
-          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-
-      - name: Cache playwright browsers
-        uses: actions/cache@v6
-        id: cache-playwright-browsers
-        with:
-          path: "~/.cache/ms-playwright"
-          key: ${{ matrix.os }}-playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
-
-      - name: Install playwright browsers
-        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps
-      - name: Install playwright browsers (os dependencies)
-        if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps
-
-      - name: Cache nuxt build output
-        uses: actions/cache@v6
-        with:
-          path: |
-            .nuxt
-            dist
-          key: ${{ matrix.os }}-nuxt-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ matrix.os }}-nuxt-
-
-      - name: Build app
-        run: pnpm run build
-
       - name: Run e2e tests
-        run: pnpm run test:e2e
+        run: pnpm run test:e2e:docker ${{ inputs.update-snapshots && '--update-snapshots=changed' || '' }}
+
+      - name: Upload snapshots
+        uses: actions/upload-artifact@v7
+        if: ${{ success() && inputs.update-snapshots }}
+        with:
+          name: snapshots
+          path: e2e/snapshots/
+          if-no-files-found: error
+          retention-days: 7
 
       - uses: actions/upload-artifact@v7
         if: always()

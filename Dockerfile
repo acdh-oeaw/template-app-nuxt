@@ -1,19 +1,20 @@
 # syntax=docker/dockerfile:1
 
-ARG NODE_VERSION=26
-ARG PNPM_VERSION=12.18.0
+# Versions are supplied from package.json by scripts/docker-versions.ts.
+ARG NODE_VERSION
+ARG PNPM_VERSION
 
 # using alpine base image to avoid `sharp` memory leaks.
 # @see https://sharp.pixelplumbing.com/install#linux-memory-allocator
 
 # build
-FROM node:${NODE_VERSION}-alpine AS build
+FROM node:${NODE_VERSION:?required}-alpine AS build
 
 ARG PNPM_VERSION
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="${PNPM_HOME}/bin:${PATH}"
-RUN npm install --global "pnpm@${PNPM_VERSION}"
+RUN npm install --global "pnpm@${PNPM_VERSION:?required}"
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app

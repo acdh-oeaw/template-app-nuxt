@@ -71,6 +71,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Resolve Docker versions
+        id: versions
+        run: node scripts/docker-versions.ts --github-output >> "$GITHUB_OUTPUT"
+
       - name: Set up docker buildx
         uses: docker/setup-buildx-action@v4
 
@@ -98,6 +105,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
+            NODE_VERSION=${{ steps.versions.outputs.NODE_VERSION }}
+            PNPM_VERSION=${{ steps.versions.outputs.PNPM_VERSION }}
             "NUXT_PUBLIC_APP_BASE_URL=${{ needs.vars.outputs.public_url }}"
             "NUXT_PUBLIC_APP_BOTS=${{ vars.NUXT_PUBLIC_APP_BOTS }}"
             "NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION=${{ vars.NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION }}"

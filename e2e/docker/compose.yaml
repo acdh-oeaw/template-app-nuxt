@@ -19,6 +19,11 @@ services:
       NUXT_PUBLIC_APP_BASE_URL: http://localhost:3000
       NUXT_PUBLIC_APP_BOTS: disabled
       NUXT_PUBLIC_APP_IMPRINT_CUSTOM_CONFIG: disabled
+      NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION:
+      NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL:
+      NUXT_PUBLIC_APP_MATOMO_BASE_URL:
+      NUXT_PUBLIC_APP_MATOMO_ID:
+      NUXT_PUBLIC_APP_SERVICE_ID:
     volumes:
       - ../..:/source:ro
       - ../snapshots:/snapshots

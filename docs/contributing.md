@@ -77,53 +77,67 @@ Docker. To exercise analytics locally, set a Matomo URL and ID before both build
 the browser test intercepts tracking requests. CI supplies test defaults when analytics settings
 are absent, so the analytics regression is always exercised.
 
-visual snapshots should be generated on Ubuntu 26.04 with the same browser versions and x86-64
-architecture as CI. with Docker Engine (or Docker Desktop) and Docker Compose v2 installed, run:
+visual tests run in the same Ubuntu 26.04 x86-64 Playwright container locally and in CI.
+ordinary runs never create or update baselines. with Docker Engine (or Docker Desktop) and Docker
+Compose v2 installed, use:
 
 ```bash
+pnpm run test:e2e:docker
 pnpm run test:e2e:update-snapshots
+pnpm run test:e2e:update-snapshots --project chromium
 ```
 
-this builds an Ubuntu 26.04 Playwright image with node.js 26, installs dependencies from the lockfile,
-builds the app, and updates the visual snapshots in `e2e/snapshots`. the source is mounted read-only
-and copied into a temporary container directory, including local `.env` files. host dependencies and
-build output are isolated. snapshots, `playwright-report`, and `test-results` are written back to the
-checkout. the container is removed after the run.
+the snapshot command updates changed and missing visual baselines in `e2e/snapshots`. the Docker
+command accepts other Playwright options as well. x86-64 emulation on ARM hosts can make runs slower.
 
 the test Compose configuration lives in [`e2e/docker/compose.yaml`](../e2e/docker/compose.yaml),
 alongside the test Dockerfile and runner script. app service configurations can live separately;
 the test commands select their Compose file explicitly.
 
-use the same `.env.local` values as CI for imprint and analytics settings. the container sets the
-base URL to `http://localhost:3000` and disables bots and custom imprints to match validation.
+the source is mounted read-only and copied into a temporary container directory, including local
+`.env` files. dependencies and build output stay isolated. snapshots, `playwright-report`, and
+`test-results` are written back to the checkout. the container is removed after the run. the wrapper
+uses the current user's UID/GID; `DOCKER_UID` and `DOCKER_GID` can override them.
 
-to run all end-to-end tests without updating snapshots, or to pass Playwright options:
-
-```bash
-pnpm run test:e2e:docker
-pnpm run test:e2e:update-snapshots --project chromium
-```
+use the same imprint and analytics settings as CI in `.env.local` or the shell environment. shell
+values are forwarded to the container. the container sets the base URL to `http://localhost:3000`
+and disables bots and custom imprints to match validation.
 
 open the saved HTML report with `pnpm exec playwright show-report playwright-report/html`.
 
-the container defaults to user/group `1000:1000` so snapshots are not owned by root. on Linux with
-different IDs, prefix the command with `DOCKER_UID=$(id -u) DOCKER_GID=$(id -g)`. the Playwright image
-version in [`e2e/docker/Dockerfile`](../e2e/docker/Dockerfile) must match `@playwright/test` in
-`pnpm-lock.yaml`; keep them in sync when upgrading Playwright. x86-64 emulation on ARM hosts can make
-these commands slower.
-
-both Dockerfiles declare `NODE_VERSION` and `PNPM_VERSION` build arguments at the top; the test Dockerfile also accepts
-`PLAYWRIGHT_VERSION` (without the `v` prefix). Compose forwards environment variables with those names
-and uses the Dockerfile defaults when they are unset. to use the active pnpm version and the locked
-Playwright version without editing Dockerfiles:
+for an authoritative run on GitHub Actions, install and authenticate the GitHub CLI, commit all
+changes, and push the current branch to `origin`, then run:
 
 ```bash
-PNPM_VERSION=$(pnpm --version) \
-PLAYWRIGHT_VERSION=$(pnpm list @playwright/test --lockfile-only --json | node -pe 'JSON.parse(require("node:fs").readFileSync(0, "utf8"))[0].devDependencies["@playwright/test"].version') \
-pnpm run test:e2e:update-snapshots
+pnpm run test:e2e:update-snapshots:ci
 ```
 
-for a production image, pass `docker build --build-arg PNPM_VERSION="$(pnpm --version)" ...`.
+this dispatches the validation workflow with snapshot updates enabled, waits for it to succeed, and
+replaces local baselines with its snapshot artifact. it requires a clean checkout and checks that
+`origin` matches HEAD. failed runs, missing downloads, empty artifacts, and local changes during the
+run leave existing baselines intact. review and commit downloaded changes. the workflow must first
+be present on the repository's default branch for GitHub to allow manual dispatch. snapshot artifacts
+are retained for seven days; manual snapshot runs do not deploy the app.
+
+Docker versions are resolved automatically by [`scripts/docker-versions.ts`](../scripts/docker-versions.ts).
+Node and pnpm use the exact minimum versions from `package.json`'s `devEngines` fields; Playwright
+uses its resolved version from `pnpm-lock.yaml`. inspect them with `pnpm run docker:versions`.
+Both Dockerfiles declare their version arguments at the top and have no duplicated version defaults.
+The local wrapper supplies all arguments automatically; `NODE_VERSION`, `PNPM_VERSION`, and
+`PLAYWRIGHT_VERSION` environment variables can override the test image versions.
+
+production image builds receive `NODE_VERSION` and `PNPM_VERSION` automatically in the deployment
+workflow. direct `docker build` calls must pass those two build arguments explicitly. for example:
+
+```bash
+docker_versions=$(node scripts/docker-versions.ts)
+docker build \
+  --build-arg NODE_VERSION="$(printf '%s' "$docker_versions" | jq -r .NODE_VERSION)" \
+  --build-arg PNPM_VERSION="$(printf '%s' "$docker_versions" | jq -r .PNPM_VERSION)" \
+  --build-arg NUXT_PUBLIC_APP_BASE_URL=http://localhost:3000 \
+  --build-arg NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL=https://imprint.acdh.oeaw.ac.at \
+  .
+```
 
 ## how to deploy
 
