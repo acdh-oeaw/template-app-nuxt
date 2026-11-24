@@ -2,6 +2,11 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { defineNuxtModule } from "@nuxt/kit";
+/**
+ * Nitro v3 no longer exposes its auto-imports on the nitro instance (`nitro.unimport`). The
+ * builder-neutral server build description is currently only available as internal api.
+ */
+import { useServerBuild } from "@nuxt/kit/internal";
 import type { NuxtHooks } from "nuxt/schema";
 import type { OxlintGlobals } from "oxlint";
 
@@ -14,20 +19,17 @@ export default defineNuxtModule({
 	setup(_options, nuxt) {
 		const outputPath = path.join(nuxt.options.buildDir, "oxlint-globals.json");
 		let appImports: ImportRegistry | undefined;
-		let nitroImports: ImportRegistry | undefined;
 
 		nuxt.hook("imports:context", (context) => {
 			appImports = context;
-		});
-		nuxt.hook("nitro:init", (nitro) => {
-			nitroImports = nitro.unimport;
 		});
 
 		/** @see https://github.com/nuxt/eslint/blob/main/packages/module/src/modules/config/addons/globals.ts */
 		nuxt.hook("app:templatesGenerated", async () => {
 			const imports = [
 				...((await appImports?.getImports()) ?? []),
-				...((await nitroImports?.getImports()) ?? []),
+				/** Only available after the server builder has initialised. */
+				...((await useServerBuild(nuxt).imports?.()) ?? []),
 			];
 			const globals = new Set(
 				imports
