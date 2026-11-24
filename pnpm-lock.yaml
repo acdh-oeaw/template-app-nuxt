@@ -185,9 +185,6 @@ settings:
   excludeLinksFromLockfile: false
   linkWorkspacePackages: false
 
-overrides:
-  typescript: npm:typescript-native-bridge@6.0.3-bridge.19.tsgo.7.0.2
-
 importers:
 
   .:
