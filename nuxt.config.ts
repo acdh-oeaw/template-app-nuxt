@@ -22,8 +22,9 @@ assert(
  * runtime with the same `NUXT_PUBLIC_APP_*` environment variables. Settings without a default are
  * required.
  *
- * Note that Nuxt validates against the JSON Schema representation, i.e. types, enums, and required
- * keys; string formats and patterns are documentation only.
+ * Note that Nuxt only validates types, enums, and required keys, using the schema's JSON Schema
+ * representation. Refinements like `v.url()`, `v.regex()`, `v.minLength()` or `v.minValue()` are
+ * not enforced, and only serve as documentation.
  *
  * @see https://nuxt.com/docs/4.x/guide/going-further/runtime-config
  */
