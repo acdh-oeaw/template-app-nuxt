@@ -1,9 +1,8 @@
 import { isNonEmptyString } from "@acdh-oeaw/lib";
 
 export default defineNuxtPlugin({
-	dependsOn: ["validated-runtime-config"],
 	setup() {
-		const env = useValidatedRuntimeConfig();
+		const env = useRuntimeConfig();
 		const { matomoBaseUrl, matomoId } = env.public.app;
 
 		if (!isNonEmptyString(matomoBaseUrl) || !isNonEmptyString(matomoId)) {

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
-const env = useValidatedRuntimeConfig();
+const env = useRuntimeConfig();
 
 const locale = useLocale();
 

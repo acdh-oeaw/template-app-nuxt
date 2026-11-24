@@ -2,6 +2,8 @@ import { fileURLToPath } from "node:url";
 
 import { assert, isNonEmptyString } from "@acdh-oeaw/lib";
 import tailwindcss from "@tailwindcss/vite";
+import { toStandardJsonSchema } from "@valibot/to-json-schema";
+import * as v from "valibot";
 
 import { defaultLocale, files, locales } from "./app/config/i18n.config.ts";
 import oxlintGlobals from "./modules/oxlint-globals.ts";
@@ -12,6 +14,34 @@ assert(
 	isNonEmptyString(baseUrl),
 	"Missing `NUXT_PUBLIC_APP_BASE_URL` environment variable.\nYou may have forgotten to `cp .env.local.example .env.local`.",
 );
+
+/**
+ * Runtime config schemas, validated by Nuxt at build time and on server start.
+ *
+ * Environment variables present at build time are embedded as defaults, and can be overridden at
+ * runtime with the same `NUXT_PUBLIC_APP_*` environment variables. Settings without a default are
+ * required.
+ *
+ * Note that Nuxt validates against the JSON Schema representation, i.e. types, enums, and required
+ * keys; string formats and patterns are documentation only.
+ *
+ * @see https://nuxt.com/docs/4.x/guide/going-further/runtime-config
+ */
+function schema<TSchema extends v.GenericSchema>(schema: TSchema, defaultValue?: string) {
+	if (defaultValue == null) {
+		return toStandardJsonSchema(schema);
+	}
+
+	/** Build-time environment variables are validated by Nuxt, like runtime ones. */
+	return toStandardJsonSchema(v.optional(schema, defaultValue as v.InferInput<TSchema>));
+}
+
+const env = process.env;
+
+const urlSchema = v.pipe(v.string(), v.url());
+const optionalUrlSchema = v.union([v.literal(""), urlSchema]);
+const toggleSchema = v.picklist(["disabled", "enabled"]);
+const optionalIdSchema = v.pipe(v.string(), v.regex(/^(?:[1-9]\d*)?$/));
 
 export default defineNuxtConfig({
 	alias: {
@@ -100,14 +130,23 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			app: {
-				baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
-				bots: process.env.NUXT_PUBLIC_APP_BOTS,
-				googleSiteVerification: process.env.NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION,
-				imprintCustomConfig: process.env.NUXT_PUBLIC_APP_IMPRINT_CUSTOM_CONFIG,
-				imprintServiceBaseUrl: process.env.NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL,
-				matomoBaseUrl: process.env.NUXT_PUBLIC_APP_MATOMO_BASE_URL,
-				matomoId: process.env.NUXT_PUBLIC_APP_MATOMO_ID,
-				serviceId: process.env.NUXT_PUBLIC_APP_SERVICE_ID,
+				baseUrl: schema(urlSchema, env.NUXT_PUBLIC_APP_BASE_URL),
+				bots: schema(toggleSchema, env.NUXT_PUBLIC_APP_BOTS || "disabled"),
+				googleSiteVerification: schema(
+					v.string(),
+					env.NUXT_PUBLIC_APP_GOOGLE_SITE_VERIFICATION ?? "",
+				),
+				imprintCustomConfig: schema(
+					toggleSchema,
+					env.NUXT_PUBLIC_APP_IMPRINT_CUSTOM_CONFIG || "disabled",
+				),
+				imprintServiceBaseUrl: schema(
+					urlSchema,
+					env.NUXT_PUBLIC_APP_IMPRINT_SERVICE_BASE_URL || undefined,
+				),
+				matomoBaseUrl: schema(optionalUrlSchema, env.NUXT_PUBLIC_APP_MATOMO_BASE_URL ?? ""),
+				matomoId: schema(optionalIdSchema, env.NUXT_PUBLIC_APP_MATOMO_ID ?? ""),
+				serviceId: schema(optionalIdSchema, env.NUXT_PUBLIC_APP_SERVICE_ID ?? ""),
 			},
 		},
 	},
@@ -128,7 +167,6 @@ export default defineNuxtConfig({
 				"../e2e/**/*.ts",
 				"../scripts/**/*.ts",
 				"../server/**/*.ts",
-				"../shared/**/*.ts",
 				"../tests/**/*.ts",
 			],
 		},

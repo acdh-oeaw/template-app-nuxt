@@ -33,20 +33,17 @@ also, set environment variables required by [validation](./.github/workflows/val
 environment variable prefixed with `NUXT_PUBLIC_`, and
 ["secrets"](https://github.com/acdh-oeaw/template-app-nuxt/settings/secrets/actions) for all others.
 
-Application runtime settings are declared in
-[`shared/config/runtime-config.ts`](../shared/config/runtime-config.ts). Add public settings to
-`publicRuntimeConfigSchema` and server-only settings to `privateRuntimeConfigSchema`, alongside their
-defaults in `nuxt.config.ts`. Nuxt and module configuration is preserved separately.
+Application runtime settings are declared as
+[runtime config schemas](https://nuxt.com/docs/4.x/guide/going-further/runtime-config) in
+[`nuxt.config.ts`](../nuxt.config.ts). Nuxt generates types from them, and validates the runtime
+config at build time and when the server starts, so invalid or missing settings fail early.
+Environment variables present at build time are embedded as defaults and can be overridden at
+runtime. Read settings with `useRuntimeConfig()` (in Nitro handlers, import it from
+`nuxt/server`).
 
-Use `useValidatedRuntimeConfig()` in app components, composables, and plugins. Plugins that use it
-must declare `dependsOn: ["validated-runtime-config"]`. In Nitro handlers, import the server utility
-from `~/server/utils/use-validated-runtime-config` and pass the request event. Server middleware
-validates once per request; SSR reuses that result, and the browser validates public settings once
-when the app starts. Validation errors identify invalid keys without including their values.
-
-Matomo and service IDs accept numeric or string inputs and are normalized to strings. Empty IDs
-are allowed; analytics is disabled when its URL or ID is empty. Non-empty IDs must be positive
-integers. An empty service ID requests the imprint service's generic disclosure.
+Nuxt validates types, enums, and required keys; URL formats and ID patterns in the schemas are not
+enforced. Empty Matomo and service IDs are allowed; analytics is disabled when its URL or ID is
+empty. An empty service ID requests the imprint service's generic disclosure.
 
 ## local development
 
