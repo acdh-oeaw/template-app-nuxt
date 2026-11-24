@@ -76,6 +76,7 @@ export default defineNuxtConfig({
 			},
 		},
 		inlineRouteRules: true,
+		staticRoutes: true,
 	},
 	future: {
 		compatibilityVersion: 5,
@@ -153,6 +154,7 @@ export default defineNuxtConfig({
 	typescript: {
 		shim: false,
 		strict: true,
+		typeCheck: "dev",
 		// https://github.com/nuxt/nuxt/issues/14816#issuecomment-1484918081
 		tsConfig: {
 			compilerOptions: {
