@@ -1,6 +1,6 @@
-import { defineEventHandler, setResponseHeader } from "h3";
+import { defineEventHandler } from "nuxt/server";
 
 export default defineEventHandler((event) => {
-	setResponseHeader(event, "Cache-Control", "no-store");
+	event.res.headers.set("Cache-Control", "no-store");
 	return { status: "ok" };
 });

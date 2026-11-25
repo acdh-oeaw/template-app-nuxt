@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import { defineEventHandler, defineLazyEventHandler, getRouterParam, setHeader } from "h3";
+import { defineEventHandler, getRouterParam } from "nuxt/server";
 import satori from "satori";
 import sharp from "sharp";
 import * as v from "valibot";
@@ -16,7 +16,7 @@ const messages = { de, en } as const;
 const width = 1200;
 const height = 630;
 
-export default defineLazyEventHandler(async () => {
+async function createImages() {
 	const fontData = await readFile(
 		join(process.cwd(), "public", "assets", "fonts", "inter-semibold.ttf"),
 	);
@@ -118,14 +118,21 @@ export default defineLazyEventHandler(async () => {
 		images.set(locale, png);
 	}
 
-	const localeSchema = v.picklist(locales);
+	return images;
+}
 
-	return defineEventHandler((event) => {
-		const locale = v.parse(localeSchema, getRouterParam(event, "locale"));
+const localeSchema = v.picklist(locales);
+let imagesPromise: ReturnType<typeof createImages> | undefined;
 
-		setHeader(event, "content-type", "image/png");
-		setHeader(event, "cache-control", "public, max-age=31536000, immutable");
+export default defineEventHandler(async (event) => {
+	const images = await (imagesPromise ??= createImages().catch((error: unknown) => {
+		imagesPromise = undefined;
+		throw error;
+	}));
+	const locale = v.parse(localeSchema, getRouterParam(event, "locale"));
 
-		return images.get(locale)!;
-	});
+	event.res.headers.set("content-type", "image/png");
+	event.res.headers.set("cache-control", "public, max-age=31536000, immutable");
+
+	return images.get(locale)!;
 });

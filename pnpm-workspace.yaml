@@ -11,7 +11,7 @@ engineStrict: true
 lockfile:
   includeResolutionSettings: true
 
-minimumReleaseAge: 360
+minimumReleaseAge: 1440
 
 saveTypes: true
 

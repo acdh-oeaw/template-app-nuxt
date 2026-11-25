@@ -1,6 +1,5 @@
 import { createUrl } from "@acdh-oeaw/lib";
-import { defaultContentType, defineEventHandler } from "h3";
-import { useRuntimeConfig } from "nuxt/server";
+import { defineEventHandler, useRuntimeConfig } from "nuxt/server";
 
 export default defineEventHandler((event) => {
 	const { baseUrl, bots } = useRuntimeConfig().public.app;
@@ -25,6 +24,8 @@ export default defineEventHandler((event) => {
 		})
 		.join("\n");
 
-	defaultContentType(event, "text/plain");
+	if (!event.res.headers.has("content-type")) {
+		event.res.headers.set("content-type", "text/plain");
+	}
 	return robots;
 });
