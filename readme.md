@@ -6,6 +6,11 @@ template repository for nuxt apps.
 
 see [documentation](./docs/contributing.md).
 
+## license
+
+The software is licensed under the [MIT License](./license). Logos included in this repository are
+excluded from the MIT License; all rights remain with their respective owners.
+
 ## template variants
 
 - [`variant/with-commitlint`](https://github.com/acdh-oeaw/template-app-nuxt/tree/variant/with-commitlint)

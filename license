@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023-2026 Austrian Centre for Digital Humanities
+Copyright (c) 2023 Austrian Centre for Digital Humanities
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -16,3 +16,9 @@ NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPO
 NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
 OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Logo exclusion
+
+Logos included in this repository are not covered by the MIT License above. All rights to these
+logos remain with their respective owners. No permission to use, copy, modify, or distribute the
+logos is granted by this license.
