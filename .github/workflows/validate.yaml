@@ -27,7 +27,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [26.x]
         os: [ubuntu-26.04]
 
     env:
@@ -43,12 +42,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
-      - name: Install pnpm and node.js ${{ matrix.node-version }}
+      - name: Install pnpm and node.js
         uses: pnpm/setup@v3
         with:
           cache: true
           install: false
-          runtime: node@${{ matrix.node-version }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
