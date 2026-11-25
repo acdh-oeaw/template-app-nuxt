@@ -13,6 +13,9 @@ lockfile:
 
 minimumReleaseAge: 1440
 
+minimumReleaseAgeExclude:
+  - '@nuxtjs/i18n@10.7.0'
+
 saveTypes: true
 
 shellEmulator: true
