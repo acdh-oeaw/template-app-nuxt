@@ -3,9 +3,9 @@ import { join } from "node:path";
 
 import { createUrl } from "@acdh-oeaw/lib";
 import { defaultContentType, defineEventHandler, defineLazyEventHandler } from "h3";
+import { useRuntimeConfig } from "nuxt/server";
 
 import { locales } from "@/config/i18n.config";
-import { useValidatedRuntimeConfig } from "~/server/utils/use-validated-runtime-config";
 
 export default defineLazyEventHandler(async () => {
 	const routes: Array<string> = [];
@@ -36,7 +36,7 @@ export default defineLazyEventHandler(async () => {
 	}
 
 	return defineEventHandler((event) => {
-		const { baseUrl } = useValidatedRuntimeConfig(event).public.app;
+		const { baseUrl } = useRuntimeConfig().public.app;
 		const entries: Array<{ url: string; lastModified?: Date }> = locales.flatMap((locale) => {
 			return routes.map((pathname) => {
 				return {
