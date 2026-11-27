@@ -1,8 +1,6 @@
 allowBuilds:
-  '@parcel/watcher': true
   esbuild: true
   lefthook: true
-  sharp: true
 
 autoDedupe: true
 
@@ -12,9 +10,6 @@ lockfile:
   includeResolutionSettings: true
 
 minimumReleaseAge: 1440
-
-minimumReleaseAgeExclude:
-  - '@nuxtjs/i18n@10.7.0'
 
 saveTypes: true
 
